@@ -11,25 +11,14 @@ skinparam rectangle{
 
 left to right direction
 
-rectangle "System Actors" as actors {
-    actor Freelancer
-    actor "Organization\nEmployee" as Employee
-}
+usecase "UC1 - List of Properties" as UC1
+User --> UC1
+usecase "UC2 - Publish Sale Announcements" as UC2
+Agent --> UC2
+usecase "UC3 - Register Employees" as UC3
+"System Administrator" --> UC3
+usecase "UC4 - Request for Listing a Property Sale or Rent" as UC4
+Owner-->UC4
 
-
-note right of Freelancer
-    Actor identified but still
-    no concrete use cases
-end note
-
-rectangle "Use Cases" as usecases{
-    usecase "UC6 - Create a Task" as UC6
-    Employee --> UC6
-}
-note right of actors
-    Rectangles and Titles are for
-    demonstration purposes only.
-    Omitt on your diagrams.
-end note
 
 @enduml
