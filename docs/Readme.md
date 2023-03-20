@@ -4,13 +4,13 @@
 
 The teams consists of students identified in the following table.
 
-| Student Number | Name          |
-|---------|---------------|
-| **1201293** | Nuno Almeida  |
-| **1220716** | João Botelho  |
-| **1150609** | Tiago Silva   |
-| **1201424**    | João Torres   |
-| **1050120**    | Pedro Moreira |
+| Student Number | Name           |
+|----------------|----------------|
+| **1201293**    | Nuno Almeida   |
+| **1220716**    | João Botelho   |
+| **1150609**    | Tiago Silva    |
+| **1201424**    | João Torres    |
+| **1050120**    | Pedro Moreira  |
 
 # 2. Task Distribution ###
 
@@ -29,6 +29,6 @@ was carried out as described in the following table.
 | US 002 (SDP Activities)     | [1150609](sprintA/us001/Readme.md)                                                         |                                                                                            |                                                                                            |                                                                                            |
 | US 003 (SDP Activities)     | [1220716](sprintA/us001/Readme.md)                                                         |                                                                                            |                                                                                            |                                                                                            |
 | US 004 (SDP Activities)     | [1050120](sprintA/us006/Readme.md)                                                         |                                                                                            |                                                                                            |                                                                                            |
-| ...                         | ...                                                                                  | ...                                                                                        | ...                                                                                        | ...                                                                                        |
+| ...                         | ...                                                                                        | ...                                                                                        | ...                                                                                        | ...                                                                                        |
 
 

@@ -22,20 +22,34 @@ As an unregistered user, I want to display listed properties.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** In the project's documentation it's mentioned that "All those who wish to use the application must be authenticated", but in the US1 it's said that an unregistered user can see a list of properties. Can users who aren't authenticated do this?
 >  
-> **Answer:** Duration is estimated in days.
+> **Answer:** 
 
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:** The properties can be in sale and lease at the same time? The properties have always a sale price, even if they are at lease? If not, how do we list them according to the ascending or descending price? do we seperate them as a PropertiesForSale and PropertiesForLeasing?
 >  
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
+> **Answer:** 
 
+> **Question:** In the project description it is stated that "the client is, then, responsible for being able to consult the properties by type, number of rooms, and sort by criteria such as price or the parish where the property is located.". Is the client able to sort properties by only these 4 criteria or is he able to sort properties by any of the properties' characteristics?
+>
+> **Answer:**
+
+> **Question:** When an unregistered user opens the application, are there already properties being listed?
+>If the answer is "YES": then by default, by which criteria are the properties listed?
+>If the answer is "NO": is it mandatory for the user to choose an option (type, number of rooms) or can he/her simply request to view a list of properties that will be automatically ordered, for example, by "most recent"?
+>
+> **Answer:**
+
+> **Question:**  When the unregistered user aks to display listed properties besides the sort criteria does he have to choose between properties for sale and properties for rent?
+>
+> **Answer:**
+ 
 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
+* **AC1:** All required fields must be filled in.
 * **AC2:** Task reference must have at least 5 alphanumeric chars.
 * **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
 
@@ -68,7 +82,7 @@ As an unregistered user, I want to display listed properties.
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](./svg/us001-system-sequence-diagram-alternative-one-System_Sequence_Diagram__SSD____Alternative_One.svg)
 
 #### Alternative Two
 
@@ -76,4 +90,4 @@ As an unregistered user, I want to display listed properties.
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* Unregistered users can only see the listed properties. They can't bid on properties unless they authenticate. 
