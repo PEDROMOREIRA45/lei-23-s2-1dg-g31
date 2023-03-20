@@ -7,7 +7,7 @@ N **and/or** N to 1 relationship between US and UC.
 
 **Insert below the Use Case Diagram in a SVG format**
 
-![Use Case Diagram](svg/use-case-diagram.svg)
+![Use Case Diagram](./svg/use-case-diagram.svg)
 
 **For each UC/US, it must be provided evidences of applying main activities of the software development process (
 requirements, analysis, design, tests and code). Gather those evidences on a separate file for each UC/US and set up a
@@ -18,6 +18,7 @@ link as suggested below.**
 | UC/US  | Description                                        |                   
 |:-------|:---------------------------------------------------|
 | US 001 | [Display Listed Properties](../../us001/Readme.md) |
-| ...    | ...                                                |
-| US 006 | [Create Task](../../us006/Readme.md)               |
-| ...    | ...                                                |
+| US 002 | []()                          |
+| US 003 | []()               |
+| US 004 | []() |
+
