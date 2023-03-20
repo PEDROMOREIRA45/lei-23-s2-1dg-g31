@@ -107,4 +107,4 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 
 ### 1.7 Other Relevant Remarks
 
-* This task can be performed by the Owner directly in the application (needs to identify store an agent), or can be performed with a agent in the store.
+* This task can be performed by the Owner directly in the application (needs to identify store and agent), or can be performed with a agent in the store.
