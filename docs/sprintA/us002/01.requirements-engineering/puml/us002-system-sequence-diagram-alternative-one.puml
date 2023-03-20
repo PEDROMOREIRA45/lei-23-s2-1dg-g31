@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One
+
+autonumber
+
+actor "Agent" as Agent
+participant ":System" as System
+
+activate Agent
+
+    Agent -> System : asks to publish sale announcement
+    activate System 
+
+        System --> Agent : requests sale info
+
+        Agent -> System : types requested data (property characteristic\nand agency comission)
+
+        System --> Agent : displays operation success
+    deactivate System
+
+@enduml
