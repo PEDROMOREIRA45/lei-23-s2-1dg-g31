@@ -1,0 +1,60 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One
+
+autonumber
+
+actor "Agent" as Employee
+participant ":System" as System
+
+activate Employee
+
+    Employee -> System : asks to create a new property
+    activate System
+
+	System --> Employee :initiate process (year, month, day, store identification, agent identification, reference)
+
+        System --> Employee : requests data
+    deactivate System
+
+    Employee -> System : types requested data (category of property)
+    activate System
+
+        System --> Employee : shows property category list and asks to select one
+    deactivate System
+
+    Employee -> System : selects a property category
+    Employee -> System : types requested data (number of bedrooms, number of bathrooms,\n number of parking spaces, yes or no central heating,\nyes or no air conditioning, yes or no basement, yes or no inhabitable loft,\n type of Sun Exposure)
+    activate System
+
+        System --> Employee : shows Sun Exposure category list and asks to select one
+    deactivate System
+
+    Employee -> System : selects a Sun Exposure category
+    Employee -> System : types requested data (address, location)
+    activate System
+
+	System --> Employee : shows location category list and asks to select one
+    deactivate System
+
+    Employee -> System : selects a location category
+    Employee -> System : types requested data (area, distance from the city centre, price)
+    activate System
+
+        System --> Employee : pre selected property condition category to “ready”
+    deactivate System
+
+    Employee -> System : inserts photos
+    activate System
+
+    Employee -> System : submits data
+    activate System
+
+        System --> Employee : displays operation success
+	System --> Employee : sends document operation details and conclusion
+    deactivate System
+
+@enduml

@@ -99,11 +99,11 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative Two](C:\Users\Utilizador\lei-23-s2-1dg-g31\docs\sprintA\us004\01.requirements-engineering\svg\us006-system-sequence-diagram-alternative-one-System_Sequence_Diagram__SSD____Alternative_One.svg)
+![System Sequence Diagram - Alternative Two](svg\us006-system-sequence-diagram-alternative-one-System_Sequence_Diagram__SSD____Alternative_One.svg)
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](C:\Users\Utilizador\lei-23-s2-1dg-g31\docs\sprintA\us004\01.requirements-engineering\svg\us006-system-sequence-diagram-alternative-two-System_Sequence_Diagram__SSD____Alternative_Two.svg)
+![System Sequence Diagram - Alternative Two](svg\us006-system-sequence-diagram-alternative-two-System_Sequence_Diagram__SSD____Alternative_Two.svg)
 
 ### 1.7 Other Relevant Remarks
 
