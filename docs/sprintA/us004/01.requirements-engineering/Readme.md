@@ -42,11 +42,11 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** An Agent is registered employee by the Systems Administrator.
-* **AC2:** The store is registered branch by the Systems Administrator.
-* **AC3:** An Agent is a employee of that store.
-* **AC4:** The Agent to use the application is authenticated with a password of seven alphanumeric characters, including three capital letters and two digits.
-* **AC5:** The Owner has to chose a Agent from a list of Agents in that Store.
+* **AC1:** The Owner has to chose a Store.
+* **AC2:** The Owner has to chose a Agent from a list of Agents in that Store.
+* **AC3:** The store is registered branch by the Systems Administrator.
+* **AC4:** An Agent is registered employee by the Systems Administrator.
+* **AC5:** An Agent is a employee of that store.
 * **AC6:** The Owner has to provide all de required information.
 * **AC7:** In the case of a request for the sale of a property, the owner must provide information on: the type of property (apartment, house or land), the area in m2, the location, the distance from the city centre, the requested price and one or more photographs.
 * **AC8:** If the property is an apartment or a house, the owner also provides: the number of bedrooms, the number of bathrooms, the number of parking spaces and the available equipment, such as central heating and/or air conditioning.
@@ -67,27 +67,26 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 **Input Data:**
 
 * Typed data:
-	* idCodProperty: reference identification property.
-    * propertyType: chose type of property.
-    * propertyTypeBed: number of bedrooms.
-    * propertyTypeBath: number of bathrooms.
-    * propertytypeparking: number of parking spaces.
-    * propertytypecentralheat: yes or no central heating.
-    * propertytypeaircond: yes or no air conditioning.
-    * propertytypebasement: yes or no basement.
-    * propertyTypeInhabitable: yes or no inhabitable loft.
-    * propertyTypeInSunExposure chose type of Sun Exposure.
-    * areaProperty: area (mts2).
-    * distancecitycenter: distance from the city centre (kilometres).
-    * idlocation: identifies location.
-    * idcodagent: identification agent.
-    * priceproperty: requested price (currency).
-    * photos: photos(images).
+	* reference, identification property.
+    * number of bedrooms.
+    * number of bathrooms.
+    * number of parking spaces.
+    * area (mts2).
+    * distance from the city centre (kilometres).
+    * prequested price (currency).
+    * photos(images).
 
 	
 * Selected data:
 	* propertytype chose: 1 – apartment; 2 – house; 3 – land. 
     * propertyTypeInSunExposure chose: 1 – North, 2 – South, 3 – East, 4 – West.
+    * propertyTypeInhabitable: yes or no inhabitable loft. 
+    * propertytypecentralheat: yes or no central heating.
+    * propertytypeaircond: yes or no air conditioning.
+    * propertytypebasement: yes or no basement.
+    * idlocation: identifies location.
+    * idcodagent: identification agent.
+
 
 **Output Data:**
 
@@ -99,11 +98,11 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative Two](svg\us006-system-sequence-diagram-alternative-one-System_Sequence_Diagram__SSD____Alternative_One.svg)
+![System Sequence Diagram - Alternative Two](svg\us004-system-sequence-diagram-alternative-one-System_Sequence_Diagram__SSD____Alternative_One.svg)
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](svg\us006-system-sequence-diagram-alternative-two-System_Sequence_Diagram__SSD____Alternative_Two.svg)
+![System Sequence Diagram - Alternative Two](svg\us004-system-sequence-diagram-alternative-two-System_Sequence_Diagram__SSD____Alternative_Two.svg)
 
 ### 1.7 Other Relevant Remarks
 
