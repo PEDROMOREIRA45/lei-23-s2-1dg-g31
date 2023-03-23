@@ -3,37 +3,31 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative Two
+title System Sequence Diagram (SSD) - Alternative One
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor "Unregistered User" as User
 participant ":System" as System
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task
+        User -> System : asks to list listed properties
     activate System
 
-        System --> Employee : shows task category list and asks to select one
-        'System --> Employee : shows task categories list\n and requests data (reference,\ndescription,\ninformation description,\ntechnical description,\nduration, cost)
+        System --> User : requests business type, number of bedrooms, property type
     deactivate System
 
-    Employee -> System : selects a task category
+        User --> System : choose business type, number of bedrooms, property type
     activate System
 
-        System --> Employee : requests data
-    deactivate System
+        System --> User : requests sort type
+        deactivate System
 
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
+        User --> System : choose sort type
     activate System
 
-        System --> Employee : shows selected category and requested data
+        System -> User : shows listed properties
     deactivate System
 
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : Shows operation success
-    deactivate System
 @enduml

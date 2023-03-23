@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+
+class Property {
+    area
+    type
+    location
+    distance
+    price
+    photographs
+}
+
+class UnregisteredUser
+
+class Owner {
+    id
+}
+
+class House{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class Land{
+    description
+}
+
+
+
+UnregisteredUser "*" -- "*" Property: consults >
+Owner "1"--"1..*" Property: owns <
+Property "*" -- "1" Land
+Property "*" -- "1" Apartment
+Property "*" -- "1" House
+
+@enduml

@@ -24,27 +24,23 @@ As an unregistered user, I want to display listed properties.
 
 > **Question:** In the project's documentation it's mentioned that "All those who wish to use the application must be authenticated", but in the US1 it's said that an unregistered user can see a list of properties. Can users who aren't authenticated do this?
 >  
-> **Answer:** 
+> **Answer:** Non-authenticated users can only list properties.
 
 
-> **Question:** The properties can be in sale and lease at the same time? The properties have always a sale price, even if they are at lease? If not, how do we list them according to the ascending or descending price? do we seperate them as a PropertiesForSale and PropertiesForLeasing?
+> **Question:** The properties can be in sale and lease at the same time?
 >  
-> **Answer:** 
+> **Answer:** No. 
 
 > **Question:** In the project description it is stated that "the client is, then, responsible for being able to consult the properties by type, number of rooms, and sort by criteria such as price or the parish where the property is located.". Is the client able to sort properties by only these 4 criteria or is he able to sort properties by any of the properties' characteristics?
 >
-> **Answer:**
+> **Answer:** The client should be able to select the type of business (renting or buying), the type of property and the number of rooms. Then, the client should be able to sort properties by price or by parish where the property is located.
+If the client does not select the type of business, the type of property and the number of rooms, the application should allow the client to sort all properties that are on sale or on renting.
 
 > **Question:** When an unregistered user opens the application, are there already properties being listed?
 >If the answer is "YES": then by default, by which criteria are the properties listed?
 >If the answer is "NO": is it mandatory for the user to choose an option (type, number of rooms) or can he/her simply request to view a list of properties that will be automatically ordered, for example, by "most recent"?
 >
-> **Answer:**
-
-> **Question:**  When the unregistered user aks to display listed properties besides the sort criteria does he have to choose between properties for sale and properties for rent?
->
-> **Answer:**
- 
+> **Answer:** I already clarified what the unregistered user will see and what he can do within the application. If the system does not contain any properties, the system should show an empty list of properties.
 
 ### 1.3. Acceptance Criteria
 
@@ -69,7 +65,10 @@ As an unregistered user, I want to display listed properties.
 	* 
 	
 * Selected data:
-	* Choosing sort type
+    * Choosing business type (sell or lease)
+    * Choosing number of bedrooms
+    * Choosing type of property
+    * Choosing sort type
 
 
 **Output Data:**
@@ -86,7 +85,7 @@ As an unregistered user, I want to display listed properties.
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative Two](./svg/us001-system-sequence-diagram-alternative-two-System_Sequence_Diagram__SSD____Alternative_One.svg)
 
 ### 1.7 Other Relevant Remarks
 

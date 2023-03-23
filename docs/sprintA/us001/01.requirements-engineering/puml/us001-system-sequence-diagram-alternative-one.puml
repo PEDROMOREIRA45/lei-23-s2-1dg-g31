@@ -21,7 +21,7 @@ activate User
     User --> System : chooses sort type
     activate System
 
-        System -> User : shows listed properties by sorted type chose
+        System -> User : shows listed properties
     deactivate System
 
 @enduml
