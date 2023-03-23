@@ -42,13 +42,15 @@ If the client does not select the type of business, the type of property and the
 >
 > **Answer:** I already clarified what the unregistered user will see and what he can do within the application. If the system does not contain any properties, the system should show an empty list of properties.
 
+> **Question:** The property size, location and type are typed or selected in order to filter the results?
+>
+> **Answer:** The client should be able to select (from a list) the type of business, the type of property and the number of rooms.
+
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fields must be filled in.
-* **AC2:** Task reference must have at least 5 alphanumeric chars.
-* **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
-
+* **AC1:** Unregistered user must choose sort type.
+* **AC2:** Unregistered user can choose business type, property type and number of bedrooms.
 
 ### 1.4. Found out Dependencies
 
@@ -66,8 +68,8 @@ If the client does not select the type of business, the type of property and the
 	
 * Selected data:
     * Choosing business type (sell or lease)
-    * Choosing number of bedrooms
     * Choosing type of property
+    * Choosing number of bedrooms
     * Choosing sort type
 
 
@@ -81,11 +83,7 @@ If the client does not select the type of business, the type of property and the
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](./svg/us001-system-sequence-diagram-alternative-one-System_Sequence_Diagram__SSD____Alternative_One.svg)
-
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](./svg/us001-system-sequence-diagram-alternative-two-System_Sequence_Diagram__SSD____Alternative_One.svg)
+![System Sequence Diagram - Alternative One](./svg/us001-system-sequence-diagram-System_Sequence_Diagram__SSD.svg)
 
 ### 1.7 Other Relevant Remarks
 
