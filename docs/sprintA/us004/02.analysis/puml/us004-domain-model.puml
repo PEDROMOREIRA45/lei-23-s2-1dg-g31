@@ -19,19 +19,28 @@ hide methods
 class Owner {
     idCodOwner
     nameOwner
-    phoneNumberOwner
+    contactOwner
+    idNumbCard
+    idNumFin
     emailOwner
-    IdCodAgent
+    idCodOwner
     numProperties
+    adressOwner
+    idLocation
 }
 
 class Property {
     idCodProperty
     propertyType
-    informalDesc
-    technicalDesc
-    duration
-    cost
+    adressProperty
+    areaProperty
+    distanceCityCenter
+    idLocation
+    idCodAgent
+    rentOrSale
+    conditionProperty
+    comProperty
+    photos
 }
 
 class House{
@@ -54,22 +63,52 @@ class Apartment{
 class Land{
     description
 }
+class Rent {
+    rentMonth
+    durationOfContract
+}
+class Sale {
+    salePrice
+}
 
+class Location {
+    zipCode
+    stateUS
+    county
+    city
+}
 
-'class User {
-'    name
-'    email
-'    password
-'}
+class Agent {
+    idCodAgent
+    idCodStore
+    nameAgent
+    idNumbCard
+    idNumFin
+    adressAgent
+    emailAgent
+    contactAgent
+    idLocation
+}
 
-'Platform "1" -- "*" Organization : has registered >
-'Platform "1" -- "*" Category : defines >
+class Store{
+    idCodStore
+    idLocation
+    idStoreManager
+    desigStore
+    adressStore
+    emailStore
+    contactStore
+}
+
 Owner "1" -- "1..*" Property: owns >
-'Task "*" -- "1" Employee: created by >
+Owner "1" -- "1..*" Agent: choses >
+Owner "1" -- "1" Store: choses >
 Owner "1" -- "*" Property : creates >
-'Employee "0..1" -- "1" User: acts as >
 Property "*" -- "1" House: cataloged as >
 Property "*" -- "1" Apartment: cataloged as >
 Property "*" -- "1" Land: cataloged as >
+Property "*" -- "1" Rent: cataloged as >
+Property "*" -- "1" Sale: cataloged as >
+Property "*" -- "1" Location: has >
 
 @enduml

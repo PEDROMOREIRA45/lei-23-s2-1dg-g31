@@ -15,7 +15,7 @@ hide methods
 '}
 
 class Client {
-    idcodclient
+    idCodClient
     idCodStore
     nameClient
     contactClient
@@ -35,9 +35,9 @@ class Owner {
     idNumbCard
     idNumFin
     emailOwner
-    idCodAgent
+    idCodOwner
     numProperties
-    adressClient
+    adressOwner
     idLocation
 }
 Owner "1" -down "0....*" Agent : has >
@@ -74,7 +74,28 @@ Property "1" -down "1" Sale : has >
 Property "1" -down "1" CommissonFixed : has >
 Property "1" -down "1" CommissonPercent : has >
 Property "1" -down "1" Location : has >
+Property "1" -down "1" House : can be >
+Property "1" -down "1" Apartment : can be >
+Property "1" -down "1" Land : can be >
 
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+class Land{
+    description
+}
 class Rent {
     rentMonth
     durationOfContract
@@ -100,6 +121,7 @@ class Store{
 }
 Store "1" -down "1" Location : has >
 Store "1" -down "0...*" Agent : has >
+Store "1" -down "1" StoreManager : has >
 
 class Visit{
     idCodAgent
@@ -112,7 +134,6 @@ Visit "1" -down "1" Client : has >
 Visit "1" -down "1" Agent : has >
 
 class Location {
-    idLocation
     zipCode
     stateUS
     county
