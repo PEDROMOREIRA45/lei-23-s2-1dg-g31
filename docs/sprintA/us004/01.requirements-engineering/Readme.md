@@ -37,7 +37,11 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 > **Question:** We are having a little issue defining what the sun exposure might be. We are not sure what it will be as a value. If it's a number that defines how much exposure the house has or if it is just a text saying if it has or hasn't sun exposure.
 >
 > **Answer:** Sun exposure will take the following values: North, South, East, or West.
- 
+
+> **Question:** When assigning an agent to a property listing, are the available agents shown by the system for the owner to pick? Or does the owner need to provide the agent's information (name, agency,etc)?
+>
+> **Answer:** The owner should select one agent from a list of agents that work in the selected agency. The owner should select the agency before selecting the agent.
+
 
 ### 1.3. Acceptance Criteria
 
