@@ -1,4 +1,4 @@
-# US 006 - Owner submit a request for listing a property  
+# US 006 - Owner Submit A Request For Listing A Property  
 
 ## 1. Requirements Engineering
 

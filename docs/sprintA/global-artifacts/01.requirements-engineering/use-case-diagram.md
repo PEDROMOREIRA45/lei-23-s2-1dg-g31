@@ -18,7 +18,7 @@ link as suggested below.**
 | UC/US  | Description                                        |                   
 |:-------|:---------------------------------------------------|
 | US 001 | [Display Listed Properties](../../us001/Readme.md) |
-| US 002 | []()                                               |
-| US 003 | []()                                               |
-| US 004 | []()                                               |
+| US 002 | [](../../us002/Readme.md)                          |
+| US 003 | [Publish Sale Announcement](../../us003/Readme.md)                          |
+| US 004 | [Owner Submit A Request For Listing A Property](../../us004/Readme.md)                          |
 
