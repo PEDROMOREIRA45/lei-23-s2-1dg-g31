@@ -6,31 +6,10 @@ skinparam shadowing false
 hide circle
 hide methods
 
-class Network{
 
-}
 
 class Employee{
-    name
-    numberCitizen
-    numberTax
-    location
-    email
-    phoneNumber
-}
-class Client {
-    idCodClient
-    idCodStore
-    nameClient
-    contactClient
-    idNumbCard
-    idNumFin
-    emailClient
-    adressClient
-    location
-}
-
-class Owner {
+    idEmployee
     name
     numberCitizen
     numberTax
@@ -38,24 +17,45 @@ class Owner {
     email
     phoneNumber
 }
-class VisitsReport{
-    idVisit
-    report
+
+class Client {
+    idClient
+    name
+    phoneNumber
+    numberCitizen
+    numberTax
+    email
+    address
 }
+
+class Owner {
+    idOwner
+    email
+    name
+    numberCitizen
+    numberTax
+    address
+    phoneNumber
+}
+
 
 class Agent {
     idCodAgent
     idCodStore
 }
 
-class Property {
-    propertyCode
+class Advertisement {
+    idOwner
     propertyType
     areaProperty
     distanceCityCenter
     location
     conditionProperty
     photos
+    verified
+    idAdvertisement
+    idCodAgent
+    propertyCode
 }
 
 class House {
@@ -74,77 +74,66 @@ class Apartment{
     numberParking
     availableEquipment
 }
+
 class Land{
     description
 }
 
-class Rent {
-    rentMonth
-    durationOfContract
-}
-class Sale {
-    salePrice
-}
-class CommissionFixed {
-    commissionPropertyAmount
-}
-class CommissionPercent {
-    commissionPropertyPercent
-}
-
 class Store{
     idCodStore
+    idStoreNetworkManager
     nameStore
     location
     idStoreManager
     emailStore
     contactStore
 }
+
 class Visit{
     idAdvertisement
     idCodClient
     idVisit
+    report
 }
+
 class Location {
     zipCode
     stateUS
     county
     city
 }
+
 class StoreManager {
     idStoreManager
     idCodStore
 }
+
 class StoreNetworkManager {
     idStoreNetworkManager
 }
-class Advertisement{
-    idAdvertisement
-    idCodAgent
-    propertyCode
-}
+
+
+
 class Request{
     idRequest
     idAdvertisement
     idCodClient
     offer
 }
+class User{
+    email
+    password
+}
 
-Property "1" -- "1" Advertisement
-Owner "1" -- "*" Property
+Owner "1" -- "*" Advertisement
 Agent "1" -- "*" Advertisement
-House "1" -- "1" Property
-Apartment "1" -- "1" Property
-Land "1" -- "1" Property
+House "1" -- "1" Advertisement
+Apartment "1" -- "1" Advertisement
+Land "1" -- "1" Advertisement
 Store "1" -- "*" Agent
-Rent "0..1" -- "1" Advertisement
-Sale "0..1" -- "1" Advertisement
 StoreManager "1" -- "1" Store
-Property "1" -- "1" Location
-Agent "0..1" -- "1" CommissionFixed
-Agent "0..1" -- "1" CommissionPercent
-Network "1" -- "*" Store
-StoreNetworkManager "1" -- "1" Network
+Advertisement "1" -- "1" Location
+StoreNetworkManager "1" -- "*" Store
 Employee "1" -- "1" Agent
 Employee "1" -- "1" StoreManager
 Employee "1" -- "1" StoreNetworkManager
@@ -152,11 +141,10 @@ Advertisement"1" -- "*"Request
 Client"1" -- "*"Request
 Store"1" -- "1"Location
 Advertisement "1" -- "*" Visit
-Advertisement "1" -- "*" VisitsReport
 Client "1" -- "*" Visit
 Agent "1" -- "*" Visit
-
-
-
+User "1" -- "1" Employee
+User "1" -- "1" Owner
+User "1" -- "1" Client
 
 @enduml
