@@ -128,7 +128,7 @@ class User{
     password
 }
 
-Owner "1" -- "*" Property
+Owner "1" -- "1..*" Property
 Agent "1" -- "*" Advertisement
 House "1" -- "1" Property
 Apartment "1" -- "1" Property
