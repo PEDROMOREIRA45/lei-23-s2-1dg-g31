@@ -6,13 +6,13 @@ skinparam shadowing false
 hide circle
 hide methods
 
-
+class Network
 
 class Employee{
     idEmployee
     name
     numberCitizen
-    numberTax
+    tin
     location
     email
     phoneNumber
@@ -23,7 +23,7 @@ class Client {
     name
     phoneNumber
     numberCitizen
-    numberTax
+    tin
     email
     location
 }
@@ -33,7 +33,7 @@ class Owner {
     email
     name
     numberCitizen
-    numberTax
+    tin
     location
     phoneNumber
 }
@@ -41,12 +41,16 @@ class Owner {
 class Agent {
     idCodAgent
     idCodStore
+    commission
 }
 
 class Advertisement {
     idAdvertisement
     idCodAgent
     propertyCode
+    salePrice
+    durationOfContract
+    rentalPrice
 }
 
 class Property{
@@ -89,6 +93,7 @@ class Store{
     idStoreManager
     emailStore
     contactStore
+    commission
 }
 
 class Visit{
@@ -124,10 +129,17 @@ class Request{
     idCodClient
     offer
 }
+
 class User{
     email
     password
 }
+
+class SystemAdministrator{
+    idAdmin
+}
+
+class UnregisteredUser
 
 Owner "1" -- "1..*" Property: owns >
 Agent "1" -- "*" Advertisement: publish >
@@ -156,5 +168,10 @@ Employee "1" -- "1" Location: has >
 Owner "1" -- "1" Location: has >
 Agent "1" -- "1" Property: verifies >
 Store "1" -- "*" Advertisement: contains >
+UnregisteredUser "1" -- "*" Advertisement: consults >
+SystemAdministrator "1" -- "*" Store: create >
+SystemAdministrator "1" -- "*" Employee: create >
+User "1" -- "1" SystemAdministrator: is <
+Network "1" -- "*" Store: has >
 
 @enduml
