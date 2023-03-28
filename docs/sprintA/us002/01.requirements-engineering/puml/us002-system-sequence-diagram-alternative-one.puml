@@ -14,12 +14,22 @@ activate Agent
 
     Agent -> System : asks to publish sale announcement
     activate System 
+        System --> Agent : requests whether the agent wants to create a new offer\nor approve an advertisement request
+    deactivate System
 
-        System --> Agent : requests sale info
-
-        Agent -> System : types requested data (property characteristic\nand agency comission)
-
-        System --> Agent : displays operation success
+    Agent -> System : selects to approve an advirtesement request
+    activate System 
+        System --> Agent : shows list of unapproved advertisement requests\nthat are assigned to the agent
+    deactivate System
+    
+    Agent -> System : selects request from list
+    activate System 
+        System --> Agent : requests comission information to append
+    deactivate System
+    
+    Agent -> System : submits requested data
+    activate System 
+        System --> Agent : display operation success
     deactivate System
 
 @enduml

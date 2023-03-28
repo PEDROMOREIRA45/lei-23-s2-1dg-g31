@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1031px" preserveAspectRatio="none" style="width:1099px;height:1031px;background:#FFFFFF;" version="1.1" viewBox="0 0 1099 1031" width="1099px" zoomAndPan="magnify"><defs/><g><!--MD5=[7421f545a0d8420c5bec41e74b387d9c]
+class Employee--><g id="elem_Employee"><rect codeLine="10" fill="#F1F1F1" height="158.875" id="Employee" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="101" x="256" y="156"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="275.5" y="175.5332">Employee</text><line style="stroke:#181818;stroke-width:0.5;" x1="257" x2="356" y1="183.6094" y2="183.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="262" y="202.1426">idEmployee</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="262" y="219.752">name</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="262" y="237.3613">citizenID</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="262" y="254.9707">tin</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="262" y="272.5801">location</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="262" y="290.1895">email</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="262" y="307.7988">phoneNumber</text></g><!--MD5=[ed6624c6556d5e7b1bd23032162d20b7]
+class Client--><g id="elem_Client"><rect codeLine="20" fill="#F1F1F1" height="158.875" id="Client" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="101" x="378" y="401.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="410.5" y="421.0332">Client</text><line style="stroke:#181818;stroke-width:0.5;" x1="379" x2="478" y1="429.1094" y2="429.1094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="384" y="447.6426">idClient</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="384" y="465.252">name</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="384" y="482.8613">phoneNumber</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="384" y="500.4707">citizenID</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="384" y="518.0801">tin</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="384" y="535.6895">email</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="384" y="553.2988">location</text></g><!--MD5=[08d6a551530ab71b272f9c2c40bfb385]
+class Owner--><g id="elem_Owner"><rect codeLine="30" fill="#F1F1F1" height="158.875" id="Owner" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="101" x="535" y="156"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="565" y="175.5332">Owner</text><line style="stroke:#181818;stroke-width:0.5;" x1="536" x2="635" y1="183.6094" y2="183.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="541" y="202.1426">idOwner</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="541" y="219.752">email</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="541" y="237.3613">name</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="541" y="254.9707">citizenID</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="541" y="272.5801">tin</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="541" y="290.1895">location</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="541" y="307.7988">phoneNumber</text></g><!--MD5=[9d44916250b776386006c440668bcfbb]
+class Agent--><g id="elem_Agent"><rect codeLine="40" fill="#F1F1F1" height="88.4375" id="Agent" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="86" x="44.5" y="437"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="69" y="456.5332">Agent</text><line style="stroke:#181818;stroke-width:0.5;" x1="45.5" x2="129.5" y1="464.6094" y2="464.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="50.5" y="483.1426">idCodAgent</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="50.5" y="500.752">idCodStore</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="50.5" y="518.3613">commission</text></g><!--MD5=[96a16f046dcf5a9f7fab5dd2542af37b]
+class Advertisement--><g id="elem_Advertisement"><rect codeLine="46" fill="#F1F1F1" height="123.6563" id="Advertisement" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="117" x="82" y="901"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="90" x="95.5" y="920.5332">Advertisement</text><line style="stroke:#181818;stroke-width:0.5;" x1="83" x2="198" y1="928.6094" y2="928.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="88" y="947.1426">idAdvertisement</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="88" y="964.752">idCodAgent</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="88" y="982.3613">propertyCode</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="88" y="999.9707">price</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="88" y="1017.5801">contractDuration</text></g><!--MD5=[6b626634f3bb0842bebd5e499c80b711]
+class Property--><g id="elem_Property"><rect codeLine="54" fill="#F1F1F1" height="176.4844" id="Property" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="132" x="666.5" y="393"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="705.5" y="412.5332">Property</text><line style="stroke:#181818;stroke-width:0.5;" x1="667.5" x2="797.5" y1="420.6094" y2="420.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="672.5" y="439.1426">idOwner</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="672.5" y="456.752">propertyType</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="672.5" y="474.3613">areaProperty</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="672.5" y="491.9707">distanceCityCenter</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="672.5" y="509.5801">location</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="672.5" y="527.1895">conditionProperty</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="43" x="672.5" y="544.7988">photos</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="672.5" y="562.4082">propertyCode</text></g><!--MD5=[5005bba8c6d1dda988b0bcc8eba409f6]
+class House--><g id="elem_House"><rect codeLine="65" fill="#F1F1F1" height="158.875" id="House" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="135" x="957" y="156"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="1004.5" y="175.5332">House</text><line style="stroke:#181818;stroke-width:0.5;" x1="958" x2="1091" y1="183.6094" y2="183.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="963" y="202.1426">numberBedrooms</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="963" y="219.752">numberBathrooms</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="963" y="237.3613">numberParking</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="963" y="254.9707">availableEquipment</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="963" y="272.5801">basement</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="19" x="963" y="290.1895">loft</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="963" y="307.7988">sunExposure</text></g><!--MD5=[7938f2b00af14ba76f29cd64fe89cba4]
+class Apartment--><g id="elem_Apartment"><rect codeLine="75" fill="#F1F1F1" height="106.0469" id="Apartment" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="135" x="671" y="182.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="706" y="202.0332">Apartment</text><line style="stroke:#181818;stroke-width:0.5;" x1="672" x2="805" y1="210.1094" y2="210.1094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="677" y="228.6426">numberBedrooms</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="677" y="246.252">numberBathrooms</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="677" y="263.8613">numberParking</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="677" y="281.4707">availableEquipment</text></g><!--MD5=[3b2ebc2a82a6ca42650088e4a2410713]
+class Land--><g id="elem_Land"><rect codeLine="82" fill="#F1F1F1" height="53.2188" id="Land" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="81" x="841" y="209"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="865.5" y="228.5332">Land</text><line style="stroke:#181818;stroke-width:0.5;" x1="842" x2="921" y1="236.6094" y2="236.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="847" y="255.1426">description</text></g><!--MD5=[b4d3d50c0abf08df45181fececb9f04d]
+class Store--><g id="elem_Store"><rect codeLine="86" fill="#F1F1F1" height="158.875" id="Store" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="113" x="7" y="156"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="46.5" y="175.5332">Store</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="119" y1="183.6094" y2="183.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="13" y="202.1426">idCodStore</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="13" y="219.752">nameStore</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="13" y="237.3613">location</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="13" y="254.9707">idStoreManager</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="13" y="272.5801">emailStore</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="13" y="290.1895">contactStore</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="13" y="307.7988">commission</text></g><!--MD5=[4f1f3706c1a355a8488e154afcaed5df]
+class Location--><g id="elem_Location"><rect codeLine="96" fill="#F1F1F1" height="176.4844" id="Location" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="90" x="383.5" y="647"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="401.5" y="666.5332">Location</text><line style="stroke:#181818;stroke-width:0.5;" x1="384.5" x2="472.5" y1="674.6094" y2="674.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="389.5" y="693.1426">address</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="389.5" y="710.752">doorNumber</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="389.5" y="728.3613">floor</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26" x="389.5" y="745.9707">side</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="389.5" y="763.5801">zipCode</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="389.5" y="781.1895">stateUS</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="389.5" y="798.7988">county</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="21" x="389.5" y="816.4082">city</text></g><!--MD5=[0851f84a889f989e7bb0bebc385d0f09]
+class Request--><g id="elem_Request"><rect codeLine="107" fill="#F1F1F1" height="106.0469" id="Request" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="85" x="224" y="682"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="240" y="701.5332">Request</text><line style="stroke:#181818;stroke-width:0.5;" x1="225" x2="308" y1="709.6094" y2="709.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="230" y="728.1426">idRequest</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="230" y="745.752">idProperty</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="230" y="763.3613">idCodClient</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="230" y="780.9707">offer</text></g><!--MD5=[3fd616f346a44cd59a91eb10b19e157c]
+class User--><g id="elem_User"><rect codeLine="114" fill="#F1F1F1" height="70.8281" id="User" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="72" x="392.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="414" y="26.5332">User</text><line style="stroke:#181818;stroke-width:0.5;" x1="393.5" x2="463.5" y1="34.6094" y2="34.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="398.5" y="53.1426">email</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="398.5" y="70.752">password</text></g><!--MD5=[6c522990c8db38e4d652920eb27c0d8d]
+link Agent to Request--><g id="link_Agent_Request"><path codeLine="120" d="M96.5,525 C103.71,552.88 115.78,589.06 134.5,617 C158.19,652.36 195.07,683.82 223.83,705.18 " fill="none" id="Agent-Request" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="142.3856,612.2591,139.5656,603.1762,134.7654,606.5684,142.3856,612.2591" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="148.5" y="613.4951">verifies</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="98.4922" y="546.7758">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="208.8945" y="696.201">1</text></g><!--MD5=[b5f9f44daa4e51423995e17913dfaab5]
+link Agent to Advertisement--><g id="link_Agent_Advertisement"><path codeLine="121" d="M92.25,525.02 C101.69,610.51 122.83,802 133.73,900.65 " fill="none" id="Agent-Advertisement" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="130.0488,740.1456,131.9772,730.8326,126.1348,731.4777,130.0488,740.1456" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55" x="138.5" y="740.4951">publishes</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="85.4492" y="546.799">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="127.6582" y="890.0511">*</text></g><!--MD5=[085f6c1d771d09572c273d137044ba5d]
+link Apartment to Property--><g id="link_Apartment_Property"><path codeLine="122" d="M737.21,288.74 C736.47,319.06 735.51,358.04 734.65,392.88 " fill="none" id="Apartment-Property" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="741.3771,359.1743,744.5374,350.2041,738.6614,350.0597,741.3771,359.1743" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="750.5" y="359.4951">is</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="729.5963" y="310.101">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="727.534" y="382.1091">1</text></g><!--MD5=[3bc5b3fd29cdc4df535c33395554d9f6]
+link Client to Request--><g id="link_Client_Request"><path codeLine="123" d="M377.91,560.7 C352.56,600.12 322.57,646.78 300.1,681.74 " fill="none" id="Client-Request" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="354.7962,612.3817,362.1596,606.3624,357.2152,603.1839,354.7962,612.3817" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="366.5" y="613.4951">make</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="362.9655" y="568.7611">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="299.2791" y="671.0238">*</text></g><!--MD5=[07a26ebe56113129be2d11ce268cd3f5]
+link Request to Advertisement--><g id="link_Request_Advertisement"><path codeLine="124" d="M237.43,788.13 C218.68,821.77 194.22,865.65 174.56,900.92 " fill="none" id="Request-Advertisement" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="203.0656,866.5431,210.0365,860.0734,204.9024,857.2116,203.0656,866.5431" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="214.5" y="867.4951">turns into</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="226.257" y="809.4769">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="171.0935" y="890.3523">1</text></g><!--MD5=[b20241f03cbe24a9ad7dd4a9390f3106]
+link Employee to Location--><g id="link_Employee_Location"><path codeLine="125" d="M296.41,315.1 C289.71,395.17 289.25,520.88 335.5,617 C347.65,642.25 366.1,667.02 383.37,687.22 " fill="none" id="Employee-Location" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="321.6378,486.0446,322.4413,476.568,316.7177,477.9056,321.6378,486.0446" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="329.5" y="486.4951">has</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="288.1996" y="336.4182">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="368.6196" y="675.8146">1</text></g><!--MD5=[a05a5a989aa0cb42d4b9e61e4d4fbe2b]
+link Employee to Agent--><g id="link_Employee_Agent"><path codeLine="126" d="M255.73,287.66 C226.38,317.75 189.13,356.87 157.5,393 C145.24,407 132.33,422.74 120.98,436.94 " fill="none" id="Employee-Agent" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="205.8503,350.4642,197.608,355.2092,201.9712,359.1477,205.8503,350.4642" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="211.5" y="359.4951">is</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="241.0983" y="291.3986">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="118.7581" y="426.1312">1</text></g><!--MD5=[177b2478ed4626e7a48f66bde599ed9a]
+link House to Property--><g id="link_House_Property"><path codeLine="127" d="M956.7,299.93 C950.92,305.08 945.14,310.16 939.5,315 C893.47,354.51 839.87,397.15 798.75,429.18 " fill="none" id="House-Property" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="901.6304,357.3422,910.4917,353.8885,906.7694,349.3396,901.6304,357.3422" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="914.5" y="359.4951">is</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="941.9016" y="303.6232">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="806.3789" y="420.125">1</text></g><!--MD5=[7f8cc1b710a250ecf6924d98f2c6cc89]
+link Land to Property--><g id="link_Land_Property"><path codeLine="128" d="M865.84,262.1 C846.93,292.99 814.15,346.56 785.83,392.85 " fill="none" id="Land-Property" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="813.8902,358.4406,821.1182,352.2594,816.1046,349.1914,813.8902,358.4406" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="825.5" y="359.4951">is</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="854.4093" y="283.6117">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="783.1123" y="382.0765">1</text></g><!--MD5=[fbe01aa29307af51ddd0521639dbabee]
+link Property to Location--><g id="link_Property_Location"><path codeLine="129" d="M670.27,569.31 C656.24,586.14 640.67,602.9 624.5,617 C577.9,657.63 515.31,692.19 473.53,712.99 " fill="none" id="Property-Location" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="643.4621,611.1246,652.5,608.1635,649.0334,603.4167,643.4621,611.1246" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="656.5" y="613.4951">has</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="657.6213" y="591.0761">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="481.5678" y="724.1537">1</text></g><!--MD5=[f2356e37204b57276695eade9dbd0f0c]
+link Property to Advertisement--><g id="link_Property_Advertisement"><path codeLine="130" d="M709.02,569.11 C702.88,585.6 695.41,602.28 686.5,617 C621.04,725.1 595.22,752.25 490.5,823 C397.45,885.86 271.72,926.94 199.04,947.17 " fill="none" id="Property-Advertisement" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="669.4833,738.1534,678.4998,735.1278,674.9993,730.4059,669.4833,738.1534" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="682.5" y="740.4951">is used in</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="699.7014" y="590.8589">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="206.9889" y="941.6564">1</text></g><!--MD5=[5a8670af9491cb9adf5bec20e54bf6e1]
+link Property to Request--><g id="link_Property_Request"><path codeLine="131" d="M666.38,550.62 C657.78,557.45 648.74,563.78 639.5,569 C611.95,584.58 393.29,631.85 365.5,647 C345.21,658.06 325.52,673.94 309.12,689.11 " fill="none" id="Property-Request" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="532.838,609.983,542.3339,609.454,540.2094,603.9735,532.838,609.983" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="546.5" y="613.4951">is used in</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="651.3302" y="555.2323">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="317.0469" y="677.369">1</text></g><!--MD5=[8b6d183bedc315d0231d878645c734db]
+link Store to Location--><g id="link_Store_Location"><path codeLine="132" d="M120.04,279.48 C140.86,297.74 163.1,320.48 178.5,345 C234.04,433.45 193.45,480.88 249.5,569 C259.06,584.02 333.58,650.75 383.41,694.61 " fill="none" id="Store-Location" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="257.1786,485.3978,254.8146,476.1857,249.8514,479.3345,257.1786,485.3978" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="263.5" y="486.4951">has</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="128.1079" y="281.8419">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="368.3623" y="702.7295">1</text></g><!--MD5=[662d642a60c8d45869c204492bca3e89]
+link Store to Advertisement--><g id="link_Store_Advertisement"><path codeLine="133" d="M41.16,315.08 C35.15,339.8 29.49,367.35 26.5,393 C14.97,491.89 10.89,519.01 28.5,617 C46.87,719.27 88.09,833.03 115.07,900.98 " fill="none" id="Store-Advertisement" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="34.1258,613.1365,35.9096,603.7947,30.0779,604.5303,34.1258,613.1365" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49" x="42.5" y="613.4951">contains</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="31.8586" y="336.3964">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="106.666" y="889.9838">*</text></g><!--MD5=[fe350e29682b16f87788b1c4bef60a24]
+link Store to Agent--><g id="link_Store_Agent"><path codeLine="134" d="M58.3,315.26 C58.19,331.11 58.75,347.61 60.5,363 C63.32,387.75 69.39,414.89 75.06,436.79 " fill="none" id="Store-Agent" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="64.8169,349.2227,63.1412,358.5844,68.964,357.7814,64.8169,349.2227" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="34" x="74.5" y="359.4951">works</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="50.5523" y="336.3175">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="67.7723" y="426.2839">*</text></g><!--MD5=[48afc90033d240f0c7566c2ff402e39b]
+link User to Employee--><g id="link_User_Employee"><path codeLine="135" d="M399.41,78.23 C391.96,87.67 384.17,98.04 377.5,108 C367.41,123.06 357.38,139.66 348.17,155.74 " fill="none" id="User-Employee" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="385.2573,113.0048,377.8176,118.9295,382.7209,122.1709,385.2573,113.0048" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="391.5" y="122.4951">is</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="386.8086" y="99.2862">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="344.6888" y="145.1667">1</text></g><!--MD5=[1d795f6dbdc6caadd05a81562a210dec]
+link User to Owner--><g id="link_User_Owner"><path codeLine="136" d="M456.93,78.09 C478.58,104.43 508.95,141.37 534.74,172.74 " fill="none" id="User-Owner" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="495.3248,113.3134,498.7985,122.1669,503.3391,118.4342,495.3248,113.3134" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="507.5" y="122.4951">is</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="454.3707" y="99.3962">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="520.1097" y="160.318">1</text></g><!--MD5=[b9014cebc313a16442615e671f7ea802]
+link User to Client--><g id="link_User_Client"><path codeLine="137" d="M428.5,78.12 C428.5,147.58 428.5,305.51 428.5,401.41 " fill="none" id="User-Client" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="433.5,230.6758,430.5611,239.7209,436.4389,239.7209,433.5,230.6758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="442.5" y="240.9951">is</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="420.8766" y="99.4315">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="421.1664" y="390.5794">1</text></g><!--MD5=[3227841ad937e9c206975ea2bdb7b882]
+link Client to Location--><g id="link_Client_Location"><path codeLine="138" d="M425.83,560.52 C425.45,579.04 425.27,598.72 425.5,617 C425.62,626.65 425.8,636.75 426.02,646.79 " fill="none" id="Client-Location" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="430.511,613.1758,433.43,604.1242,427.5522,604.1372,430.511,613.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="439.5" y="613.4951">has</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="418.2805" y="581.8311">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="418.5061" y="636.0114">1</text></g><!--MD5=[3b272f57340c94200d2bad2ac4dd7911]
+link Owner to Property--><g id="link_Owner_Property"><path codeLine="139" d="M633.02,315.22 C647.95,339.95 664.53,367.41 679.8,392.7 " fill="none" id="Owner-Property" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="667.0843,358.4561,664.9251,349.1939,659.8933,352.232,667.0843,358.4561" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="673.5" y="359.4951">owns</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="629.803" y="336.274">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="654.6077" y="382.2148">1..*</text></g><!--MD5=[b745dc23a4f6fd15bc833cea18001189]
+link Owner to Location--><g id="link_Owner_Location"><path codeLine="140" d="M591.37,315.26 C597.18,410.97 601.94,566 576.5,617 C554.86,660.38 508.78,692.7 473.74,712.26 " fill="none" id="Owner-Location" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="600.0796,485.9698,605.467,478.1323,599.8313,476.4624,600.0796,485.9698" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="610.5" y="486.4951">has</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="584.5737" y="336.3175">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="481.5079" y="704.8453">1</text></g><!--MD5=[12bd94a81bf1f0b346bc10df45eaabf1]
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class Employee {
+    idEmployee
+    name
+    citizenID
+    tin
+    location
+    email
+    phoneNumber
+}
+
+class Client {
+    idClient
+    name
+    phoneNumber
+    citizenID
+    tin
+    email
+    location
+}
+
+class Owner {
+    idOwner
+    email
+    name
+    citizenID
+    tin
+    location
+    phoneNumber
+}
+
+class Agent {
+    idCodAgent
+    idCodStore
+    commission
+}
+
+class Advertisement {
+    idAdvertisement
+    idCodAgent
+    propertyCode
+    price
+    contractDuration
+}
+
+class Property {
+    idOwner
+    propertyType
+    areaProperty
+    distanceCityCenter
+    location
+    conditionProperty
+    photos
+    propertyCode
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class Land {
+    description
+}
+
+class Store {
+    idCodStore
+    nameStore
+    location
+    idStoreManager
+    emailStore
+    contactStore
+    commission
+}
+
+class Location {
+    address
+    doorNumber
+    floor
+    side
+    zipCode
+    stateUS
+    county
+    city
+}
+
+class Request {
+    idRequest
+    idProperty
+    idCodClient
+    offer
+}
+
+class User {
+    email
+    password
+}
+
+
+Agent "1" - - "1" Request: verifies >
+Agent "1" - - "*" Advertisement: publishes >
+Apartment "1" - - "1" Property: is >
+Client"1" - - "*" Request: make >
+Request "1" - - "1" Advertisement: turns into >
+Employee "1" - - "1" Location: has >
+Employee "1" - - "1" Agent: is <
+House "1" - - "1" Property: is >
+Land "1" - - "1"  Property: is >
+Property "1" - - "1" Location: has >
+Property "1" - "1" Advertisement: is used in >
+Property "1" - "1" Request: is used in >
+Store"1" - - "1"Location: has >
+Store "1" - - "*" Advertisement: contains >
+Store "1" - - "*" Agent: works <
+User "1" - - "1" Employee: is <
+User "1" - - "1" Owner: is <
+User "1" - - "1" Client: is <
+Client "1" - - "1" Location: has >
+Owner "1" - - "1..*" Property: owns >
+Owner "1" - - "1" Location: has >
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 BST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
