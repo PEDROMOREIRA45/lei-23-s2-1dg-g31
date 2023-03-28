@@ -64,7 +64,7 @@ If the client does not select the type of business, the type of property and the
 **Input Data:**
 
 * Typed data:
-	* 
+	* None
 	
 * Selected data:
     * Choosing business type (sell or lease)
@@ -79,11 +79,7 @@ If the client does not select the type of business, the type of property and the
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
-
-#### Alternative One
-
-![System Sequence Diagram - Alternative One](./svg/us001-system-sequence-diagram-System_Sequence_Diagram__SSD.svg)
+![System Sequence Diagram](./svg/us001-system-sequence-diagram-System_Sequence_Diagram__SSD.svg)
 
 ### 1.7 Other Relevant Remarks
 
