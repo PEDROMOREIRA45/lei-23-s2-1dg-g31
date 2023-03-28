@@ -14,7 +14,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 ---
 
-**Transaction Line Itemss**
+**Transaction Line Items**
 
 *
 
@@ -48,7 +48,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 ---
 
-** Noteworthy Events**
+**Noteworthy Events**
 
 * 
 

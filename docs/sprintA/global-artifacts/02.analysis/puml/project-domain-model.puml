@@ -1,84 +1,160 @@
 @startuml
+'https://plantuml.com/class-diagram
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
-'skinparam linetype ortho
-'left to right direction
-skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-'title Domain Model
 
-'class Platform {
-'  -description
-'}
 
-class Organization {
+class Employee{
+    idEmployee
     name
-    vatNumber
-    website
+    numberCitizen
+    numberTax
+    location
+    email
     phoneNumber
-    email
 }
 
-class Task {
-    reference
-    description
-    informalDesc
-    technicalDesc
-    duration
-    cost
-}
-
-class Category {
-    description
-}
-
-class Employee {
+class Client {
+    idClient
     name
+    phoneNumber
+    numberCitizen
+    numberTax
     email
-    position
-    phone
+    location
 }
 
-class TechnicalSkill{
-    shortDescription
-    fullDescription
+class Owner {
+    idOwner
+    email
+    name
+    numberCitizen
+    numberTax
+    location
+    phoneNumber
 }
 
-class ActivityArea{
-    shortDescription
-    fullDescription
+class Agent {
+    idCodAgent
+    idCodStore
 }
 
-class FeatureTS{
-    mandatory
+class Advertisement {
+    idAdvertisement
+    idCodAgent
+    propertyCode
 }
 
-'class User {
-'    name
-'    email
-'    password
-'}
-class PostalAddress{
-    street
+class Property{
+    idOwner
+    propertyType
+    areaProperty
+    distanceCityCenter
+    location
+    conditionProperty
+    photos
+    propertyCode
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class Land{
+    description
+}
+
+class Store{
+    idCodStore
+    idStoreNetworkManager
+    nameStore
+    location
+    idStoreManager
+    emailStore
+    contactStore
+}
+
+class Visit{
+    idAdvertisement
+    idCodClient
+    idVisit
+    report
+}
+
+class Location {
+    address
+    doorNumber
+    floor
+    side
     zipCode
+    stateUS
+    county
     city
 }
-'Platform "1" -- "*" Organization : has registered >
-'Platform "1" -- "*" Category : defines >
-Organization "1" - "0..*" Employee : has >
-Organization "1" - "0..*" Task: owns >
-'Task "*" -- "1" Employee: created by >
-Employee "1" -- "*" Task : creates >
-'Employee "0..1" -- "1" User: acts as >
-Task "*" - "1" Category: cataloged as >
-TechnicalSkill "*" - "1" ActivityArea: regarding an >
 
-Category "*" - "*" TechnicalSkill :  : requires >
-(Category, TechnicalSkill) . FeatureTS
+class StoreManager {
+    idStoreManager
+    idCodStore
+}
 
-Organization "1" -left "1" PostalAddress : located At >
+class StoreNetworkManager {
+    idStoreNetworkManager
+}
+
+class Request{
+    idRequest
+    idAdvertisement
+    idCodClient
+    offer
+}
+class User{
+    email
+    password
+}
+
+Owner "1" -- "1..*" Property: owns >
+Agent "1" -- "*" Advertisement: publish >
+House "1" -- "1" Property: is >
+Apartment "1" -- "1" Property: is >
+Land "1" -- "1"  Property: is >
+Store "1" -- "*" Agent: works <
+StoreManager "1" -- "1" Store:  monitor >
+Property "1" -- "1" Location: has >
+StoreNetworkManager "1" -- "*" Store:  analyzes >
+Employee "1" -- "1" Agent: is <
+Employee "1" -- "1" StoreManager: is <
+Employee "1" -- "1" StoreNetworkManager: is <
+Advertisement"1" -- "*"Request: receives >
+Client"1" -- "*"Request: make >
+Store"1" -- "1"Location: has >
+Advertisement "1" -- "*" Visit: has >
+Client "1" -- "*" Visit: make >
+Agent "1" -- "*" Visit: schedule and carry >
+User "1" -- "1" Employee: is <
+User "1" -- "1" Owner: is <
+User "1" -- "1" Client: is <
+Property "1" - "1" Advertisement: is used in >
+Client "1" -- "1" Location: has >
+Employee "1" -- "1" Location: has >
+Owner "1" -- "1" Location: has >
+Agent "1" -- "1" Property: verifies >
+Store "1" -- "*" Advertisement: contains >
 
 @enduml
