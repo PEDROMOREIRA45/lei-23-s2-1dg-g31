@@ -1,4 +1,4 @@
-# US 006 - Owner Submit A Request For Listing A Property  
+# US 004 - Owner Submit A Request For Listing A Property  
 
 ## 1. Requirements Engineering
 
@@ -41,6 +41,19 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 > **Question:** When assigning an agent to a property listing, are the available agents shown by the system for the owner to pick? Or does the owner need to provide the agent's information (name, agency,etc)?
 >
 > **Answer:** The owner should select one agent from a list of agents that work in the selected agency. The owner should select the agency before selecting the agent.
+
+> **Question:** In the Project description, there are only specifications for a Sale. What are the required characteristics for a rental?
+>
+> **Answer:** The caracteristics for a rental are the same as the ones for the sale of a property. The rent value is per month. Additionally, we have to define the contract duration.
+
+> **Question:** In the project's documentation it's mentioned that "All those who wish to use the application must be authenticated", but in the US1 it's said that an unregistered user can see a list of properties. Can users who aren't authenticated do this?
+>
+> **Answer:** Non-authenticated users can only list properties.
+>
+> **Question:** Does that imply that a seller can choose the agency/branch/store independently of the location of the property?
+>
+> **Answer:** Yes.
+
 
 
 ### 1.3. Acceptance Criteria

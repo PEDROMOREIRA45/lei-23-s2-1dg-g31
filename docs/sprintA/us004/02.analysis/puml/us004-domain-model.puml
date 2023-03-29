@@ -17,16 +17,13 @@ hide methods
 '}
 
 class Owner {
-    idCodOwner
-    nameOwner
-    contactOwner
-    idNumbCard
-    idNumFin
-    emailOwner
-    idCodOwner
-    numProperties
-    adressOwner
-    idLocation
+    idOwner
+    email
+    name
+    numberCitizen
+    tin
+    location
+    phoneNumber
 }
 
 class Property {
@@ -72,32 +69,33 @@ class Sale {
 }
 
 class Location {
+    address
+    doorNumber
+    floor
+    side
     zipCode
     stateUS
     county
     city
+
 }
 
 class Agent {
     idCodAgent
     idCodStore
-    nameAgent
-    idNumbCard
-    idNumFin
-    adressAgent
-    emailAgent
-    contactAgent
-    idLocation
+    commission
 }
 
 class Store{
     idCodStore
-    idLocation
+    idStoreNetworkManager
+    nameStore
+    location
     idStoreManager
-    desigStore
-    adressStore
     emailStore
     contactStore
+    commission
+
 }
 
 Owner "1" -- "1..*" Property: owns >
@@ -110,5 +108,6 @@ Property "*" -- "1" Land: cataloged as >
 Property "*" -- "1" Rent: cataloged as >
 Property "*" -- "1" Sale: cataloged as >
 Property "*" -- "1" Location: has >
+Store "*" -- "1" Location: has >
 
 @enduml

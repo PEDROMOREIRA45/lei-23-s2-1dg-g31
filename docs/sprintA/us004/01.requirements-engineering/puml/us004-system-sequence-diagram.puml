@@ -1,0 +1,117 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Property Owner" as User
+participant ":System" as System
+
+activate User
+
+        User -> System : asks to create a new property
+    activate System
+
+	    System --> User :initiate process (year, month, day), shows store category list and asks to select one
+    deactivate System
+
+        User -> System : selects store category
+    activate System
+
+	    System --> User : shows agent category list and asks to select one
+    deactivate System
+
+        User -> System : selects agent category
+    activate System
+
+	    System --> User : creates reference , requests data: shows property category list and asks to select one
+    deactivate System
+
+        User -> System : selects property category
+    activate System
+
+    group opt [answer = 1 House]
+            System --> User : requests data: numberBedrooms, numberBathrooms, numberParking, availableEquipment, basement, loft, sunExposure
+        deactivate System
+
+                User -> System : input data: numberBedrooms, numberBathrooms, numberParking, availableEquipment, basement, loft, sunExposure
+        activate System
+
+        System --> User : requests data: sunExposure
+                deactivate System
+
+                User -> System : input data: sunExposure
+                activate System
+    end
+
+    group opt [answer = 2 Apartment]
+                System --> User : requests data: numberBedrooms, numberBathrooms, numberParking, availableEquipment
+            deactivate System
+
+                    User -> System : input data: numberBedrooms, numberBathrooms, numberParking, availableEquipment
+            activate System
+
+    end
+
+    group opt [answer = 3 Land]
+                    System --> User : requests data: description
+                deactivate System
+
+                        User -> System : input data: description
+                activate System
+    end
+
+        System --> User : request data: area, distance from the city centre
+    deactivate System
+
+        User -> System : input data: area, distance from the city centre
+    activate System
+
+	    System --> User : request data: Type of Business
+    deactivate System
+
+        User -> System : selects a Type of Business
+    activate System
+
+    group opt [answer = 1 Sale]
+        System --> User : requests data: Sale Price
+    deactivate System
+
+        User -> System : input data: Sale Price
+        activate System
+    end
+
+    group opt [answer = 2 Rent]
+                        System --> User : requests data: Rental Price, Duration of Contract
+                    deactivate System
+
+                            User -> System : input data: Rental Price, Duration of Contract
+                    activate System
+    end
+            System --> User : request photos
+    deactivate System
+
+	        User -> System : inserts photos
+    activate System
+
+            System --> User : Displays property conditions ask for validation
+    deactivate System
+
+            User -> System : input validation
+    activate System
+
+    group opt [answer = True]
+            System --> User : displays operation success, sends document operation details and conclusion
+        deactivate System
+    end
+
+    group opt [answer = False]
+            System --> User : displays operation non success
+        deactivate System
+    loop to 1
+    end
+
+@enduml
