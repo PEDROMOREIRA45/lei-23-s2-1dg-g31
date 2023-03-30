@@ -113,13 +113,7 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 
 **Other alternatives might exist.**
 
-#### Alternative One
-
-![System Sequence Diagram - Alternative Two](svg\us004-system-sequence-diagram-alternative-one-System_Sequence_Diagram__SSD____Alternative_One.svg)
-
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg\us004-system-sequence-diagram-alternative-two-System_Sequence_Diagram__SSD____Alternative_Two.svg)
+![System Sequence Diagram - Alternative Two](svg\us004-system-sequence-diagram-System_Sequence_Diagram__SSD.svg)
 
 ### 1.7 Other Relevant Remarks
 

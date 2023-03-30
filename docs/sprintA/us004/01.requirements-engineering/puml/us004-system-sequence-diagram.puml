@@ -31,32 +31,39 @@ activate User
     deactivate System
 
         User -> System : selects property category
-    activate System
 
-    group opt [answer = 1 House]
-            System --> User : requests data: numberBedrooms, numberBathrooms, numberParking, availableEquipment, basement, loft, sunExposure
+
+    alt property = House
+            System --> User : requests data: numberBedrooms, numberParking, basement, loft
         deactivate System
 
-                User -> System : input data: numberBedrooms, numberBathrooms, numberParking, availableEquipment, basement, loft, sunExposure
+                User -> System : input data: numberBedrooms, numberParking, basement, loft
         activate System
 
-        System --> User : requests data: sunExposure
+            group opt
+                System --> User : requests data: numberBathrooms, availableEquipment, sunExposure
                 deactivate System
 
-                User -> System : input data: sunExposure
+                User -> System : input data: numberBathrooms, availableEquipment, sunExposure
                 activate System
-    end
+            end
 
-    group opt [answer = 2 Apartment]
-                System --> User : requests data: numberBedrooms, numberBathrooms, numberParking, availableEquipment
+    else property = Apartment
+                System --> User : requests data: numberBedrooms, numberParking
             deactivate System
 
-                    User -> System : input data: numberBedrooms, numberBathrooms, numberParking, availableEquipment
+                    User -> System : input data: numberBedrooms, numberParking
             activate System
 
-    end
+            group opt
+                    System --> User : requests data: numberBathrooms, availableEquipment
+                    deactivate System
 
-    group opt [answer = 3 Land]
+                    User -> System : input data: numberBathrooms, availableEquipment
+                    activate System
+            end
+
+    else property = Land
                     System --> User : requests data: description
                 deactivate System
 
@@ -76,27 +83,37 @@ activate User
         User -> System : selects a Type of Business
     activate System
 
-    group opt [answer = 1 Sale]
+    alt answer = Sale
         System --> User : requests data: Sale Price
     deactivate System
 
         User -> System : input data: Sale Price
         activate System
-    end
 
-    group opt [answer = 2 Rent]
+
+    else answer = Rent
                         System --> User : requests data: Rental Price, Duration of Contract
                     deactivate System
 
                             User -> System : input data: Rental Price, Duration of Contract
                     activate System
     end
-            System --> User : request photos
+                System --> User : request photo
+        deactivate System
+
+    	        User -> System : inserts photo
+        activate System
+    group opt
+    loop
+            System --> User : request photo
     deactivate System
 
-	        User -> System : inserts photos
+	        User -> System : inserts photo
     activate System
 
+    end
+
+    end
             System --> User : Displays property conditions ask for validation
     deactivate System
 
@@ -108,10 +125,5 @@ activate User
         deactivate System
     end
 
-    group opt [answer = False]
-            System --> User : displays operation non success
-        deactivate System
-    loop to 1
-    end
 
 @enduml

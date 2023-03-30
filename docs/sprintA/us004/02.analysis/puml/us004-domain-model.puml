@@ -17,27 +17,20 @@ hide methods
 '}
 
 class Owner {
-    idOwner
     email
     name
     numberCitizen
     tin
-    location
     phoneNumber
 }
 
 class Property {
-    idCodProperty
     propertyType
-    adressProperty
     areaProperty
     distanceCityCenter
-    idLocation
-    idCodAgent
-    rentOrSale
     conditionProperty
-    comProperty
     photos
+    propertyCode
 }
 
 class House{
@@ -58,7 +51,7 @@ class Apartment{
 }
 
 class Land{
-    description
+
 }
 class Rent {
     rentMonth
@@ -77,34 +70,29 @@ class Location {
     stateUS
     county
     city
-
 }
 
 class Agent {
-    idCodAgent
-    idCodStore
     commission
 }
 
 class Store{
     idCodStore
-    idStoreNetworkManager
     nameStore
-    location
-    idStoreManager
     emailStore
     contactStore
-    commission
-
 }
 
 Owner "1" -- "1..*" Property: owns >
+House --|> Property
+Apartment --|> Property
+Land --|>  Property
+Store "1" -- "*" Agent: works <
+
 Owner "1" -- "1..*" Agent: choses >
 Owner "1" -- "1" Store: choses >
 Owner "1" -- "*" Property : creates >
-Property "*" -- "1" House: cataloged as >
-Property "*" -- "1" Apartment: cataloged as >
-Property "*" -- "1" Land: cataloged as >
+
 Property "*" -- "1" Rent: cataloged as >
 Property "*" -- "1" Sale: cataloged as >
 Property "*" -- "1" Location: has >
