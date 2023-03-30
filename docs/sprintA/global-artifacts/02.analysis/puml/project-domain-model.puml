@@ -6,61 +6,46 @@ skinparam shadowing false
 hide circle
 hide methods
 
-class Network{
-    designation
-}
 
 class Employee{
-    idEmployee
     name
     numberCitizen
     tin
-    location
     email
     phoneNumber
 }
 
 class Client {
-    idClient
     name
     phoneNumber
     numberCitizen
     tin
     email
-    location
 }
 
 class Owner {
-    idOwner
     email
     name
     numberCitizen
     tin
-    location
     phoneNumber
 }
 
 class Agent {
-    idCodAgent
-    idCodStore
     commission
 }
 
 class Advertisement {
     idAdvertisement
-    idCodAgent
-    propertyCode
     salePrice
     durationOfContract
     rentalPrice
 }
 
 class Property{
-    idOwner
     propertyType
     areaProperty
     distanceCityCenter
-    location
     conditionProperty
     photos
     propertyCode
@@ -83,58 +68,38 @@ class Apartment{
     availableEquipment
 }
 
-class Land{
-    description
-}
+class Land
 
 class Store{
     idCodStore
-    idStoreNetworkManager
     nameStore
-    location
-    idStoreManager
     emailStore
     contactStore
     commission
 }
 
 class Visit{
-    idAdvertisement
-    idCodClient
     idVisit
     report
 }
 
 class Location {
-    address
-    doorNumber
-    floor
-    side
+    street
     zipCode
     stateUS
-    county
     city
+    district
 }
 
 class StoreManager {
-    idStoreManager
-    idCodStore
 }
 
 class StoreNetworkManager {
-    idStoreNetworkManager
 }
 
 class Request{
     idRequest
-    idAdvertisement
-    idCodClient
     offer
-}
-
-class User{
-    email
-    password
 }
 
 class SystemAdministrator{
@@ -145,25 +110,22 @@ class UnregisteredUser
 
 Owner "1" -- "1..*" Property: owns >
 Agent "1" -- "*" Advertisement: publish >
-House "1" -- "1" Property: is >
-Apartment "1" -- "1" Property: is >
-Land "1" -- "1"  Property: is >
+House --> Property
+Apartment --> Property
+Land -->  Property
 Store "1" -- "*" Agent: works <
 StoreManager "1" -- "1" Store:  monitor >
 Property "1" -- "1" Location: has >
 StoreNetworkManager "1" -- "*" Store:  analyzes >
-Employee "1" -- "1" Agent: is <
-Employee "1" -- "1" StoreManager: is <
-Employee "1" -- "1" StoreNetworkManager: is <
+Employee <-- Agent
+Employee <-- StoreManager
+Employee <-- StoreNetworkManager
 Advertisement"1" -- "*"Request: receives >
 Client"1" -- "*"Request: make >
 Store"1" -- "1"Location: has >
 Advertisement "1" -- "*" Visit: has >
 Client "1" -- "*" Visit: make >
 Agent "1" -- "*" Visit: schedule and carry >
-User "1" -- "1" Employee: is <
-User "1" -- "1" Owner: is <
-User "1" -- "1" Client: is <
 Property "1" - "1" Advertisement: is used in >
 Client "1" -- "1" Location: has >
 Employee "1" -- "1" Location: has >
@@ -173,7 +135,7 @@ Store "1" -- "*" Advertisement: contains >
 UnregisteredUser "1" -- "*" Advertisement: consults >
 SystemAdministrator "1" -- "*" Store: create >
 SystemAdministrator "1" -- "*" Employee: create >
-User "1" -- "1" SystemAdministrator: is <
-Network "1" -- "*" Store: has >
+Client "*" -- "*" Advertisement: see >
+Employee <-- SystemAdministrator
 
 @enduml
