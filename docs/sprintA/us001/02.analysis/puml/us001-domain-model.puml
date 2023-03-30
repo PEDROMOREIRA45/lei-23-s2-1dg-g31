@@ -50,7 +50,6 @@ class Building{
 class Advertisement {
     status
     idAdvertisement
-    commission
     date
 }
 
@@ -76,6 +75,19 @@ class AdvertisementType {
     designation
 }
 
+class Commission{
+
+}
+class CommissionType{
+    designation
+}
+class CommissionPercent{
+    percent
+}
+class CommissionFixValue{
+    value
+}
+
 
 
 UnregisteredUser "*" -- "*" Advertisement: searches >
@@ -90,5 +102,10 @@ Owner "1" -- "*" Advertisement: asks to create >
 Advertisement <|-- AdvertisementSale
 Advertisement <|-- AdvertisementLease
 Advertisement "*" -- "1" AdvertisementType: contains >
+Commission <|-- CommissionFixValue
+Commission <|-- CommissionPercent
+Commission "*" -- "1" CommissionType: contains >
+Advertisement "1" -- "1" Commission: contains >
+Agent "1" -- "*" Commission: attributes >
 
 @enduml

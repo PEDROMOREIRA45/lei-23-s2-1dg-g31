@@ -154,36 +154,38 @@ An association is a relationship between instances of objects that indicates a r
 
 
 
-| Concept (A)          |               Association                |           Concept (B) |
-|----------------------|:----------------------------------------:|----------------------:|
-| Company              |                   Owns                   |                 Store |
-| Company              |                 Employs                  |              Employee |
-| Company              |              Is Managed by               |  System Administrator |
-| Agent                |                 Works in                 |                 Store |
-| Owner                |                   Owns                   |              Property |
-| Agent                | Publishes, validates and is in charge of |         Advertisement |
-| StoreManager         |                 Monitors                 |                 Store |
-| Property             |                   Owns                   |              Location |
-| StoreNetworkManager  |                 Analyzes                 |                 Store |
-| Advertisement        |                 Receives                 |                 Offer |
-| Client               |                  Makes                   |                 Offer |
-| Store                |                   Owns                   |              Location |
-| Advertisement        |                  Hosts                   |                 Visit |
-| Client               |                 Requests                 |                 Visit |
-| Agent                |        Schedules and carries out         |                 Visit |
-| Property             |            Is represented by             |         Advertisement |
-| Client               |                   Owns                   |              Location |
-| Employee             |                   Owns                   |              Location |
-| Owner                |                   Owns                   |              Location |
-| Store                |                 Contains                 |         Advertisement |
-| Unregistered User    |                 Searches                 |         Advertisement |
-| System Administrator |                 Creates                  |                 Store |
-| System Administrator |                 Creates                  |              Employee |
-| Client               |                 Searches                 |         Advertisement |
-| Owner                |              Asks to create              |         Advertisement |
-| Property             |                 Contains                 |          PropertyType |
-| Advertisement        |                 Contains                 |     AdvertisementType |
-
+| Concept (A)          |               Association                |          Concept (B) |
+|----------------------|:----------------------------------------:|---------------------:|
+| Company              |                   Owns                   |                Store |
+| Company              |                 Employs                  |             Employee |
+| Company              |              Is Managed by               | System Administrator |
+| Agent                |                 Works in                 |                Store |
+| Owner                |                   Owns                   |             Property |
+| Agent                | Publishes, validates and is in charge of |        Advertisement |
+| StoreManager         |                 Monitors                 |                Store |
+| Property             |                   Owns                   |             Location |
+| StoreNetworkManager  |                 Analyzes                 |                Store |
+| Advertisement        |                 Receives                 |                Offer |
+| Client               |                  Makes                   |                Offer |
+| Store                |                   Owns                   |             Location |
+| Advertisement        |                  Hosts                   |                Visit |
+| Client               |                 Requests                 |                Visit |
+| Agent                |        Schedules and carries out         |                Visit |
+| Property             |            Is represented by             |        Advertisement |
+| Client               |                   Owns                   |             Location |
+| Employee             |                   Owns                   |             Location |
+| Owner                |                   Owns                   |             Location |
+| Store                |                 Contains                 |        Advertisement |
+| Unregistered User    |                 Searches                 |        Advertisement |
+| System Administrator |                 Creates                  |                Store |
+| System Administrator |                 Creates                  |             Employee |
+| Client               |                 Searches                 |        Advertisement |
+| Owner                |              Asks to create              |        Advertisement |
+| Property             |                 Contains                 |         PropertyType |
+| Advertisement        |                 Contains                 |    AdvertisementType |
+| Commission           |                 Contains                 |       CommissionType |
+| Advertisement        |                 Contains                 |           Commission |
+| Agent                |                Attributes                |           Commission |
 
 
 
