@@ -12,11 +12,9 @@ hide methods
 
 
 class Property{
-    idOwner
     propertyType
     areaProperty
     distanceCityCenter
-    location
     conditionProperty
     photos
     propertyCode
@@ -54,6 +52,9 @@ class Land
 
 class Advertisement {
     idAdvertisement
+    salePrice
+    durationOfContract
+    rentalPrice
 }
 
 class Location{
@@ -66,7 +67,7 @@ class Location{
 
 
 
-UnregisteredUser "*" -- "*" Advertisement: consults >
+UnregisteredUser "*" -- "*" Advertisement: searches >
 Owner "1"--"1..*" Property: owns >
 Property  <|-- Land
 Property <|-- Apartment
