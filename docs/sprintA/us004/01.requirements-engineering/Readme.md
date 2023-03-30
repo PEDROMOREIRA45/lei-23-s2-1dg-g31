@@ -49,11 +49,22 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 > **Question:** In the project's documentation it's mentioned that "All those who wish to use the application must be authenticated", but in the US1 it's said that an unregistered user can see a list of properties. Can users who aren't authenticated do this?
 >
 > **Answer:** Non-authenticated users can only list properties.
->
+
 > **Question:** Does that imply that a seller can choose the agency/branch/store independently of the location of the property?
 >
 > **Answer:** Yes.
 
+> **Question:** When assigning an agent to a property listing, are the available agents shown by the system for the owner to pick? Or does the owner need to provide the agent's information (name, agency,etc)?
+>
+> **Answer:** The owner should select one agent from a list of agents that work in the selected agency. The owner should select the agency before selecting the agent.
+
+> **Question:** If the owner doesn't select an agent will the platform randomly assign one or the request cannot move to revision? If not, must we assume that all information slots must be filled?
+>
+> **Answer:** Thank you for your suggestion. When filling the property data, the owner should select one agent from the list of agents working in the selected agency. Moreover, the application should include a feature to randomly assign one agent. The address of the owner is not mandatory.
+
+> **Question:** in USS02 are all the criteria for publishing the sale of a property in the system mandatory, or is there any data that the owner can choose not to give? such as not saying the direction of sun exposure in the case of a house.
+>
+> **Answer:** The number of bathrooms, the available equipment and the sun exposure are not mandatory. At least one photograph is required.
 
 
 ### 1.3. Acceptance Criteria
@@ -80,7 +91,6 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 
 ### 1.5 Input and Output Data
 
-
 **Input Data:**
 
 * Typed data:
@@ -92,18 +102,17 @@ In case the property is a house, the existence of a basement, an inhabitable lof
     * distance from the city centre (kilometres).
     * prequested price (currency).
     * photos(images).
-
 	
 * Selected data:
-	* propertytype chose: 1 – apartment; 2 – house; 3 – land. 
+	* Store: Selects Store.
+    * Agent: Selects Agent.
+    * propertytype chose: 1 – apartment; 2 – house; 3 – land. 
     * propertyTypeInSunExposure chose: 1 – North, 2 – South, 3 – East, 4 – West.
     * propertyTypeInhabitable: yes or no inhabitable loft. 
     * propertytypecentralheat: yes or no central heating.
     * propertytypeaircond: yes or no air conditioning.
     * propertytypebasement: yes or no basement.
-    * idlocation: identifies location.
-    * idcodagent: identification agent.
-
+    * type of Business: 1 - Sale; 2 - Rent;
 
 **Output Data:**
 

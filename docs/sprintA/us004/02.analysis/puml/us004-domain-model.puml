@@ -25,7 +25,6 @@ class Owner {
 }
 
 class Property {
-    propertyType
     areaProperty
     distanceCityCenter
     conditionProperty
@@ -34,46 +33,51 @@ class Property {
 }
 
 class House{
-    numberBedrooms
-    numberBathrooms
-    numberParking
-    availableEquipment
     basement
     loft
     sunExposure
 }
 
-class Apartment{
+class PropertyType{
+    designation
+}
+
+class Building{
     numberBedrooms
     numberBathrooms
     numberParking
     availableEquipment
 }
 
-class Land{
+class Location {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+class Advertisement {
+    status
+    idAdvertisement
+    commission
+    date
+}
 
-}
-class Rent {
-    rentMonth
-    durationOfContract
-}
-class Sale {
+class AdvertisementSale {
     salePrice
 }
 
-class Location {
-    address
-    doorNumber
-    floor
-    side
-    zipCode
-    stateUS
-    county
-    city
+class AdvertisementLease {
+    durationOfContract
+    rentalPrice
+
+}
+
+class AdvertisementType {
+    designation
 }
 
 class Agent {
-    commission
 }
 
 class Store{
@@ -83,19 +87,33 @@ class Store{
     contactStore
 }
 
+
 Owner "1" -- "1..*" Property: owns >
-House --|> Property
-Apartment --|> Property
-Land --|>  Property
-Store "1" -- "*" Agent: works <
+
+House --|> Building
+
+Building --|> Property
+
+Property "1" -- "1" Location: owns >
+
+Owner "1" -- "1" Location: owns >
+
+PropertyType "1" -- "*" Property: contains <
+
+Owner "1" - "*" Advertisement: asks to create >
+
+Advertisement <|-- AdvertisementSale
+
+Advertisement <|-- AdvertisementLease
+
+Advertisement "*" -- "1" AdvertisementType: contains >
 
 Owner "1" -- "1..*" Agent: choses >
-Owner "1" -- "1" Store: choses >
-Owner "1" -- "*" Property : creates >
 
-Property "*" -- "1" Rent: cataloged as >
-Property "*" -- "1" Sale: cataloged as >
-Property "*" -- "1" Location: has >
-Store "*" -- "1" Location: has >
+Owner "1" -- "1" Store: choses >
+
+Store"1" -- "1"Location: owns >
+
+Store "1" -- "*" Agent: works <
 
 @enduml
