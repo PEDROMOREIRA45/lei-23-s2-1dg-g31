@@ -15,11 +15,20 @@ activate User
         User -> System : asks to create a new property
     activate System
 
-        System --> User :ask for the required data (the citizen's card number, the tax number, the address, the email address and the telephone number)
+        System --> User :ask for the required data (the citizen's card number, the tax number, the email address and the telephone number)
     deactivate System
 
-        User -> System : types the required data (the citizen's card number, the tax number, the address, the email address and the telephone number)
+        User -> System : types the required data (the citizen's card number, the tax number, the email address and the telephone number)
     activate System
+
+    group opt
+
+    System --> User :ask for data (address)
+        deactivate System
+
+            User -> System : types the data (address)
+        activate System
+    end
 
 	    System --> User :initiate process (year, month, day), shows store category list and asks to select one
     deactivate System
