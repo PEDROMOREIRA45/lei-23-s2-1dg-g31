@@ -19,6 +19,9 @@ usecase "UC3 - Register Employee" as UC3
 "System Administrator" --> UC3
 usecase "UC4 - Request for Listing a Property Sale or Rent" as UC4
 Owner-->UC4
-
+usecase "UC5 - Register a Store" as UC5
+"System Administrator" --> UC5
+usecase "UC6 - Specify district, municipalities, and parishes" as UC6
+"System Administrator" --> UC6
 
 @enduml

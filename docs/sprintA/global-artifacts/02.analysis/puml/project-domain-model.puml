@@ -110,16 +110,16 @@ class UnregisteredUser
 
 Owner "1" -- "1..*" Property: owns >
 Agent "1" -- "*" Advertisement: publish >
-House --> Property
-Apartment --> Property
-Land -->  Property
+House --|> Property
+Apartment --|> Property
+Land --|>  Property
 Store "1" -- "*" Agent: works <
 StoreManager "1" -- "1" Store:  monitor >
 Property "1" -- "1" Location: has >
 StoreNetworkManager "1" -- "*" Store:  analyzes >
-Employee <-- Agent
-Employee <-- StoreManager
-Employee <-- StoreNetworkManager
+Employee <|-- Agent
+Employee <|-- StoreManager
+Employee <|-- StoreNetworkManager
 Advertisement"1" -- "*"Request: receives >
 Client"1" -- "*"Request: make >
 Store"1" -- "1"Location: has >
@@ -136,6 +136,6 @@ UnregisteredUser "1" -- "*" Advertisement: consults >
 SystemAdministrator "1" -- "*" Store: create >
 SystemAdministrator "1" -- "*" Employee: create >
 Client "*" -- "*" Advertisement: see >
-Employee <-- SystemAdministrator
+Employee <|-- SystemAdministrator
 
 @enduml
