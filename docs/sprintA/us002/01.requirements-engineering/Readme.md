@@ -67,14 +67,8 @@ example received through a phone call.
 
 **Other alternatives might exist.**
 
-#### Alternative One
-
-![System Sequence Diagram - Alternative One](svg/us002-system-sequence-diagram-alternative-one.svg)
-
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg/us002-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative One](svg/us002-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 
-* This task can be performed either from an advertisement request created by an owner in the application, or by the agent in direct contact with the owner, as is the case when an owner meets an agent in one of the company's branches.
+<!-- * This task can be performed either from an advertisement request created by an owner in the application, or by the agent in direct contact with the owner, as is the case when an owner meets an agent in one of the company's branches. -->

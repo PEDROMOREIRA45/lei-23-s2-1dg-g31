@@ -8,135 +8,100 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class Employee {
-    idEmployee
+class Employee{
     name
-    citizenID
+    numberCitizen
     tin
-    location
     email
     phoneNumber
 }
 
-class Client {
-    idClient
-    name
-    phoneNumber
-    citizenID
-    tin
-    email
-    location
-}
-
-class Owner {
-    idOwner
-    email
-    name
-    citizenID
-    tin
-    location
-    phoneNumber
-}
-
-class Agent {
-    idCodAgent
-    idCodStore
-    commission
-}
+class Agent
 
 class Advertisement {
+    status
     idAdvertisement
-    idCodAgent
-    propertyCode
-    price
-    contractDuration
+    date
 }
 
-class Property {
-    idOwner
-    propertyType
+class AdvertisementSale {
+    salePrice
+}
+
+class AdvertisementLease {
+    durationOfContract
+    rentalPrice
+
+}
+
+class AdvertisementType {
+    designation
+
+
+class PropertyType{
+    designation
+}
+
+class Property{
     areaProperty
     distanceCityCenter
-    location
     conditionProperty
     photos
     propertyCode
 }
 
 class House {
-    numberBedrooms
-    numberBathrooms
-    numberParking
-    availableEquipment
     basement
     loft
     sunExposure
 }
 
-class Apartment {
+class Building{
     numberBedrooms
     numberBathrooms
     numberParking
     availableEquipment
 }
 
-class Land {
-    description
-}
-
-class Store {
-    idCodStore
-    nameStore
-    location
-    idStoreManager
-    emailStore
-    contactStore
-    commission
-}
-
 class Location {
-    address
-    doorNumber
-    floor
-    side
+    street
     zipCode
     stateUS
-    county
     city
+    district
 }
 
-class Request {
-    idRequest
-    idProperty
-    idCodClient
-    offer
+class Commission
+
+class CommissionType{
+    designation
+}
+class CommissionPercent{
+    percent
+}
+class CommissionFixValue{
+    value
 }
 
-class User {
-    email
-    password
-}
 
+Agent "1" -- "*" Advertisement: publishes, validates and is in charge of >
+Agent "1" -- "*" Commission: attributes >
+Advertisement <|-- AdvertisementSale
+Advertisement <|-- AdvertisementLease
+Advertisement "*" -- "1" AdvertisementType: contains >
+Advertisement "1" -- "1" Commission: contains >
+Advertisement"1" -- "*"Offer: receives >
+Building --|> Property
+Commission <|-- CommissionFixValue
+Commission <|-- CommissionPercent
+Commission "*" -- "1" CommissionType: contains >
+Employee <|-- Agent
+Employee "1" -- "1" Location: owns >
+Owner "1" -- "1" Location: owns >
+Owner "1" - "*" Advertisement: asks to create >
+Property "1" - "1" Advertisement: represents <
+Property "1" -- "1" Location: owns >
+PropertyType "1" -- "*" Property: contains <
+House --|> Building
 
-Agent "1" -- "1" Request: verifies >
-Agent "1" -- "*" Advertisement: publishes >
-Apartment "1" -- "1" Property: is >
-Client"1" -- "*" Request: make >
-Request "1" -- "1" Advertisement: turns into >
-Employee "1" -- "1" Location: has >
-Employee "1" -- "1" Agent: is <
-House "1" -- "1" Property: is >
-Land "1" -- "1"  Property: is >
-Property "1" -- "1" Location: has >
-Property "1" - "1" Advertisement: is used in >
-Property "1" - "1" Request: is used in >
-Store"1" -- "1"Location: has >
-Store "1" -- "*" Advertisement: contains >
-Store "1" -- "*" Agent: works <
-User "1" -- "1" Employee: is <
-User "1" -- "1" Owner: is <
-User "1" -- "1" Client: is <
-Client "1" -- "1" Location: has >
-Owner "1" -- "1..*" Property: owns >
-Owner "1" -- "1" Location: has >
 @enduml
