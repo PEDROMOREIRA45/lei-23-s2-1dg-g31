@@ -25,12 +25,10 @@ class Property{
 class UnregisteredUser
 
 class Owner {
-    idOwner
     email
     name
     numberCitizen
-    numberTax
-    address
+    tin
     phoneNumber
 }
 
@@ -52,23 +50,29 @@ class Apartment{
     availableEquipment
 }
 
-class Land{
-    description
-}
+class Land
 
 class Advertisement {
     idAdvertisement
-    idCodAgent
-    propertyCode
+}
+
+class Location{
+    street
+    zipCode
+    stateUS
+    city
+    district
 }
 
 
 
 UnregisteredUser "*" -- "*" Advertisement: consults >
 Owner "1"--"1..*" Property: owns >
-Property "*" -- "1" Land: is >
-Property "*" -- "1" Apartment: is >
-Property "*" -- "1" House: is >
-Property "1" -- "1" Advertisement: has >
+Property  <|-- Land
+Property <|-- Apartment
+Property <|-- House
+Property "1" -- "1" Advertisement: represents <
+Location "1" -- "1" Property: owns <
+Location "1" -- "1" Owner: owns <
 
 @enduml
