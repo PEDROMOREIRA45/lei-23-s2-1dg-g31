@@ -40,10 +40,14 @@ class Advertisement {
     salePrice
     durationOfContract
     rentalPrice
+    state
+}
+
+class PropertyType{
+    designation
 }
 
 class Property{
-    propertyType
     areaProperty
     distanceCityCenter
     conditionProperty
@@ -52,23 +56,18 @@ class Property{
 }
 
 class House {
-    numberBedrooms
-    numberBathrooms
-    numberParking
-    availableEquipment
     basement
     loft
     sunExposure
 }
 
-class Apartment{
+class Building{
     numberBedrooms
     numberBathrooms
     numberParking
     availableEquipment
 }
 
-class Land
 
 class Store{
     idCodStore
@@ -109,9 +108,9 @@ class UnregisteredUser
 
 Owner "1" -- "1..*" Property: owns >
 Agent "1" -- "*" Advertisement: publishes and is in charge of >
-House --|> Property
-Apartment --|> Property
-Land --|>  Property
+House --|> Building
+
+Building --|> Property
 Store "1" -- "*" Agent: works <
 StoreManager "1" -- "1" Store:  monitors >
 Property "1" -- "1" Location: owns >
@@ -129,12 +128,14 @@ Property "1" - "1" Advertisement: represents <
 Client "1" -- "1" Location: owns >
 Employee "1" -- "1" Location: owns >
 Owner "1" -- "1" Location: owns >
-Agent "1" -- "1" Property: verifies >
 Store "1" -- "*" Advertisement: contains >
 UnregisteredUser "1" -- "*" Advertisement: searches >
 SystemAdministrator "1" -- "*" Store: creates >
 SystemAdministrator "1" -- "*" Employee: creates >
 Client "*" -- "*" Advertisement: searches >
 Employee <|-- SystemAdministrator
+Owner "1" - "*" Advertisement: asks to create >
+PropertyType "1" -- "*" Property
+
 
 @enduml
