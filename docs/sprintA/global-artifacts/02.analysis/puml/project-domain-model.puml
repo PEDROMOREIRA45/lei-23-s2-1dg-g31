@@ -75,7 +75,6 @@ class Store{
     nameStore
     emailStore
     contactStore
-    commission
 }
 
 class Visit{
