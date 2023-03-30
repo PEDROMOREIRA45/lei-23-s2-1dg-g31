@@ -31,19 +31,23 @@ class Owner {
     phoneNumber
 }
 
-class Agent {
-    commission
-}
+class Agent
 
 class Advertisement {
+    state
     idAdvertisement
     salePrice
     durationOfContract
     rentalPrice
+    commission
+    date
+}
+
+class PropertyType{
+    designation
 }
 
 class Property{
-    propertyType
     areaProperty
     distanceCityCenter
     conditionProperty
@@ -52,30 +56,24 @@ class Property{
 }
 
 class House {
-    numberBedrooms
-    numberBathrooms
-    numberParking
-    availableEquipment
     basement
     loft
     sunExposure
 }
 
-class Apartment{
+class Building{
     numberBedrooms
     numberBathrooms
     numberParking
     availableEquipment
 }
 
-class Land
 
 class Store{
     idCodStore
     nameStore
     emailStore
     contactStore
-    commission
 }
 
 class Visit{
@@ -97,8 +95,8 @@ class StoreManager {
 class StoreNetworkManager {
 }
 
-class Request{
-    idRequest
+class Offer{
+    idOffer
     offer
 }
 
@@ -109,33 +107,34 @@ class SystemAdministrator{
 class UnregisteredUser
 
 Owner "1" -- "1..*" Property: owns >
-Agent "1" -- "*" Advertisement: publish and is in charge of >
-House --|> Property
-Apartment --|> Property
-Land --|>  Property
+Agent "1" -- "*" Advertisement: publishes, validates and is in charge of >
+House --|> Building
+
+Building --|> Property
 Store "1" -- "*" Agent: works <
-StoreManager "1" -- "1" Store:  monitor >
+StoreManager "1" -- "1" Store:  monitors >
 Property "1" -- "1" Location: owns >
-StoreNetworkManager "1" -- "*" Store:  analyze >
+StoreNetworkManager "1" -- "*" Store:  analyzes >
 Employee <|-- Agent
 Employee <|-- StoreManager
 Employee <|-- StoreNetworkManager
-Advertisement"1" -- "*"Request: receives >
-Client"1" -- "*"Request: make >
+Advertisement"1" -- "*"Offer: receives >
+Client"1" -- "*"Offer: makes >
 Store"1" -- "1"Location: owns >
 Advertisement "1" -- "*" Visit: hosts >
-Client "1" -- "*" Visit: request >
-Agent "1" -- "*" Visit: schedule and carry >
+Client "1" -- "*" Visit: requests >
+Agent "1" -- "*" Visit: schedules and carries out >
 Property "1" - "1" Advertisement: represents <
 Client "1" -- "1" Location: owns >
 Employee "1" -- "1" Location: owns >
 Owner "1" -- "1" Location: owns >
-Agent "1" -- "1" Property: verifies >
 Store "1" -- "*" Advertisement: contains >
-UnregisteredUser "1" -- "*" Advertisement: search >
-SystemAdministrator "1" -- "*" Store: create >
-SystemAdministrator "1" -- "*" Employee: create >
-Client "*" -- "*" Advertisement: search >
+UnregisteredUser "1" -- "*" Advertisement: searches >
+SystemAdministrator "1" -- "*" Store: creates >
+SystemAdministrator "1" -- "*" Employee: creates >
+Client "*" -- "*" Advertisement: searches >
 Employee <|-- SystemAdministrator
+Owner "1" - "*" Advertisement: asks to create >
+PropertyType "1" -- "*" Property: contains <
 
 @enduml
