@@ -49,11 +49,14 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 > **Question:** In the project's documentation it's mentioned that "All those who wish to use the application must be authenticated", but in the US1 it's said that an unregistered user can see a list of properties. Can users who aren't authenticated do this?
 >
 > **Answer:** Non-authenticated users can only list properties.
->
+
 > **Question:** Does that imply that a seller can choose the agency/branch/store independently of the location of the property?
 >
 > **Answer:** Yes.
 
+> **Question:** When assigning an agent to a property listing, are the available agents shown by the system for the owner to pick? Or does the owner need to provide the agent's information (name, agency,etc)?
+>
+> **The owner should select one agent from a list of agents that work in the selected agency. The owner should select the agency before selecting the agent.
 
 
 ### 1.3. Acceptance Criteria
