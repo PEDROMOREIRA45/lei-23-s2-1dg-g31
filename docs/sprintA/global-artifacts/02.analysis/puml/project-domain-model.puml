@@ -36,7 +36,6 @@ class Agent
 class Advertisement {
     status
     idAdvertisement
-    commission
     date
 }
 
@@ -120,6 +119,19 @@ class Company{
     designation
 }
 
+class Commission{
+
+}
+class CommissionType{
+    designation
+}
+class CommissionPercent{
+    percent
+}
+class CommissionFixValue{
+    value
+}
+
 
 Owner "1" -- "1..*" Property: owns >
 Agent "1" -- "*" Advertisement: publishes, validates and is in charge of >
@@ -144,7 +156,7 @@ Client "1" -- "1" Location: owns >
 Employee "1" -- "1" Location: owns >
 Owner "1" -- "1" Location: owns >
 Store "1" -- "*" Advertisement: contains >
-UnregisteredUser "1" -- "*" Advertisement: searches >
+UnregisteredUser "*" -- "*" Advertisement: searches >
 SystemAdministrator "1" -- "*" Store: creates >
 SystemAdministrator "1" -- "*" Employee: creates >
 Client "*" -- "*" Advertisement: searches >
@@ -157,5 +169,10 @@ Advertisement "*" -- "1" AdvertisementType: contains >
 Company "1" -- "*" Store: owns >
 Company "1" -- "*" Employee: employs >
 Company "1" -- "1" SystemAdministrator:manage <
+Commission <|-- CommissionFixValue
+Commission <|-- CommissionPercent
+Commission "*" -- "1" CommissionType: contains >
+Advertisement "1" -- "1" Commission: contains >
+Agent "1" -- "*" Commission: attributes >
 
 @enduml
