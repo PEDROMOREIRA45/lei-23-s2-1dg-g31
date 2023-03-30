@@ -102,6 +102,7 @@ system being developed with other external systems._
 
 - External systems:
 - Interface formats:
+    - All images/figures must be created in a SVG format.
 
 ### Physical Constraints
 

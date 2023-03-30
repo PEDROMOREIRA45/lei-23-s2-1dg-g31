@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class SystemAdministrator
+
+class Employee{
+    name
+    citizenID
+    tin
+    email
+    phoneNumber
+}
+
+class Location{
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class StoreNetworkManager
+
+class StoreManager
+
+class Agent{
+    comission
+}
+
+SystemAdministrator "1" -- "*" Employee : creates >
+Employee "1" -- "1" Location: has >
+Employee "1" -- "1" StoreNetworkManager: is <
+Employee "1" -- "1" StoreManager: is <
+Employee "1" -- "1" Agent: is <
+@enduml
