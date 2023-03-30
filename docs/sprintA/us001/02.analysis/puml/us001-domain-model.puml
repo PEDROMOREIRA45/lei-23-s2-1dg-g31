@@ -48,13 +48,10 @@ class Building{
 }
 
 class Advertisement {
-    state
+    status
     idAdvertisement
-    salePrice
-    durationOfContract
     commission
     date
-    rentalPrice
 }
 
 class Location{
@@ -63,6 +60,20 @@ class Location{
     stateUS
     city
     district
+}
+
+class AdvertisementSale {
+    salePrice
+}
+
+class AdvertisementLease {
+    durationOfContract
+    rentalPrice
+
+}
+
+class AdvertisementType {
+    designation
 }
 
 
@@ -76,5 +87,8 @@ Property "1" -- "1" Advertisement: represents <
 Location "1" -- "1" Property: owns <
 Location "1" -- "1" Owner: owns <
 Owner "1" -- "*" Advertisement: asks to create >
+Advertisement <|-- AdvertisementSale
+Advertisement <|-- AdvertisementLease
+Advertisement "*" -- "1" AdvertisementType: contains >
 
 @enduml

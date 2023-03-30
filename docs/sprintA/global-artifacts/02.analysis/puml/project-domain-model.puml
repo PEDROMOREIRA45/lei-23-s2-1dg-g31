@@ -34,13 +34,24 @@ class Owner {
 class Agent
 
 class Advertisement {
-    state
+    status
     idAdvertisement
-    salePrice
-    durationOfContract
-    rentalPrice
     commission
     date
+}
+
+class AdvertisementSale {
+    salePrice
+}
+
+class AdvertisementLease {
+    durationOfContract
+    rentalPrice
+
+}
+
+class AdvertisementType {
+    designation
 }
 
 class PropertyType{
@@ -101,10 +112,14 @@ class Offer{
 }
 
 class SystemAdministrator{
-    idAdmin
 }
 
 class UnregisteredUser
+
+class Company{
+    designation
+}
+
 
 Owner "1" -- "1..*" Property: owns >
 Agent "1" -- "*" Advertisement: publishes, validates and is in charge of >
@@ -136,5 +151,11 @@ Client "*" -- "*" Advertisement: searches >
 Employee <|-- SystemAdministrator
 Owner "1" - "*" Advertisement: asks to create >
 PropertyType "1" -- "*" Property: contains <
+Advertisement <|-- AdvertisementSale
+Advertisement <|-- AdvertisementLease
+Advertisement "*" -- "1" AdvertisementType: contains >
+Company "1" -- "*" Store: owns >
+Company "1" -- "*" Employee: employs >
+Company "1" -- "1" SystemAdministrator:manage <
 
 @enduml

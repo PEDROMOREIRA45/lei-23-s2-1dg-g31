@@ -10,61 +10,71 @@ To identify the conceptual classes, start by making a list of possible conceptua
 
 **Business Transactions**
 
-*
+* Offer
 
 ---
 
 **Transaction Line Items**
 
-*
+* Property
 
 ---
 
 **Product/Service related to a Transaction or Transaction Line Item**
 
-*  
+* Offer (Clients make offers to the advertisements)
+* Property (Owners puts properties to sell or lease)
 
 ---
 
 
 **Transaction Records**
 
-*  
+* Offer (Client makes an offer and its declined or accepted by the owner)
 
 ---  
 
 
 **Roles of People or Organizations**
 
-* 
-
+* System Administrator
+* Agent
+* Store Manager
+* Store Network Manager
+* Client
+* Owner
+* Unregistered User
 
 ---
 
 
 **Places**
 
-*  
+* Store
+* Property
 
 ---
 
 **Noteworthy Events**
 
-* 
+* Advertisement
+* Visit
+* Offer
 
 ---
 
 
 **Physical Objects**
 
-*
+* Property
 
 ---
 
 
 **Descriptions of Things**
 
-*  
+* Property Type (The property is a land, house or apartment)
+* Advertisement Type (Sale or Lease) 
 
 
 ---
@@ -72,28 +82,28 @@ To identify the conceptual classes, start by making a list of possible conceptua
 
 **Catalogs**
 
-*  
+* Advertisements
 
 ---
 
 
 **Containers**
 
-*  
+* Store (Store contains all the information about the advertisements)
 
 ---
 
 
 **Elements of Containers**
 
-*  
+* Store (id, name, email, contact, location)
 
 ---
 
 
 **Organizations**
 
-*  
+*  Real Estate USA
 
 ---
 
@@ -107,7 +117,10 @@ To identify the conceptual classes, start by making a list of possible conceptua
 
 **Records of finance, work, contracts, legal matters**
 
-* 
+* Company
+* System Administrator
+* Store Network Manager
+* Store Manager
 
 ---
 
@@ -121,7 +134,8 @@ To identify the conceptual classes, start by making a list of possible conceptua
 
 **Documents mentioned/used to perform some work/**
 
-* 
+*
+
 ---
 
 
@@ -140,10 +154,36 @@ An association is a relationship between instances of objects that indicates a r
 
 
 
-| Concept (A) 		|  Association   	|  Concept (B) |
-|----------	   		|:-------------:		|------:       |
-| C1  	| verb1    		 	| C2  |
-| ...  	| ...    		 	| ...  |
+| Concept (A)          |               Association                |           Concept (B) |
+|----------------------|:----------------------------------------:|----------------------:|
+| Company              |                   Owns                   |                 Store |
+| Company              |                 Employs                  |              Employee |
+| Company              |              Is Managed by               |  System Administrator |
+| Agent                |                 Works in                 |                 Store |
+| Owner                |                   Owns                   |              Property |
+| Agent                | Publishes, validates and is in charge of |         Advertisement |
+| StoreManager         |                 Monitors                 |                 Store |
+| Property             |                   Owns                   |              Location |
+| StoreNetworkManager  |                 Analyzes                 |                 Store |
+| Advertisement        |                 Receives                 |                 Offer |
+| Client               |                  Makes                   |                 Offer |
+| Store                |                   Owns                   |              Location |
+| Advertisement        |                  Hosts                   |                 Visit |
+| Client               |                 Requests                 |                 Visit |
+| Agent                |        Schedules and carries out         |                 Visit |
+| Property             |            Is represented by             |         Advertisement |
+| Client               |                   Owns                   |              Location |
+| Employee             |                   Owns                   |              Location |
+| Owner                |                   Owns                   |              Location |
+| Store                |                 Contains                 |         Advertisement |
+| Unregistered User    |                 Searches                 |         Advertisement |
+| System Administrator |                 Creates                  |                 Store |
+| System Administrator |                 Creates                  |              Employee |
+| Client               |                 Searches                 |         Advertisement |
+| Owner                |              Asks to create              |         Advertisement |
+| Property             |                 Contains                 |          PropertyType |
+| Advertisement        |                 Contains                 |     AdvertisementType |
+
 
 
 
