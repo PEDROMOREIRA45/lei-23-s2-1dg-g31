@@ -31,16 +31,16 @@ class Owner {
     phoneNumber
 }
 
-class Agent {
-    commission
-}
+class Agent
 
 class Advertisement {
+    state
     idAdvertisement
     salePrice
     durationOfContract
     rentalPrice
-    state
+    commission
+    date
 }
 
 class PropertyType{
@@ -95,8 +95,8 @@ class StoreManager {
 class StoreNetworkManager {
 }
 
-class Request{
-    idRequest
+class Offer{
+    idOffer
     offer
 }
 
@@ -107,7 +107,7 @@ class SystemAdministrator{
 class UnregisteredUser
 
 Owner "1" -- "1..*" Property: owns >
-Agent "1" -- "*" Advertisement: publishes and is in charge of >
+Agent "1" -- "*" Advertisement: publishes, validates and is in charge of >
 House --|> Building
 
 Building --|> Property
@@ -118,8 +118,8 @@ StoreNetworkManager "1" -- "*" Store:  analyzes >
 Employee <|-- Agent
 Employee <|-- StoreManager
 Employee <|-- StoreNetworkManager
-Advertisement"1" -- "*"Request: receives >
-Client"1" -- "*"Request: makes >
+Advertisement"1" -- "*"Offer: receives >
+Client"1" -- "*"Offer: makes >
 Store"1" -- "1"Location: owns >
 Advertisement "1" -- "*" Visit: hosts >
 Client "1" -- "*" Visit: requests >
@@ -135,7 +135,6 @@ SystemAdministrator "1" -- "*" Employee: creates >
 Client "*" -- "*" Advertisement: searches >
 Employee <|-- SystemAdministrator
 Owner "1" - "*" Advertisement: asks to create >
-PropertyType "1" -- "*" Property
-
+PropertyType "1" -- "*" Property: contains <
 
 @enduml
