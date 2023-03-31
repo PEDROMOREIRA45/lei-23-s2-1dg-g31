@@ -46,6 +46,26 @@ If the client does not select the type of business, the type of property and the
 >
 > **Answer:** The client should be able to select (from a list) the type of business, the type of property and the number of rooms.
 
+> **Question:** When a unregistered user wants to list properties, the list given by the program is sorted by default with which criteria? For example the list is shown with the properties sorted by most recently added?
+>
+> **Answer:** Thank you for your suggestion. By default, the list should be shown with the properties sorted by most recently added.
+
+> **Question:**  Can an user filter the properties list for example by a type but choosing multiple values? For example the users wants to see only properties with 3 or 4 rooms. If this is possible, after filtering the list to show only the values chosen, he can sort by ascending/descending?
+>
+> **Answer:** The user should select only one value for each feature of the property. By default, the list should be shown with the properties sorted by most recently added.
+
+> **Question:**  The one of the search criteria is "number of rooms". Is "Number of Bedrooms" or "Number of Bathrooms" or both?
+>
+> **Answer:**  Number of Bedrooms
+
+> **Question:** In a previous question, you said that the address doesn't include parishes ("In the USA, the addresses will not include municipalities or parishes."). That being said, how should we sort the properties by location, specifically city, and state?
+>
+> **Answer:**  The client should be able to sort properties by price, city and state
+
+
+
+
+
 ### 1.3. Acceptance Criteria
 
 

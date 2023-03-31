@@ -88,6 +88,13 @@ class CommissionFixValue{
     value
 }
 
+class Employee{
+    name
+    numberCitizen
+    tin
+    email
+    phoneNumber
+}
 
 
 UnregisteredUser "*" -- "*" Advertisement: searches >
@@ -107,5 +114,7 @@ Commission <|-- CommissionPercent
 Commission "*" -- "1" CommissionType: contains >
 Advertisement "1" -- "1" Commission: contains >
 Agent "1" -- "*" Commission: attributes >
+Agent "1" -- "*" Advertisement: publishes, validates and is in charge of >
+Employee <|-- Agent
 
 @enduml
