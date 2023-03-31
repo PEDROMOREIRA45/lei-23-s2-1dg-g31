@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 003 - Register a new employee
 
 [Requirements Engineering](01.requirements-engineering/Readme.md)
 

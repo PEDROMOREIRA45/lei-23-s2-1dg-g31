@@ -23,6 +23,14 @@ As a system administrator, I want to register a new employee
 >  
 >	**Answer:** The administrator has to specify the role of the employee.
 
+>   **Question:** When registering a new employee, all the required data (name, citizen's card number, etc...) have to be filled or exists not mandatory data?
+>
+>   **Answer:** Required/Mandatory data that should be filled when registering an employee: name, the citizen's card number, the tax number, the email address, the contact telephone number and the agency to which it is assigned.
+
+>   **Question:** When registering a new employee, will the administrator set the respective employee password?
+> 
+>   **Answer:** The password should have seven characters in length and should be generated automatically. The password is sent to the employee by e-mail.
+
 
 ### 1.3. Acceptance Criteria
 
