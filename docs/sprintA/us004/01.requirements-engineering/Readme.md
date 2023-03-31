@@ -77,9 +77,8 @@ In case the property is a house, the existence of a basement, an inhabitable lof
 * **AC5:** An Agent is a employee of that store.
 * **AC6:** The Owner has to provide all de required information.
 * **AC7:** In the case of a request for the sale of a property, the owner must provide information on: the type of property (apartment, house or land), the area in m2, the location, the distance from the city centre, the requested price and one or more photographs.
-* **AC8:** If the property is an apartment or a house, the owner also provides: the number of bedrooms, the number of bathrooms, the number of parking spaces and the available equipment, such as central heating and/or air conditioning.
-* **AC9:** In case the property is a house, the existence of a basement, an inhabitable loft, and sun exposure must be registered as well.
-* **AC10:** All required fiels must be filled in.
+* **AC8:** If the property is an apartment or a house, the owner also provides: the number of bedrooms, the number of parking spaces .
+* **AC9:** All required fiels must be filled in.
 
 
 ### 1.4. Found out Dependencies
