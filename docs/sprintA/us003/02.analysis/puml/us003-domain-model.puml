@@ -8,11 +8,9 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class SystemAdministrator
-
 class Employee{
     name
-    citizenID
+    numberCitizen
     tin
     email
     phoneNumber
@@ -26,17 +24,20 @@ class Location{
     district
 }
 
-class StoreNetworkManager
-
 class StoreManager
 
-class Agent{
-    comission
-}
+class SystemAdministrator
 
-SystemAdministrator "1" -- "*" Employee : creates >
-Employee "1" -- "1" Location: has >
-Employee "1" -- "1" StoreNetworkManager: is <
-Employee "1" -- "1" StoreManager: is <
-Employee "1" -- "1" Agent: is <
+class StoreNetworkManager
+
+class Agent
+
+Employee <|-- Agent
+Employee <|-- StoreManager
+Employee <|-- StoreNetworkManager
+Employee <|-- SystemAdministrator
+SystemAdministrator "1" -- "*" Employee: creates >
+Employee "1" -- "1" Location: owns >
+
+
 @enduml
