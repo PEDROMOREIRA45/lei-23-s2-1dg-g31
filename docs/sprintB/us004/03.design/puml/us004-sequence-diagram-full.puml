@@ -6,12 +6,12 @@ skinparam shadowing false
 autonumber
 
 'hide footbox
-actor "Organization Employee" as ADM
-participant ":CreateTaskUI" as UI
-participant ":CreateTaskController" as CTRL
-participant ":Repositories" as RepositorySingleton
+actor "Property Owner" as User
+participant ":CreateUI" as UI
+participant ":CreateController" as CTRL
+participant ":Repository" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "taskCategoryRepository:\nTaskCategoryRepository" as TaskCategoryRepository
+participant "StoreStoreRepository:\nStoreCategoryRepository" as StoreCategoryRepository
 participant ":ApplicationSession" as _APP
 participant "appSession\n:ApplicationSession" as APP
 participant "currentSession\n:UserSession" as SESSAO
@@ -19,45 +19,77 @@ participant "organizationRepository:\nOrganizationRepository" as OrganizationRep
 participant "organization\n:Organization" as ORG
 participant "task\n:Task" as TAREFA
 
-activate ADM
+activate User
 
-        ADM -> UI : asks to create a new task
+        User -> UI : asks to submit new property
 
         activate UI
 
-'            UI --> ADM : requests data (reference, description,  informal \n description, technical description, duration, cost)
+'       UI --> ADM : requests data (Store)
             'create CTRL
             UI -> CTRL** : create
 
-            UI -> CTRL : getTaskCategories()
+            UI -> CTRL : getStoreCategories()
             activate CTRL
 
-                CTRL -> RepositorySingleton : getInstance()
-                activate RepositorySingleton
+            CTRL -> RepositorySingleton : getInstance()
+            activate RepositorySingleton
 
-                    RepositorySingleton --> CTRL: repositories
-                deactivate RepositorySingleton
+            RepositorySingleton --> CTRL: repositories
+            deactivate RepositorySingleton
 
-                CTRL -> PLAT : getTaskCategoryRepository()
-                activate PLAT
+            CTRL -> PLAT : getStoreCategoryRepository()
+            activate PLAT
 
-                    PLAT --> CTRL: taskCategoryRepository
-                deactivate PLAT
+            PLAT --> CTRL: StoreCategoryRepository
+            deactivate PLAT
 
-                CTRL -> TaskCategoryRepository : getTaskCategories()
-                activate TaskCategoryRepository
+            CTRL -> StoreCategoryRepository : getStoreCategories()
+            activate StoreCategoryRepository
 
-                    TaskCategoryRepository --> CTRL : taskCategoryList
-                deactivate TaskCategoryRepository
+            StoreCategoryRepository --> CTRL : StoreCategoryList
+            deactivate StoreCategoryRepository
 
-                CTRL --> UI : taskCategoryList
+            CTRL --> UI : StoreCategoryList
             deactivate CTRL
 
-            UI --> ADM : shows task category list\n and asks to sleect one
-        deactivate UI
+            UI --> User : shows Store category list\n and asks to sleect one
+            deactivate UI
 
-    ADM -> UI : selects a task category
+    User -> UI : selects a Store category
     activate UI
+
+'    UI --> ADM : requests data (Agent)
+
+            UI -> CTRL : getStoreCategories()
+            activate CTRL
+
+            CTRL -> PLAT : getStoreCategoryRepository()
+            activate PLAT
+
+            PLAT --> CTRL: StoreCategoryRepository
+            deactivate PLAT
+
+            CTRL -> StoreCategoryRepository : getAgent()
+            activate StoreCategoryRepository
+
+            StoreCategoryRepository --> CTRL : AgentFromStoreList
+            deactivate StoreCategoryRepository
+
+            CTRL --> UI : AgentFromStoreList
+            deactivate CTRL
+
+    User -> UI : selects a Agent From Store
+    activate UI
+
+
+
+
+
+
+
+
+            UI ->
 
         UI --> ADM : requests data
     deactivate UI
@@ -83,7 +115,7 @@ activate ADM
                     RepositorySingleton --> CTRL: repositories
                 deactivate RepositorySingleton
 
-                CTRL -> PLAT : getTaskCategoryRepository()
+                CTRL -> PLAT : getStoreCategoryRepository()
                 activate PLAT
 
                     PLAT -> CTRL : taskCategoryRepository
