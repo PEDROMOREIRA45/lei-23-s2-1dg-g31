@@ -36,6 +36,7 @@ activate ADM
         CTRL -> ORG : getInstance()
         activate CTRL
         activate ORG
+
           ORG --> CTRL: repositories
         deactivate ORG
 
@@ -49,11 +50,13 @@ activate ADM
         UI -> CTRL : getBusinessTypeList
         CTRL -> REPO : getBusinessTypeRepository()
         activate REPO
+
             REPO --> CTRL: businessTypeRepository
         deactivate REPO
 
         CTRL -> BusinessTypeRepository: getBusinessTypeList()
         activate BusinessTypeRepository
+
             BusinessTypeRepository --> CTRL: businessTypeList
         deactivate BusinessTypeRepository
 
@@ -62,7 +65,7 @@ activate ADM
 
         UI --> ADM : displays business types
 
-        ADM -> UI:selects or not business type
+        ADM -> UI:selects business type
 
         UI -> UI :keepBusinessType
 
@@ -70,11 +73,13 @@ activate ADM
 
         CTRL -> REPO : getPropertyTypeRepository()
         activate REPO
+
             REPO --> CTRL: propertyTypeRepository
         deactivate REPO
 
         CTRL -> PropertyTypeRepository: getPropertyTypeList()
         activate PropertyTypeRepository
+
                  PropertyTypeRepository --> CTRL: propertyTypeList
         deactivate PropertyTypeRepository
 
@@ -82,7 +87,7 @@ activate ADM
 
         UI --> ADM : displays property types
 
-        ADM -> UI:selects or not property type
+        ADM -> UI:selects property type
 
         UI -> UI :keepPropertyType
 
@@ -106,6 +111,7 @@ activate ADM
 
         CTRL -> REPO : getStoreRepository()
         activate REPO
+
             REPO --> CTRL: storeRepository
         deactivate REPO
 
@@ -115,20 +121,23 @@ activate ADM
                   loop for each store
                                 StoreRepository -> Store : getListedProperties(keepBusinessType,keepPropertyType,keepNumberBedrooms)
                                 activate Store
+
                                 Store -> LIST**: create()
                                 loop for each advertisement
                                 Store -> Advertisement : getAdsAndPropertyFilters(keepBusinessType,keepPropertyType,keepNumberBedrooms)
                                 opt true
 
                                 Advertisement -> Property: checkPropertyFilters(keepPropertyType,keepNumberBedrooms)
-
+                                activate Property
 
                                 Property --> Advertisement: true/false
+                                deactivate Property
                                 end
                                 Advertisement -->Store :true/false
                                 opt true
                                 Store->Store: listAdd(advertisement)
                                 end
+
                                 end
                                 Store --> StoreRepository : listedProperties
                                 deactivate Store

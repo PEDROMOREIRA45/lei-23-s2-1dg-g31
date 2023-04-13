@@ -1,4 +1,4 @@
-# US 001 - Register in the system 
+# US 007 - Register in the system 
 
 ## 1. Requirements Engineering
 
@@ -15,8 +15,7 @@ properties.
 
 **From the specifications document:**
 
->	The real estate agent reviews advertisement requests, registers the information in the system and publishes the offer so that it is visible to all clients who visit the agency and use the application. All registered information, except the agency commission, can be accessed by the client who intends to buy or rent the property; the client is, then, responsible for being able to consult the properties by type, number of rooms, and sort by criteria such as price or the parish where the property is located.
-
+>	All those who wish to use the application must be authenticated with a password of seven alphanumeric characters, including three capital letters and two digits.
 
 
 
@@ -31,8 +30,8 @@ properties.
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** Unregistered user must choose sort type.
-* **AC2:** Unregistered user can choose business type, property type and number of bedrooms.
+* **AC1:** Unregistered user must have an unique email.
+* **AC2:** Unregistered user must obey password rules.
 
 ### 1.4. Found out Dependencies
 
@@ -46,7 +45,8 @@ properties.
 **Input Data:**
 
 * Typed data:
-	* None
+	* Email
+    * Password
 	
 * Selected data:
     * Choosing business type (sell or lease)

@@ -34,6 +34,7 @@
 | **System Administrator**  | Person in charge of creating employees and/or stores.                                                                                                       |
 | **Sun Exposure**          | Solar orientation of a property.                                                                                                                            |
 | **TIN**                   | Tax Identification Number.                                                                                                                                  |
+| **URI**                   | Uniform Resource Identifier is a unique sequence of characters that identifies a logical or physical resource used by web technologies.                     |
 | **USA**                   | United States of America.                                                                                                                                   |
 | **Visit**                 | When a client goes to a property to check on it's conditions.                                                                                               |
 | **Zip-Code**              | 5-digit number that specifies national area, region.                                                                                                        |
