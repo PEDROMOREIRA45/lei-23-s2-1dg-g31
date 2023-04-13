@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+participant ":ListPropertiesController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRepository
+
+autonumber 12
+-> CTRL : getBusinessTypeList()
+
+autonumber 12.1
+
+activate CTRL
+    group Get Business Type List
+
+        CTRL -> REPO : getBusinessTypeRepository()
+        activate REPO
+
+            REPO --> CTRL: businessTypeRepository
+        deactivate REPO
+
+        CTRL -> BusinessTypeRepository: getBusinessTypeList()
+                activate BusinessTypeRepository
+
+                    BusinessTypeRepository --> CTRL: businessTypeList
+                deactivate BusinessTypeRepository
+
+    end group
+
+    autonumber 13
+    <-- CTRL: businessTypeList
+
+deactivate CTRL
+
+
+@enduml

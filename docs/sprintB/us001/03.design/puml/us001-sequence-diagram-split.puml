@@ -9,15 +9,6 @@ autonumber
 actor "Unregistered User" as ADM
 participant ":ListPropertiesUI" as UI
 participant ":ListPropertiesController" as CTRL
-participant ":Company" as ORG
-participant "repositories\n:Company" as REPO
-participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRepository
-participant "propertyTypeRepository\n:PropertyTypeRepository" as PropertyTypeRepository
-participant "storeRepository\n:StoreRepository" as StoreRepository
-participant ":Store" as Store
-participant ":Advertisement" as Advertisement
-participant ":Property" as Property
-participant "list\n:List" as LIST
 
 
 
@@ -33,12 +24,6 @@ activate ADM
         UI -> CTRL**: create
 
 
-        CTRL -> ORG : getInstance()
-        activate CTRL
-        activate ORG
-
-          ORG --> CTRL: repositories
-        deactivate ORG
 
         ADM <-- UI : asks if the user want to use filters (business type, number of bedrooms, property type)
 
@@ -48,18 +33,11 @@ activate ADM
 
 
         UI -> CTRL : getBusinessTypeList
-        CTRL -> REPO : getBusinessTypeRepository()
-        activate REPO
 
-            REPO --> CTRL: businessTypeRepository
-        deactivate REPO
+        ref over CTRL
+                    Get Business Type List
 
-        CTRL -> BusinessTypeRepository: getBusinessTypeList()
-        activate BusinessTypeRepository
-
-            BusinessTypeRepository --> CTRL: businessTypeList
-        deactivate BusinessTypeRepository
-
+        end ref
 
         CTRL --> UI : businessTypeList
 
@@ -71,17 +49,10 @@ activate ADM
 
         UI -> CTRL : getPropertyTypeList
 
-        CTRL -> REPO : getPropertyTypeRepository()
-        activate REPO
+        ref over CTRL
+                            Get Property Type List
 
-            REPO --> CTRL: propertyTypeRepository
-        deactivate REPO
-
-        CTRL -> PropertyTypeRepository: getPropertyTypeList()
-        activate PropertyTypeRepository
-
-                 PropertyTypeRepository --> CTRL: propertyTypeList
-        deactivate PropertyTypeRepository
+        end ref
 
         CTRL --> UI : propertyTypeList
 
@@ -109,48 +80,11 @@ activate ADM
 
         UI -> CTRL : getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
 
-        CTRL -> REPO : getStoreRepository()
-        activate REPO
+        ref over CTRL
+                            Get Listed Properties List
 
-            REPO --> CTRL: storeRepository
-        deactivate REPO
+        end ref
 
-        CTRL -> StoreRepository: getListedProperties(keepBusinessType,keepPropertyType,keepNumberBedrooms)
-        activate StoreRepository
-
-                  loop for each store
-                                StoreRepository -> Store : getListedProperties(keepBusinessType,keepPropertyType,keepNumberBedrooms)
-                                activate Store
-
-                                Store -> LIST**: create()
-                                loop for each advertisement
-                                Store -> Advertisement : getAdsAndPropertyFilters(keepBusinessType,keepPropertyType,keepNumberBedrooms)
-                                opt true
-
-                                Advertisement -> Property: checkPropertyFilters(keepPropertyType,keepNumberBedrooms)
-                                activate Property
-
-                                Property --> Advertisement: true/false
-                                deactivate Property
-                                end
-                                Advertisement -->Store :true/false
-                                opt true
-                                Store->Store: listAdd(advertisement)
-                                end
-
-                                end
-                                Store --> StoreRepository : listedProperties
-                                deactivate Store
-                  end
-
-
-
-                 StoreRepository --> CTRL: storeList
-        deactivate StoreRepository
-
-
-
-        CTRL -> CTRL: sortPropertiesList(method)
 
         CTRL --> UI : propertiesList
 

@@ -1,0 +1,66 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+participant ":ListPropertiesController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "storeRepository\n:StoreRepository" as StoreRepository
+participant ":Store" as Store
+participant ":Advertisement" as Advertisement
+participant ":Property" as Property
+participant "list\n:List" as LIST
+
+autonumber 12
+-> CTRL : getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
+
+autonumber 12.1
+
+activate CTRL
+    group Get Listed Properties List
+
+        activate StoreRepository
+
+                          loop for each store
+                                        StoreRepository -> Store : getListedProperties(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                        activate Store
+
+                                        Store -> LIST**: create()
+                                        loop for each advertisement
+                                        Store -> Advertisement : getAdsAndPropertyFilters(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                        opt true
+
+                                        Advertisement -> Property: checkPropertyFilters(keepPropertyType,keepNumberBedrooms)
+                                        activate Property
+
+                                        Property --> Advertisement: true/false
+                                        deactivate Property
+                                        end
+                                        Advertisement -->Store :true/false
+                                        opt true
+                                        Store->Store: listAdd(advertisement)
+                                        end
+
+                                        end
+                                        Store --> StoreRepository : listedProperties
+                                        deactivate Store
+                          end
+
+
+
+                         StoreRepository --> CTRL: listedProperties
+                deactivate StoreRepository
+
+                CTRL -> CTRL : sortPropertiesList(method,keepSortMethod)
+
+    end group
+
+    autonumber 13
+    <-- CTRL: listedProperties
+
+deactivate CTRL
+
+
+@enduml

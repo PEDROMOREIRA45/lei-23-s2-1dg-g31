@@ -6,173 +6,157 @@ skinparam shadowing false
 autonumber
 
 'hide footbox
-actor "Organization Employee" as ADM
-participant ":CreateTaskUI" as UI
-participant ":CreateTaskController" as CTRL
-participant ":Repositories" as RepositorySingleton
-participant "repositories\n:Repositories" as PLAT
-participant "taskCategoryRepository:\nTaskCategoryRepository" as TaskCategoryRepository
-participant ":ApplicationSession" as _APP
-participant "appSession\n:ApplicationSession" as APP
-participant "currentSession\n:UserSession" as SESSAO
-participant "organizationRepository:\nOrganizationRepository" as OrganizationRepository
-participant "organization\n:Organization" as ORG
-participant "task\n:Task" as TAREFA
+actor "Unregistered User" as ADM
+participant ":ListPropertiesUI" as UI
+participant ":ListPropertiesController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRepository
+participant "propertyTypeRepository\n:PropertyTypeRepository" as PropertyTypeRepository
+participant "storeRepository\n:StoreRepository" as StoreRepository
+participant ":Store" as Store
+participant ":Advertisement" as Advertisement
+participant ":Property" as Property
+participant "list\n:List" as LIST
+
+
+
+
 
 activate ADM
 
-        ADM -> UI : asks to create a new task
+    ADM -> UI : asks to list listed properties
 
-        activate UI
 
-'            UI --> ADM : requests data (reference, description,  informal \n description, technical description, duration, cost)
-            'create CTRL
-            UI -> CTRL** : create
-
-            UI -> CTRL : getTaskCategories()
-            activate CTRL
-
-                CTRL -> RepositorySingleton : getInstance()
-                activate RepositorySingleton
-
-                    RepositorySingleton --> CTRL: repositories
-                deactivate RepositorySingleton
-
-                CTRL -> PLAT : getTaskCategoryRepository()
-                activate PLAT
-
-                    PLAT --> CTRL: taskCategoryRepository
-                deactivate PLAT
-
-                CTRL -> TaskCategoryRepository : getTaskCategories()
-                activate TaskCategoryRepository
-
-                    TaskCategoryRepository --> CTRL : taskCategoryList
-                deactivate TaskCategoryRepository
-
-                CTRL --> UI : taskCategoryList
-            deactivate CTRL
-
-            UI --> ADM : shows task category list\n and asks to sleect one
-        deactivate UI
-
-    ADM -> UI : selects a task category
     activate UI
 
-        UI --> ADM : requests data
-    deactivate UI
+        UI -> CTRL**: create
 
-    ADM -> UI : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate UI
 
-        UI --> ADM : shows selected category and requested data
-    deactivate UI
-
-    ADM -> UI : submits data
-    activate UI
-
-        UI -> CTRL : createTask(reference,\ndescription,\ninformalDescription,\ntechnicalDescription,\nduration, cost,\ntaskCategoryDescription)
+        CTRL -> ORG : getInstance()
         activate CTRL
+        activate ORG
 
-            CTRL -> CTRL : getTaskCategoryByDescription(taskCategoryDescription)
-            activate CTRL
+          ORG --> CTRL: repositories
+        deactivate ORG
 
-                CTRL -> RepositorySingleton : getInstance()
-                activate RepositorySingleton
+        ADM <-- UI : asks if the user want to use filters (business type, number of bedrooms, property type)
 
-                    RepositorySingleton --> CTRL: repositories
-                deactivate RepositorySingleton
+        ADM -> UI: send answer
 
-                CTRL -> PLAT : getTaskCategoryRepository()
-                activate PLAT
-
-                    PLAT -> CTRL : taskCategoryRepository
-                deactivate PLAT
-
-                CTRL -> TaskCategoryRepository : getTaskCategoryByDescription(taskCategoryDescription)
-                activate TaskCategoryRepository
-
-                    TaskCategoryRepository --> CTRL : taskCategory
-                deactivate TaskCategoryRepository
-                    CTRL --> CTRL : taskCategory
-            deactivate CTRL
-
-            |||
-            CTRL -> CTRL : getEmployeeFromSession()
-            activate CTRL
-
-                CTRL -> _APP: getInstance()
-                activate _APP
-                    _APP -> CTRL: appSession
-                deactivate _APP
+        group opt [answer = true]
 
 
-                CTRL -> APP: getCurrentSession()
-                activate APP
+        UI -> CTRL : getBusinessTypeList
+        CTRL -> REPO : getBusinessTypeRepository()
+        activate REPO
 
-                    APP --> CTRL: currentSession
-                deactivate APP
+            REPO --> CTRL: businessTypeRepository
+        deactivate REPO
 
-                CTRL -> SESSAO: email = getUserEmail()
-                activate SESSAO
+        CTRL -> BusinessTypeRepository: getBusinessTypeList()
+        activate BusinessTypeRepository
 
-                    SESSAO --> CTRL: email
-                deactivate SESSAO
-
-
-                CTRL -> PLAT: getOrganizationRepository(email)
-                activate PLAT
-
-                    PLAT --> CTRL: organizationRepository
-                deactivate PLAT
+            BusinessTypeRepository --> CTRL: businessTypeList
+        deactivate BusinessTypeRepository
 
 
-                CTRL -> OrganizationRepository: getOrganizationByEmployeeEmail(email)
-                activate OrganizationRepository
+        CTRL --> UI : businessTypeList
 
-                    loop [for each organization
-                        OrganizationRepository -> ORG : anyEmployeeHasEmail(email)
-                        activate ORG
+        UI --> ADM : displays business types
 
-                             ORG --> OrganizationRepository : true/false
-                        deactivate ORG
-                    end
-                    OrganizationRepository --> CTRL : organization
-                deactivate OrganizationRepository
+        ADM -> UI:selects business type
 
-                CTRL -> ORG: getEmployeeByEmail(email)
-                activate ORG
+        UI -> UI :keepBusinessType
 
-                    ORG --> CTRL : employee
-                deactivate ORG
+        UI -> CTRL : getPropertyTypeList
 
-                CTRL --> CTRL : employee
-            deactivate CTRL
+        CTRL -> REPO : getPropertyTypeRepository()
+        activate REPO
 
-            |||
-            CTRL -> ORG: createTask(employee, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, , taskCategory, employee)
-            activate ORG
+            REPO --> CTRL: propertyTypeRepository
+        deactivate REPO
 
-                ORG -> TAREFA**: create(employee, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, taskCategory, employee)
-                ORG -> ORG: addTask (task)
+        CTRL -> PropertyTypeRepository: getPropertyTypeList()
+        activate PropertyTypeRepository
+
+                 PropertyTypeRepository --> CTRL: propertyTypeList
+        deactivate PropertyTypeRepository
+
+        CTRL --> UI : propertyTypeList
+
+        UI --> ADM : displays property types
+
+        ADM -> UI:selects property type
+
+        UI -> UI :keepPropertyType
+
+        opt keepPropertyType != Land
+            UI --> ADM: asks number of bedrooms
+
+            ADM -> UI: type number of bedrooms
+
+            UI  ->  UI: keepNumberBedrooms
+        end
+
+        end
+
+        ADM <-- UI : displays sort methods
+
+        ADM -> UI : selects sort method
+
+        UI-> UI:keepSortMethod
+
+        UI -> CTRL : getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
+
+        CTRL -> REPO : getStoreRepository()
+        activate REPO
+
+            REPO --> CTRL: storeRepository
+        deactivate REPO
+
+        CTRL -> StoreRepository: getListedProperties(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+        activate StoreRepository
+
+                  loop for each store
+                                StoreRepository -> Store : getListedProperties(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                activate Store
+
+                                Store -> LIST**: create()
+                                loop for each advertisement
+                                Store -> Advertisement : getAdsAndPropertyFilters(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                opt true
+
+                                Advertisement -> Property: checkPropertyFilters(keepPropertyType,keepNumberBedrooms)
+                                activate Property
+
+                                Property --> Advertisement: true/false
+                                deactivate Property
+                                end
+                                Advertisement -->Store :true/false
+                                opt true
+                                Store->Store: listAdd(advertisement)
+                                end
+
+                                end
+                                Store --> StoreRepository : listedProperties
+                                deactivate Store
+                  end
 
 
-                activate ORG
-                    ORG -> ORG: validateTask(task)
-                    activate ORG
-                        ORG --> ORG
-                    deactivate ORG
 
-                    ORG --> ORG
-                deactivate ORG
+                 StoreRepository --> CTRL: listedProperties
+        deactivate StoreRepository
 
-                ORG --> CTRL : task
 
-            deactivate ORG
 
-            CTRL --> UI: task
-            deactivate CTRL
-            UI --> ADM: displays operation success
+        CTRL -> CTRL: sortPropertiesList(method,keepSortMethod)
+
+        CTRL --> UI : listedProperties
+
+        deactivate CTRL
+
+        UI --> ADM :  display listed properties
     deactivate UI
 
 deactivate ADM
