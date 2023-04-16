@@ -3,7 +3,7 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD)
+title System Sequence Diagram (SSD) - Create sale announcement
 
 autonumber
 
@@ -12,12 +12,7 @@ participant ":System" as System
 
 activate Agent
 
-    Agent -> System : asks to publish sale announcement
-    activate System 
-        System --> Agent : requests whether the agent wants to create a new one\nor approve one that a user submitted through the application
-    deactivate System
-
-    Agent -> System : selects to create a new property listing
+    Agent -> System : asks to publish sale announcement\n(create new sale announcement)
     activate System 
         System --> Agent : request property information\n(area, location, distance from city center)
     deactivate System

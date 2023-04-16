@@ -1,0 +1,36 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Validate listing
+
+autonumber
+
+actor "Agent" as Agent
+participant ":System" as System
+
+activate Agent
+
+    Agent -> System : asks to publish sale announcement\n(by reviewing advertisement requests)
+    activate System 
+        System --> Agent : shows advertisement requests\nand asks to select one
+    deactivate System
+
+    Agent -> System : selects an advetisement request
+    activate System 
+        System --> Agent : asks to validate or deny\nthe advertisement request
+    deactivate System
+
+    Agent -> System : validates advertisement request
+    activate System 
+	System --> Agent : requests comission info to append
+    deactivate System
+
+	Agent -> System : types comission info\n(fixed ammount or percentage)
+
+    activate System 
+	System --> Agent : displays operation success
+    deactivate System
+
+@enduml
