@@ -7,11 +7,12 @@ autonumber
 
 'hide footbox
 actor "Property Owner" as User
-participant ":CreateUI" as UI
-participant ":CreateController" as CTRL
-participant ":Repository" as RepositorySingleton
+participant ":SubmiPropertytUI" as UI
+participant ":SubmiPropertyController" as CTRL
+participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "StoreStoreRepository:\nStoreCategoryRepository" as StoreCategoryRepository
+participant "storesRepository\n:StoresRepository" as stores
+participant "propertyTypeRepository\n:PropertyTypeRepository" as propertyTypeRepository
 participant ":ApplicationSession" as _APP
 participant "appSession\n:ApplicationSession" as APP
 participant "currentSession\n:UserSession" as SESSAO
@@ -25,11 +26,11 @@ activate User
 
         activate UI
 
-'       UI --> ADM : requests data (Store)
+'   UI --> User : requests data (Store)
             'create CTRL
             UI -> CTRL** : create
 
-            UI -> CTRL : getStoreCategories()
+            UI -> CTRL : getStores()
             activate CTRL
 
             CTRL -> RepositorySingleton : getInstance()
@@ -38,88 +39,113 @@ activate User
             RepositorySingleton --> CTRL: repositories
             deactivate RepositorySingleton
 
-            CTRL -> PLAT : getStoreCategoryRepository()
+            CTRL -> PLAT : getStoresRepository()
             activate PLAT
 
-            PLAT --> CTRL: StoreCategoryRepository
+            PLAT --> CTRL: storesRepository
             deactivate PLAT
 
-            CTRL -> StoreCategoryRepository : getStoreCategories()
-            activate StoreCategoryRepository
+            CTRL -> storesRepository : getStores()
+            activate storesRepository
 
-            StoreCategoryRepository --> CTRL : StoreCategoryList
-            deactivate StoreCategoryRepository
+            storesRepository --> CTRL : storeList
+            deactivate storesRepository
 
-            CTRL --> UI : StoreCategoryList
+            CTRL --> UI : storeList
             deactivate CTRL
 
-            UI --> User : shows Store category list\n and asks to sleect one
+            UI --> User : shows Store list\n and asks to select one
             deactivate UI
 
-    User -> UI : selects a Store category
+    User -> UI : selects a Store
     activate UI
+            UI  ->  UI: keep store
 
-'    UI --> ADM : requests data (Agent)
+'   UI --> User : requests data (Agent)
 
-            UI -> CTRL : getStoreCategories()
+            UI -> CTRL : getStoresRepository()
             activate CTRL
 
-            CTRL -> PLAT : getStoreCategoryRepository()
+            CTRL -> PLAT : getStoresRepository()
             activate PLAT
 
-            PLAT --> CTRL: StoreCategoryRepository
+            PLAT --> CTRL: storesRepository
             deactivate PLAT
 
-            CTRL -> StoreCategoryRepository : getAgent()
-            activate StoreCategoryRepository
+            CTRL -> storesRepository : getAgentFromStore()
+            activate storesRepository
 
-            StoreCategoryRepository --> CTRL : AgentFromStoreList
-            deactivate StoreCategoryRepository
+            storesRepository --> CTRL : AgentFromStoreList
+            deactivate storesRepository
 
             CTRL --> UI : AgentFromStoreList
             deactivate CTRL
 
     User -> UI : selects a Agent From Store
     activate UI
+            UI  ->  UI: keep store, agent
 
-
-
-
-
-
-
-
-            UI ->
-
-        UI --> ADM : requests data
-    deactivate UI
-
-    ADM -> UI : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate UI
-
-        UI --> ADM : shows selected category and requested data
-    deactivate UI
-
-    ADM -> UI : submits data
-    activate UI
-
-        UI -> CTRL : createTask(reference,\ndescription,\ninformalDescription,\ntechnicalDescription,\nduration, cost,\ntaskCategoryDescription)
-        activate CTRL
-
-            CTRL -> CTRL : getTaskCategoryByDescription(taskCategoryDescription)
+'   UI --> User : requests data (Property Type)
+            UI  ->  CTRL : getPropertyTypes()
             activate CTRL
 
-                CTRL -> RepositorySingleton : getInstance()
-                activate RepositorySingleton
+            CTRL  ->  RepositorySingleton : getPropertyTypes()
+            activate RepositorySingleton
 
-                    RepositorySingleton --> CTRL: repositories
-                deactivate RepositorySingleton
+            RepositorySingleton --> CTRL: propertyType
+            deactivate RepositorySingleton
 
-                CTRL -> PLAT : getStoreCategoryRepository()
-                activate PLAT
+            CTRL -> storesRepository : getPropertyTypes()
+            activate propertyTypeRepository
 
-                    PLAT -> CTRL : taskCategoryRepository
-                deactivate PLAT
+            propertyTypeRepository --> CTRL : PropertyTypesList
+            deactivate propertyTypeRepository
+
+            CTRL --> UI : propertyTypeRepository
+            deactivate CTRL
+
+    User -> UI : selects a Property Type
+    activate UI
+
+            UI  ->  UI: keep Store, Agent, Property Types
+
+
+
+
+
+
+
+
+
+        UI_ --> ADM_ : requests data
+    deactivate UI_
+
+    User_ -> UI_ : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
+    activate UI_
+
+        UI_ --> ADM_ : shows selected category and requested data
+    deactivate UI_
+
+    ADM_ -> UI_ : submits data
+    activate UI_
+
+        UI_ -> CTRL_ : createTask(reference,\ndescription,\ninformalDescription,\ntechnicalDescription,\nduration, cost,\ntaskCategoryDescription)
+        activate CTRL_
+
+            CTRL_ -> CTRL_ : getTaskCategoryByDescription(taskCategoryDescription)
+            activate CTRL_
+
+                CTRL_ -> RepositorySingleton_ : getInstance()
+                activate RepositorySingleton_
+
+                    RepositorySingleton_ --> CTRL_: repositories
+                deactivate RepositorySingleton_
+
+                CTRL_ -> PLAT_ : getStoreCategoryRepository()
+                activate PLAT_
+
+                    PLAT_ -> CTRL_ : taskCategoryRepository
+                deactivate PLAT_
 
                 CTRL -> TaskCategoryRepository : getTaskCategoryByDescription(taskCategoryDescription)
                 activate TaskCategoryRepository
