@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'hide footbox
+actor "Property Owner" as User
+participant ":SubmiPropertytUI" as UI_SP
+
+
+autonumber 117
+
+            UI_SP -> User: request data (property Photo)
+            deactivate UI_SP
+
+            User -> UI_SP : input asked data (property Photo)
+                    activate UI_SP
+
+            UI_SP  ->  UI_SP: keep photo
+
+    opt
+
+        loop
+
+            UI_SP -> User: request data (property Photo)
+            deactivate UI_SP
+
+        User -> UI_SP : input asked data (property Photo)
+                    activate UI_SP
+
+            UI_SP  ->  UI_SP: keep photo
+
+        end
+
+    end
+
+@enduml

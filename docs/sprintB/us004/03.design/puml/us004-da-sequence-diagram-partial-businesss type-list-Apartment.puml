@@ -1,0 +1,66 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'hide footbox
+actor "Property Owner" as User
+participant ":SubmiPropertytUI" as UI_SP
+participant ":SubmiPropertyController" as CTRL_SP
+
+autonumber 68
+
+UI_SP -> CTRL_SP : getBusinessTypeRepository()
+                activate CTRL_SP
+
+                    CTRL_SP -> RepositorySingleton : getInstance()
+                    activate RepositorySingleton
+
+                        RepositorySingleton --> CTRL_SP: repositories
+                        deactivate RepositorySingleton
+
+                    CTRL_SP -> PLAT : getBusinessTypeRepository()
+                    activate PLAT
+
+                        PLAT --> CTRL_SP: BusinessTypeRepository
+                        deactivate PLAT
+
+                    CTRL_SP -> BusinessTypeRepository: getBusinessTypeList()
+                    activate BusinessTypeRepository
+
+                    BusinessTypeRepository -> CTRL_SP: businessTypeList
+                    deactivate BusinessTypeRepository
+
+                    CTRL_SP ->  UI_SP: businessTypeList
+                    deactivate CTRL_SP
+
+            UI_SP --> User : shows businessTypeList\n and asks to select one
+                deactivate UI_SP
+
+        User -> UI_SP : selects a Business Type
+                activate UI_SP
+
+    alt businessType = Sale
+
+            UI_SP -> User : ask data (Sale Price)
+            deactivate UI_SP
+
+        User -> UI_SP : types asked data (Sale Price)
+            activate UI_SP
+
+            UI_SP  ->  UI_SP: keep data
+
+    else businessType = Rent
+
+            UI_SP -> User : ask data (Rental Price, Duraction of Contract)
+            deactivate UI_SP
+
+        User -> UI_SP : types asked data (Rental Price, Duraction of Contract)
+            activate UI_SP
+
+            UI_SP  ->  UI_SP: keep data
+
+    end
+
+
+@enduml

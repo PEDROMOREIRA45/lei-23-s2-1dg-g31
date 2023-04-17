@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'hide footbox
+actor "Property Owner" as User
+participant ":SubmiPropertytUI" as UI_SP
+
+autonumber 98
+
+UI_SP -> User : ask data (year, month, day, \narea cms. Distance Kms, Description)
+            deactivate UI_SP
+
+    User -> UI_SP : types asked data (year, month, day, \narea cms. Distance Kms, Description)
+            activate UI_SP
+
+            UI_SP  ->  UI_SP: keep data
+
+@enduml

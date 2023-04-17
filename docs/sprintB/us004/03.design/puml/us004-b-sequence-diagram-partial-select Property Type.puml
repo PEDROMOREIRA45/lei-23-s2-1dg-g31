@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+
+'hide footbox
+actor "Property Owner" as User
+participant ":SubmiPropertytUI" as UI_SP
+participant ":SubmiPropertyController" as CTRL_SP
+
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "propertyTypeRepository\n:PropertyTypeRepository" as propertyTypeRepository
+
+autonumber 15
+    User -> UI_SP : asks to submit new property
+        activate UI_SP
+
+'    UI_SP --> User:  creates new property
+            'create CTRL
+        UI_SP -> CTRL_SP** : create
+
+'   UI --> User : requests data (Property Type)
+
+        UI_SP  ->  CTRL_SP : getPropertyTypes()
+            activate CTRL_SP
+
+            CTRL_SP  ->  RepositorySingleton : getPropertyTypes()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL_SP: getPropertyTypes()
+                deactivate RepositorySingleton
+
+            CTRL_SP -> propertyTypeRepository : getPropertyTypes()
+                activate propertyTypeRepository
+
+                propertyTypeRepository --> CTRL_SP : PropertyTypesList
+                deactivate propertyTypeRepository
+
+            CTRL_SP --> UI_SP : propertyTypeRepository
+                deactivate CTRL_SP
+
+
+            UI_SP --> User : shows propertyType list\n and asks to select one
+            deactivate UI_SP
+
+    User -> UI_SP : selects a Property Type
+            activate UI_SP
+
+            UI_SP  ->  UI_SP: keep Property Types
+
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Property Owner" as User
+participant ":LogInUI" as UI_LI
+participant ":LogInController" as CTRL_LI
+participant "personRepository\n:PersonRepository" as personRepository
+
+autonumber 1
+activate User
+
+    User -> UI_LI: Login
+    activate UI_LI
+
+        UI --> User : requests data (Email, Password)
+            create CTRL
+
+        UI_LI -> CTRL_LI** : create
+
+            UI_LI --> User : asks required data (email, password)
+
+    User -> UI_LI : Types required data (email, password)
+
+        UI_LI ->  UI_LI: keep (email,pass)
+
+        UI_LI -> CTRL_LI: logIn()
+            activate CTRL_LI
+
+
+            CTRL_LI -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL_LI: repositories
+                deactivate RepositorySingleton
+
+            CTRL_LI -> PLAT : getPersonRepository()
+                activate PLAT
+
+                PLAT --> CTRL_LI: personRepository
+                deactivate PLAT
+
+            CTRL_LI -> personRepository : getPersonByEmail()
+                activate personRepository
+
+            CTRL_LI -> personRepository : validatePass()
+               deactivate personRepository
+            deactivate CTRL_LI
+
+        UI_LI -> User: Validate Login
+        deactivate UI_LI
+
+@enduml

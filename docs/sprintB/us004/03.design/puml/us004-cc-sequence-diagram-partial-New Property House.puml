@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'hide footbox
+actor "Property Owner" as User
+participant ":SubmiPropertytUI" as UI_SP
+participant ":SubmiPropertyController" as CTRL_SP
+
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "propertyHouseRepository\n:PropertyHouseRepository" as propertyHouseRepository
+
+autonumber 55
+
+UI_SP -> CTRL_SP : getPropertyHouseRepository()
+                activate CTRL_SP
+
+            CTRL_SP -> RepositorySingleton : getPropertyHouseRepository()
+                    activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL_SP: repositories
+                    deactivate RepositorySingleton
+
+                CTRL_SP -> PLAT : getPropertyHouseRepository()
+                activate PLAT
+
+                    PLAT --> CTRL_SP: PropertyHouseRepository
+                    deactivate PLAT
+
+                CTRL_SP -> propertyHouseRepository: newHouseProperty()
+                activate propertyHouseRepository
+
+                    propertyHouseRepository -> CTRL_SP : newHouseProperty()
+                    deactivate propertyHouseRepository
+
+                CTRL_SP -> UI_SP: propertyHouseRepository
+                deactivate CTRL_SP
+
+@enduml

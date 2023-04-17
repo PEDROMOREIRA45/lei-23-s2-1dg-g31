@@ -1,0 +1,75 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+
+actor "Property Owner" as User
+participant ":chooseAgentUI" as UI_CA
+participant ":chooseAgentController" as CTRL_CA
+
+participant "storesRepository\n:StoresRepository" as stores
+participant "personRepository\n:PersonRepository" as personRepository
+
+
+autonumber 131
+
+activate UI_CA
+
+        UI_CA  ->  CTRL_CA : getStoreList()
+            activate CTRL_CA
+
+            CTRL_CA  ->  RepositorySingleton : getStoreList()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL_CA: getStoreList()
+                deactivate RepositorySingleton
+
+            CTRL_CA -> stores : getStoreList()
+                activate stores
+
+                stores --> CTRL_CA : storeList
+                deactivate stores
+
+            CTRL_CA --> UI_CA : storeList
+                deactivate CTRL_CA
+
+        UI_CA --> User : shows Store List list\n and asks to select one
+        deactivate UI_CA
+
+    User -> UI_CA : selects a Store
+        activate UI_CA
+
+        UI_CA  ->  UI_CA: keep store
+
+        UI_CA  ->  CTRL_CA : getAgentList()
+            activate CTRL_CA
+
+            CTRL_CA  ->  RepositorySingleton : getAgentList()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL_CA: getAgentList()
+                deactivate RepositorySingleton
+
+            CTRL_CA -> personRepository : getAgentList()
+                activate personRepository
+
+                personRepository --> CTRL_CA : agentList
+                deactivate personRepository
+
+            CTRL_CA --> UI_CA : agentList
+            deactivate CTRL_CA
+
+        UI_CA --> User : shows Agent List list\n and asks to select one
+            deactivate UI_CA
+
+    User -> UI_CA : selects a Agent
+                activate UI_CA
+
+        UI_CA  ->  UI_CA: keep Agent
+
+
+@enduml
