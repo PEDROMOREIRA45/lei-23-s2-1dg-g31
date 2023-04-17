@@ -7,107 +7,351 @@ autonumber
 
 'hide footbox
 actor "Property Owner" as User
-participant ":SubmiPropertytUI" as UI
-participant ":SubmiPropertyController" as CTRL
+
+' LOG IN
+'participant ":LogInUI" as UI_LI
+'participant ":LogInController" as CTRL_LI
+'participant "personRepository\n:PersonRepository" as personRepository
+
+participant ":SubmiPropertytUI" as UI_SP
+participant ":SubmiPropertyController" as CTRL_SP
+
+
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
+
+participant "propertyRepository\n:PropertyRepository" as propertyRepository
+participant "propertyHouseRepository\n:PropertyHouseRepository" as propertyHouseRepository
+participant "propertyApartmentRepository\n:PropertyApartmenteRepository" as propertyApartmentRepository
+
 participant "storesRepository\n:StoresRepository" as stores
+
 participant "propertyTypeRepository\n:PropertyTypeRepository" as propertyTypeRepository
+participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRepository
+
 participant ":ApplicationSession" as _APP
 participant "appSession\n:ApplicationSession" as APP
+
 participant "currentSession\n:UserSession" as SESSAO
+
 participant "organizationRepository:\nOrganizationRepository" as OrganizationRepository
 participant "organization\n:Organization" as ORG
+
 participant "task\n:Task" as TAREFA
 
 activate User
 
-        User -> UI : asks to submit new property
+'    User -> UI_LI: Activate SESSAO
+'
+'    activate UI_LI
 
-        activate UI
-
-'   UI --> User : requests data (Store)
+' UI --> User : requests data (Email, Password)
             'create CTRL
-            UI -> CTRL** : create
 
-            UI -> CTRL : getStores()
-            activate CTRL
+'        UI_LI -> CTRL_LI** : create
+'
+'            UI_LI --> User : asks required data (email, password)
+'
+'    User -> UI_LI : Types required data (email, password)
+'
+'        UI_LI ->  UI_LI: keep (email,pass)
+'
+'        UI_LI -> CTRL_LI: logIn()
+'            activate CTRL_LI
+'
+'
+'            CTRL_LI -> RepositorySingleton : getInstance()
+'                activate RepositorySingleton
+'
+'                RepositorySingleton --> CTRL_LI: repositories
+'                deactivate RepositorySingleton
+'
+'            CTRL_LI -> PLAT : getPersonRepository()
+'                activate PLAT
+'
+'                PLAT --> CTRL_LI: personRepository
+'                deactivate PLAT
+'
+'            CTRL_LI -> personRepository : getPersonByEmail()
+'                activate personRepository
+'
+'            CTRL_LI -> personRepository : validatePass()
+'               deactivate personRepository
+'            deactivate CTRL_LI
+'
+'        deactivate UI_LI
 
-            CTRL -> RepositorySingleton : getInstance()
-            activate RepositorySingleton
 
-            RepositorySingleton --> CTRL: repositories
-            deactivate RepositorySingleton
+    User -> UI_SP : asks to submit new property
+        activate UI_SP
 
-            CTRL -> PLAT : getStoresRepository()
-            activate PLAT
-
-            PLAT --> CTRL: storesRepository
-            deactivate PLAT
-
-            CTRL -> storesRepository : getStores()
-            activate storesRepository
-
-            storesRepository --> CTRL : storeList
-            deactivate storesRepository
-
-            CTRL --> UI : storeList
-            deactivate CTRL
-
-            UI --> User : shows Store list\n and asks to select one
-            deactivate UI
-
-    User -> UI : selects a Store
-    activate UI
-            UI  ->  UI: keep store
-
-'   UI --> User : requests data (Agent)
-
-            UI -> CTRL : getStoresRepository()
-            activate CTRL
-
-            CTRL -> PLAT : getStoresRepository()
-            activate PLAT
-
-            PLAT --> CTRL: storesRepository
-            deactivate PLAT
-
-            CTRL -> storesRepository : getAgentFromStore()
-            activate storesRepository
-
-            storesRepository --> CTRL : AgentFromStoreList
-            deactivate storesRepository
-
-            CTRL --> UI : AgentFromStoreList
-            deactivate CTRL
-
-    User -> UI : selects a Agent From Store
-    activate UI
-            UI  ->  UI: keep store, agent
+'    UI_SP --> User:  creates new property
+            'create CTRL
+        UI_SP -> CTRL_SP** : create
 
 '   UI --> User : requests data (Property Type)
-            UI  ->  CTRL : getPropertyTypes()
-            activate CTRL
 
-            CTRL  ->  RepositorySingleton : getPropertyTypes()
+        UI_SP  ->  CTRL_SP : getPropertyTypes()
+            activate CTRL_SP
+
+            CTRL_SP  ->  RepositorySingleton : getPropertyTypes()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL_SP: getPropertyTypes()
+                deactivate RepositorySingleton
+
+            CTRL_SP -> propertyTypeRepository : getPropertyTypes()
+                activate propertyTypeRepository
+
+                propertyTypeRepository --> CTRL_SP : PropertyTypesList
+                deactivate propertyTypeRepository
+
+            CTRL_SP --> UI_SP : propertyTypeRepository
+                deactivate CTRL_SP
+
+
+            UI_SP --> User : shows propertyType list\n and asks to select one
+            deactivate UI_SP
+
+    User -> UI_SP : selects a Property Type
+            activate UI_SP
+
+            UI_SP  ->  UI_SP: keep Property Types
+
+alt propertyType = House
+
+            UI_SP -> User : ask data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+            deactivate UI_SP
+
+    User -> UI_SP : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+            activate UI_SP
+
+group opt
+            UI_SP -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
+            deactivate UI_SP
+
+    User -> UI_SP : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
+            activate UI_SP
+end
+
+            UI_SP -> CTRL_SP : getPropertyHouseRepository()
+                activate CTRL_SP
+
+                CTRL_SP -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL_SP: repositories
+                    deactivate RepositorySingleton
+
+                CTRL_SP -> PLAT : getPropertyHouseRepository()
+                activate PLAT
+
+                    PLAT --> CTRL_SP: PropertyHouseRepository
+                    deactivate PLAT
+
+                CTRL_SP -> propertyHouseRepository: newInstance()
+                activate propertyHouseRepository
+
+                    propertyHouseRepository -> CTRL_SP : newHouseProperty()
+                    deactivate propertyHouseRepository
+
+                CTRL_SP -> UI_SP: propertyHouseRepository
+                deactivate CTRL_SP
+
+else propertyType = Apartment
+
+            UI_SP -> User : ask data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
+            deactivate UI_SP
+
+    User -> UI_SP : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
+            activate UI_SP
+
+group opt
+            UI_SP -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
+            deactivate UI_SP
+
+    User -> UI_SP : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
+            activate UI_SP
+end
+
+            UI_SP -> CTRL_SP : getPropertyApartmentRepository()
+                activate CTRL_SP
+
+                CTRL_SP -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL_SP: repositories
+                    deactivate RepositorySingleton
+
+                CTRL_SP -> PLAT : getPropertyApartmentRepository()
+                activate PLAT
+
+                    PLAT --> CTRL_SP: PropertyApartmentRepository
+                    deactivate PLAT
+
+                CTRL_SP -> propertyApartmentRepository: newInstance()
+                activate propertyApartmentRepository
+
+                    propertyApartmentRepository -> CTRL_SP : newApartmentProperty()
+                    deactivate propertyApartmentRepository
+
+                CTRL_SP -> UI_SP: propertyApartmentRepository
+                deactivate CTRL_SP
+
+else propertyType = Land
+
+            UI_SP -> User : ask data (year, month, day, \narea cms. Distance Kms, Description)
+            deactivate UI_SP
+
+    User -> UI_SP : types asked data (year, month, day, \narea cms. Distance Kms, Description)
+            activate UI_SP
+
+
+            UI_SP -> CTRL_SP : getPropertyRepository()
+                activate CTRL_SP
+
+                CTRL_SP -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL_SP: repositories
+                    deactivate RepositorySingleton
+
+                CTRL_SP -> PLAT : getPropertyRepository()
+                activate PLAT
+
+                    PLAT --> CTRL_SP: PropertyRepository
+                    deactivate PLAT
+
+                CTRL_SP -> propertyRepository: newInstance()
+                activate propertyRepository
+
+                    propertyRepository -> CTRL_SP : newApartmentProperty()
+                    deactivate propertyRepository
+
+                CTRL_SP -> UI_SP: propertyRepository
+                deactivate CTRL_SP
+end
+
+            UI_SP -> CTRL_SP : getBusinessTypeRepository()
+            activate CTRL_SP
+
+                CTRL_SP -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL_SP: repositories
+                    deactivate RepositorySingleton
+
+                CTRL_SP -> PLAT : getBusinessTypeRepository()
+                activate PLAT
+
+                    PLAT --> CTRL_SP: BusinessTypeRepository
+                    deactivate PLAT
+
+                CTRL_SP -> BusinessTypeRepository: getBusinessTypeList()
+                activate BusinessTypeRepository
+
+                BusinessTypeRepository -> CTRL_SP: BusinessTypeList
+                deactivate BusinessTypeRepository
+
+                CTRL_SP ->  UI_SP: BusinessTypeList
+                deactivate CTRL_SP
+
+
+
+    User -> ADM
+    User -> ADM
+    User -> ADM
+    User -> ADM
+    User -> ADM
+
+
+
+
+
+
+
+
+
+            CTRL_SP -> propertyRepository : newProperty()
+            activate propertyRepository
+
+                storesRepository --> CTRL_SP : newProperty
+'                deactivate propertyRepository
+
+            CTRL_SP --> UI_SP : newProperty
+'            deactivate CTRL_SP
+
+' UI_SP --> User:  request data (area, Distance from city)
+
+        UI_SP -> CTRL_SP : newProperty()
+
+
+'NAO SERIA NECESSÁRIO TER A DATA!!!!
+
+
+
+
+
+
+'   UI --> User : choose (Store)
+
+        UI_SP -> CTRL_SP : getStores()
+
+
+            CTRL_SP -> RepositorySingleton : getInstance()
             activate RepositorySingleton
 
-            RepositorySingleton --> CTRL: propertyType
-            deactivate RepositorySingleton
+                RepositorySingleton --> CTRL_SP: repositories
+                deactivate RepositorySingleton
 
-            CTRL -> storesRepository : getPropertyTypes()
-            activate propertyTypeRepository
+            CTRL_SP -> PLAT : getStoresRepository()
+            activate PLAT
 
-            propertyTypeRepository --> CTRL : PropertyTypesList
-            deactivate propertyTypeRepository
+                PLAT --> CTRL_SP: storesRepository
+                deactivate PLAT
 
-            CTRL --> UI : propertyTypeRepository
-            deactivate CTRL
+            CTRL_SP -> storesRepository : getStores()
+            activate storesRepository
 
-    User -> UI : selects a Property Type
-    activate UI
+                storesRepository --> CTRL_SP : storeList
+                deactivate storesRepository
 
-            UI  ->  UI: keep Store, Agent, Property Types
+            CTRL_SP --> UI_SP : storeList
+            deactivate CTRL_SP
+
+        UI_SP --> User : shows Store list\n and asks to select one
+
+
+    User -> UI_SP : selects a Store
+
+        UI_SP  ->  UI_SP: keep store
+
+'   UI --> User : choose (Agent)
+
+        UI_SP -> CTRL_SP : getStoresRepository()
+            activate CTRL_SP
+
+            CTRL_SP -> PLAT : getStoresRepository()
+                activate PLAT
+
+                PLAT --> CTRL_SP: storesRepository
+                deactivate PLAT
+
+            CTRL_SP -> storesRepository : getAgentFromStore()
+            activate storesRepository
+
+                storesRepository --> CTRL_SP : AgentFromStoreList
+                deactivate storesRepository
+
+            CTRL_SP --> UI_SP : AgentFromStoreList
+            deactivate CTRL_SP
+
+        UI_SP --> User : shows Agent list\n and asks to select one
+
+    User -> UI_SP : selects a Agent From Store
+    activate UI_SP
+            UI_SP  ->  UI_SP: keep agent
+
 
 
 
@@ -147,45 +391,45 @@ activate User
                     PLAT_ -> CTRL_ : taskCategoryRepository
                 deactivate PLAT_
 
-                CTRL -> TaskCategoryRepository : getTaskCategoryByDescription(taskCategoryDescription)
+                CTRL_SP -> TaskCategoryRepository : getTaskCategoryByDescription(taskCategoryDescription)
                 activate TaskCategoryRepository
 
-                    TaskCategoryRepository --> CTRL : taskCategory
+                    TaskCategoryRepository --> CTRL_SP : taskCategory
                 deactivate TaskCategoryRepository
-                    CTRL --> CTRL : taskCategory
-            deactivate CTRL
+                    CTRL_SP --> CTRL_SP : taskCategory
+            deactivate CTRL_SP
 
             |||
-            CTRL -> CTRL : getEmployeeFromSession()
-            activate CTRL
+            CTRL_SP -> CTRL_SP : getEmployeeFromSession()
+            activate CTRL_SP
 
-                CTRL -> _APP: getInstance()
+                CTRL_SP -> _APP: getInstance()
                 activate _APP
-                    _APP -> CTRL: appSession
+                    _APP -> CTRL_SP: appSession
                 deactivate _APP
 
 
-                CTRL -> APP: getCurrentSession()
+                CTRL_SP -> APP: getCurrentSession()
                 activate APP
 
-                    APP --> CTRL: currentSession
+                    APP --> CTRL_SP: currentSession
                 deactivate APP
 
-                CTRL -> SESSAO: email = getUserEmail()
+                CTRL_SP -> SESSAO: email = getUserEmail()
                 activate SESSAO
 
-                    SESSAO --> CTRL: email
+                    SESSAO --> CTRL_SP: email
                 deactivate SESSAO
 
 
-                CTRL -> PLAT: getOrganizationRepository(email)
+                CTRL_SP -> PLAT: getOrganizationRepository(email)
                 activate PLAT
 
-                    PLAT --> CTRL: organizationRepository
+                    PLAT --> CTRL_SP: organizationRepository
                 deactivate PLAT
 
 
-                CTRL -> OrganizationRepository: getOrganizationByEmployeeEmail(email)
+                CTRL_SP -> OrganizationRepository: getOrganizationByEmployeeEmail(email)
                 activate OrganizationRepository
 
                     loop [for each organization
@@ -195,20 +439,20 @@ activate User
                              ORG --> OrganizationRepository : true/false
                         deactivate ORG
                     end
-                    OrganizationRepository --> CTRL : organization
+                    OrganizationRepository --> CTRL_SP : organization
                 deactivate OrganizationRepository
 
-                CTRL -> ORG: getEmployeeByEmail(email)
+                CTRL_SP -> ORG: getEmployeeByEmail(email)
                 activate ORG
 
-                    ORG --> CTRL : employee
+                    ORG --> CTRL_SP : employee
                 deactivate ORG
 
-                CTRL --> CTRL : employee
-            deactivate CTRL
+                CTRL_SP --> CTRL_SP : employee
+            deactivate CTRL_SP
 
             |||
-            CTRL -> ORG: createTask(employee, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, , taskCategory, employee)
+            CTRL_SP -> ORG: createTask(employee, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, , taskCategory, employee)
             activate ORG
 
                 ORG -> TAREFA**: create(employee, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, taskCategory, employee)
@@ -224,14 +468,14 @@ activate User
                     ORG --> ORG
                 deactivate ORG
 
-                ORG --> CTRL : task
+                ORG --> CTRL_SP : task
 
             deactivate ORG
 
-            CTRL --> UI: task
-            deactivate CTRL
-            UI --> ADM: displays operation success
-    deactivate UI
+            CTRL_SP --> UI_SP: task
+            deactivate CTRL_SP
+            UI_SP --> ADM: displays operation success
+    deactivate UI_SP
 
 deactivate ADM
 
