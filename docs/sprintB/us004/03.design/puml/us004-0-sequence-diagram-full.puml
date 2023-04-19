@@ -27,6 +27,11 @@ participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRep
 participant "storesRepository\n:StoresRepository" as stores
 participant "personRepository\n:PersonRepository" as personRepository
 
+' CREATE A REQUEST
+
+
+
+
 activate User
 
 
@@ -43,8 +48,7 @@ activate User
                 RepositorySingleton --> CTRL: repositories
                 deactivate RepositorySingleton
 
-            CTRL --> UI: repositories
-            deactivate CTRL
+
 
 '   UI --> User : requests data (Property Type)
 
@@ -73,7 +77,11 @@ activate User
     User -> UI : selects a Property Type
             activate UI
 
-            UI  ->  UI: keep Property Types
+            UI  ->  CTRL: keep Property Type choice
+            activate CTRL
+
+            CTRL  ->  CTRL: keep Property Type choice
+            deactivate CTRL
 
 alt propertyType = House
 
@@ -83,7 +91,11 @@ alt propertyType = House
     User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
             activate UI
 
-            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+            UI  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+            activate CTRL
+
+            CTRL  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+            deactivate CTRL
 
     group opt
             UI -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
@@ -92,7 +104,13 @@ alt propertyType = House
         User -> UI : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
                 activate UI
 
-            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment, sunExposure)
+            UI  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
+            activate CTRL
+
+            CTRL  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
+            deactivate CTRL
+
+
     end
 
             UI -> CTRL : getBusinessTypeRepository()
@@ -133,8 +151,11 @@ alt propertyType = House
         User -> UI : types asked data (Sale Price)
             activate UI
 
-            UI  ->  UI: keep data (Sale Price)
+            UI  ->  CTRL: keep data (Sale Price)
+            activate CTRL
 
+                CTRL -> CTRL: keep data (Sale Price)
+                deactivate CTRL
     else businessType = Rent
 
             UI -> User : ask data (Rental Price, Duraction of Contract)
@@ -143,7 +164,11 @@ alt propertyType = House
         User -> UI : types asked data (Rental Price, Duraction of Contract)
             activate UI
 
-            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
+            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+            activate CTRL
+
+                CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+                deactivate CTRL
 
     end
 
@@ -153,7 +178,11 @@ alt propertyType = House
             User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  UI: keep data (property Photo)
+            UI  ->  CTRL: keep data (property Photo)
+            activate CTRL
+
+                CTRL  ->  CTRL: keep data (property Photo)
+                deactivate CTRL
 
     opt
 
@@ -165,11 +194,16 @@ alt propertyType = House
         User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  UI: keep data (property Photo)
+            UI  ->  CTRL: keep data (property Photo)
+            activate CTRL
 
+                CTRL  ->  CTRL: keep data (property Photo)
+                deactivate CTRL
         end
 
     end
+
+' CREATE NEW PROPERTY HOUSE
 
             UI -> CTRL : getPropertyRepository()
                 activate CTRL
@@ -192,8 +226,39 @@ alt propertyType = House
                     propertyRepository -> CTRL : newHouseProperty()
                     deactivate propertyRepository
 
-                CTRL -> UI: propertyRepository
-                deactivate CTRL
+                CTRL -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+
+                CTRL  ->  CTRL: add data to new property (numberBathrooms, \navailableEquipment, sunExposure)
+
+    alt businessType = Sale
+                CTRL  ->  CTRL: add data to new property (Sale Price)
+    else businessType = Rent
+                CTRL  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
+    end
+
+                CTRL -> CTRL : add data to new property (property Photo)
+    opt
+        loop
+                CTRL -> CTRL : add data to new property (property Photo)
+        end
+
+    end
+
+ ' SHOW NEW PROPERTY HOUSE FOR VALIDATION
+
+         CTRL-> UI: newHouseProperty
+         deactivate CTRL
+
+         UI -> User: Display property conditions and ask for validation (YES/NO)
+         deactivate UI
+
+     User -> UI: input: validation (YES/NO)
+         activate UI
+
+ alt validation = YES
+         UI -> User : displays operation success, \nsends document operation details and conclusion
+         deactivate UI
+ end
 
 else propertyType = Apartment
 
@@ -203,7 +268,11 @@ else propertyType = Apartment
     User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
             activate UI
 
-            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
+            UI  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
+            activate CTRL
+
+                CTRL  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
+                deactivate CTRL
 
 group opt
             UI -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
@@ -212,7 +281,11 @@ group opt
     User -> UI : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
             activate UI
 
-            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment, sunExposure)
+            UI  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
+            activate CTRL
+
+                CTRL  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
+                deactivate CTRL
 
 end
 
@@ -254,7 +327,11 @@ end
         User -> UI : types asked data (Sale Price)
             activate UI
 
-            UI  ->  UI: keep data (Sale Price)
+            UI  ->  CTRL: keep data (Sale Price)
+            activate CTRL
+
+                CTRL  ->  CTRL: keep data (Sale Price)
+                deactivate CTRL
 
     else businessType = Rent
 
@@ -264,7 +341,13 @@ end
         User -> UI : types asked data (Rental Price, Duraction of Contract)
             activate UI
 
-            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
+            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+                activate CTRL
+
+
+                CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+                deactivate CTRL
+
 
     end
 
@@ -274,7 +357,12 @@ end
             User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  UI: keep data (property Photo)
+            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+                activate CTRL
+
+
+                CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+                deactivate CTRL
 
     opt
 
@@ -286,13 +374,18 @@ end
         User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  UI: keep data (property Photo)
+            UI  ->  CTRL: keep data (property Photo)
+                activate CTRL
 
+
+                CTRL  ->  CTRL: keep data (property Photo)
+                deactivate CTRL
         end
 
     end
+' CREATE NEW PROPERTY APARTMENT
 
-            UI -> CTRL : getPropertyRepository()
+           UI -> CTRL : getPropertyRepository()
                 activate CTRL
 
                 CTRL -> RepositorySingleton : getPropertyRepository()
@@ -313,18 +406,55 @@ end
                     propertyRepository -> CTRL : newApartmentProperty()
                     deactivate propertyRepository
 
-                CTRL -> UI: propertyRepository
-                deactivate CTRL
+                CTRL -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms)
+
+                CTRL  ->  CTRL: add data to new property (numberBathrooms, \navailableEquipment)
+
+    alt businessType = Sale
+                CTRL  ->  CTRL: add data to new property (Sale Price)
+    else businessType = Rent
+                CTRL  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
+    end
+
+                CTRL -> CTRL : add data to new property (property Photo)
+    opt
+        loop
+                CTRL -> CTRL : add data to new property (property Photo)
+        end
+
+    end
+
+' SHOW NEW PROPERTY APARTMENT FOR VALIDATION
+
+         CTRL-> UI: newApartmentProperty
+         deactivate CTRL
+
+         UI -> User: Display property conditions and ask for validation (YES/NO)
+         deactivate UI
+
+     User -> UI: input: validation (YES/NO)
+         activate UI
+
+ alt validation = YES
+         UI -> User : displays operation success, \nsends document operation details and conclusion
+         deactivate UI
+ end
+
+
 
 else propertyType = Land
 
-            UI -> User : ask data (year, month, day, \narea cms. Distance Kms, Description)
+            UI -> User : ask data (year, month, day, \narea cms. Distance Kms)
             deactivate UI
 
-    User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, Description)
+    User -> UI : types asked data (year, month, day, \narea cms. Distance Kms)
             activate UI
 
-            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms, Description)
+            UI  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms)
+            activate CTRL
+
+            CTRL  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms)
+            deactivate CTRL
 
             UI -> CTRL : getBusinessTypeRepository()
                 activate CTRL
@@ -364,7 +494,11 @@ else propertyType = Land
         User -> UI : types asked data (Sale Price)
             activate UI
 
-            UI  ->  UI: keep data (Sale Price)
+            UI  ->  CTRL: keep data (Sale Price)
+            activate CTRL
+
+            CTRL  ->  CTRL: keep data (Sale Price)
+            deactivate CTRL
 
     else businessType = Rent
 
@@ -374,7 +508,11 @@ else propertyType = Land
         User -> UI : types asked data (Rental Price, Duraction of Contract)
             activate UI
 
-            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
+            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+            activate CTRL
+
+            CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
+            deactivate CTRL
 
     end
 
@@ -384,7 +522,11 @@ else propertyType = Land
             User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  UI: keep data (property Photo)
+            UI  ->  CTRL: keep data (property Photo)
+            activate CTRL
+
+                CTRL  ->  CTRL: keep data (property Photo)
+                deactivate CTRL
 
     opt
 
@@ -393,14 +535,20 @@ else propertyType = Land
             UI -> User: request data (property Photo)
             deactivate UI
 
-        User -> UI : input asked data (property Photo)
+            User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  UI: keep data (property Photo)
+            UI  ->  CTRL: keep data (property Photo)
+            activate CTRL
+
+                CTRL  ->  CTRL: keep data (property Photo)
+                deactivate CTRL
 
         end
 
     end
+
+' CREATE PROPERTY LAND
 
             UI -> CTRL : getPropertyRepository()
                 activate CTRL
@@ -423,15 +571,48 @@ else propertyType = Land
                     propertyRepository -> CTRL : newProperty()
                     deactivate propertyRepository
 
-                CTRL -> UI: propertyRepository
-                deactivate CTRL
+                CTRL -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms)
+
+                CTRL  ->  CTRL: add data to new property (numberBathrooms, \navailableEquipment)
+
+    alt businessType = Sale
+                CTRL  ->  CTRL: add data to new property (Sale Price)
+    else businessType = Rent
+                CTRL  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
+    end
+
+                CTRL -> CTRL : add data to new property (property Photo)
+    opt
+        loop
+                CTRL -> CTRL : add data to new property (property Photo)
+        end
+
+    end
+
+' SHOW NEW PROPERTY LAND FOR VALIDATION
+
+         CTRL-> UI: newProperty
+         deactivate CTRL
+
+         UI -> User: Display property conditions and ask for validation (YES/NO)
+         deactivate UI
+
+     User -> UI: input: validation (YES/NO)
+         activate UI
+
+ alt validation = YES
+         UI -> User : displays operation success, \nsends document operation details and conclusion
+         deactivate UI
+ end
+
+
 end
-' CREATE PROPERTY
 
 
 
 
-' CHOOSE A AGENT
+
+' CHOOSE A AGENT FROM STORE
 
     User -> UI : asks to choose Agent
         activate UI
@@ -460,18 +641,51 @@ end
     User -> UI : selects a Store
         activate UI
 
-        UI  ->  UI: keep store
+        UI  ->  CTRL: keep store
+        activate CTRL
+
+            CTRL  ->  stores: getAgentListFromStore()
+                activate stores
+
+                stores  ->  CTRL : AgentListFromStore()
+                deactivate stores
+
+            CTRL --> UI : agentListFromStore
+            deactivate CTRL
+
+        UI --> User : shows Agent List list\n and asks to select one
+            deactivate UI
+
+    User -> UI : selects a Agent Choice
+        activate UI
+
+        UI  ->  CTRL: keep Agent Choice
+        activate CTRL
+
+            CTRL  ->  CTRL: keep Agent Choice
+        deactivate CTRL
+
+' CHOOSE A AGENT FROM LIST
+
+    User -> UI : asks to choose Agent
+        activate UI
 
         UI  ->  CTRL : getAgentList()
-            activate CTRL
+                activate CTRL
 
-            CTRL  ->  RepositorySingleton : getAgentList()
+            CTRL  ->  RepositorySingleton : repositories
                 activate RepositorySingleton
 
-                RepositorySingleton --> CTRL: getAgentList()
+                RepositorySingleton   -> CTRL  : repositories
                 deactivate RepositorySingleton
 
-            CTRL -> personRepository : getAgentList()
+            CTRL -> PLAT: getPersonRepository()
+            activate PLAT
+
+                PLAT --> CTRL: PersonRepository
+                deactivate PLAT
+
+            CTRL -> personRepository: getAgentList()
                 activate personRepository
 
                 personRepository --> CTRL : agentList
@@ -483,21 +697,46 @@ end
         UI --> User : shows Agent List list\n and asks to select one
             deactivate UI
 
-    User -> UI : selects a Agent
+    User -> UI : selects a Agent Choice
         activate UI
 
-        UI  ->  UI: keep Agent
+        UI  ->  CTRL: keep Agent Choice
+        activate CTRL
 
-        UI -> User: Display property conditions and ask for validation (YES/NO)
-        deactivate UI
+            CTRL  ->  CTRL: keep Agent Choice
+            deactivate CTRL
 
-    User -> UI: input: validation (YES/NO)
-        activate UI
 
-alt validation = YES
-        UI -> User : displays operation success, sends document operation details and conclusion
-        deactivate UI
-end
+
+
+' CREATE A REQUEST
+
+        CTRL -> RepositorySingleton : getRequestRepository()
+                activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL: repositories
+                    deactivate RepositorySingleton
+
+                CTRL -> PLAT : getRequestRepository()
+                activate PLAT
+
+                    PLAT --> CTRL: requestRepository
+                    deactivate PLAT
+
+                CTRL -> requestRepository: newRequest()
+                activate requestRepository
+
+                    requestRepository -> CTRL : newRequest
+                    deactivate requestRepository
+
+                CTRL -> CTRL: add New Property to new Request
+                CTRL -> CTRL: add Agent Choice to new Request
+
+        deactivate CTRL
+
+    deactivate UI
+
+    deactivate User
 
 
 @enduml
