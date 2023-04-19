@@ -7,529 +7,497 @@ autonumber
 
 'hide footbox
 actor "Property Owner" as User
+participant ":SubmitPropertytUI" as UI
+participant ":SubmitPropertyController" as CTRL
 
 ' LOG IN
-participant ":LogInUI" as UI_LI
-participant ":LogInController" as CTRL_LI
 participant "personRepository\n:PersonRepository" as personRepository
 
 ' SUBMIT PROPERTY
-participant ":SubmiPropertytUI" as UI_SP
-participant ":SubmiPropertyController" as CTRL_SP
-
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 
 participant "propertyRepository\n:PropertyRepository" as propertyRepository
-participant "propertyHouseRepository\n:PropertyHouseRepository" as propertyHouseRepository
-participant "propertyApartmentRepository\n:PropertyApartmenteRepository" as propertyApartmentRepository
+participant "propertyRepository\n:PropertyRepository" as propertyRepository
 
 participant "propertyTypeRepository\n:PropertyTypeRepository" as propertyTypeRepository
 participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRepository
 
 ' CHOOSE A AGENT
-participant ":chooseAgentUI" as UI_CA
-participant ":chooseAgentController" as CTRL_CA
 participant "storesRepository\n:StoresRepository" as stores
 participant "personRepository\n:PersonRepository" as personRepository
 
 activate User
 
-    User -> UI_LI: LogIn
-    activate UI_LI
 
- UI --> User : requests data (Email, Password)
-            create CTRL
+ ' SUBMIT PROPERTY
+    User -> UI : asks to submit new property
+        activate UI
 
-        UI_LI -> CTRL_LI** : create
+          UI -> CTRL** : create
+                activate CTRL
 
-            UI_LI --> User : asks required data (email, password)
-
-    User -> UI_LI : Types required data (email, password)
-
-        UI_LI ->  UI_LI: keep (email,pass)
-
-        UI_LI -> CTRL_LI: logIn()
-            activate CTRL_LI
-
-
-            CTRL_LI -> RepositorySingleton : getInstance()
+                CTRL -> RepositorySingleton : getInstance()
                 activate RepositorySingleton
 
-                RepositorySingleton --> CTRL_LI: repositories
+                RepositorySingleton --> CTRL: repositories
                 deactivate RepositorySingleton
 
-            CTRL_LI -> PLAT : getPersonRepository()
-                activate PLAT
-
-                PLAT --> CTRL_LI: personRepository
-                deactivate PLAT
-
-            CTRL_LI -> personRepository : getPersonByEmail()
-                activate personRepository
-
-            CTRL_LI -> personRepository : validatePass()
-               deactivate personRepository
-            deactivate CTRL_LI
-
-        UI_LI -> User: Validate Login
-        deactivate UI_LI
-
-' SUBMIT PROPERTY
-    User -> UI_SP : asks to submit new property
-        activate UI_SP
-
-        UI_SP -> CTRL_SP** : create
+            CTRL --> UI: repositories
+            deactivate CTRL
 
 '   UI --> User : requests data (Property Type)
 
-        UI_SP  ->  CTRL_SP : getPropertyTypes()
-            activate CTRL_SP
+        UI  ->  CTRL : getPropertyTypes()
+            activate CTRL
 
-            CTRL_SP  ->  RepositorySingleton : getPropertyTypes()
+            CTRL  ->  RepositorySingleton : getPropertyTypes()
                 activate RepositorySingleton
 
-                RepositorySingleton --> CTRL_SP: getPropertyTypes()
+                RepositorySingleton --> CTRL: getPropertyTypes()
                 deactivate RepositorySingleton
 
-            CTRL_SP -> propertyTypeRepository : getPropertyTypes()
+            CTRL -> propertyTypeRepository : getPropertyTypes()
                 activate propertyTypeRepository
 
-                propertyTypeRepository --> CTRL_SP : PropertyTypesList
+                propertyTypeRepository --> CTRL : PropertyTypesList
                 deactivate propertyTypeRepository
 
-            CTRL_SP --> UI_SP : propertyTypeRepository
-                deactivate CTRL_SP
+            CTRL --> UI : propertyTypeRepository
+                deactivate CTRL
 
 
-            UI_SP --> User : shows propertyType list\n and asks to select one
-            deactivate UI_SP
+            UI --> User : shows propertyType list\n and asks to select one
+            deactivate UI
 
-    User -> UI_SP : selects a Property Type
-            activate UI_SP
+    User -> UI : selects a Property Type
+            activate UI
 
-            UI_SP  ->  UI_SP: keep Property Types
+            UI  ->  UI: keep Property Types
 
 alt propertyType = House
 
-            UI_SP -> User : ask data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
-            deactivate UI_SP
+            UI -> User : ask data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+            deactivate UI
 
-    User -> UI_SP : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
-            activate UI_SP
+    User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
 
     group opt
-            UI_SP -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
-                deactivate UI_SP
+            UI -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
+                deactivate UI
 
-        User -> UI_SP : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
-                activate UI_SP
+        User -> UI : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
+                activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment, sunExposure)
     end
 
-            UI_SP -> CTRL_SP : getBusinessTypeRepository()
-                activate CTRL_SP
+            UI -> CTRL : getBusinessTypeRepository()
+                activate CTRL
 
-                    CTRL_SP -> RepositorySingleton : getBusinessTypeRepository()
+                    CTRL -> RepositorySingleton : getBusinessTypeRepository()
                     activate RepositorySingleton
 
-                        RepositorySingleton --> CTRL_SP: repositories
+                        RepositorySingleton --> CTRL: repositories
                         deactivate RepositorySingleton
 
-                    CTRL_SP -> PLAT : getBusinessTypeRepository()
+                    CTRL -> PLAT : getBusinessTypeRepository()
                     activate PLAT
 
-                        PLAT --> CTRL_SP: BusinessTypeRepository
+                        PLAT --> CTRL: BusinessTypeRepository
                         deactivate PLAT
 
-                    CTRL_SP -> BusinessTypeRepository: getBusinessTypeList()
+                    CTRL -> BusinessTypeRepository: getBusinessTypeList()
                     activate BusinessTypeRepository
 
-                    BusinessTypeRepository -> CTRL_SP: businessTypeList
+                    BusinessTypeRepository -> CTRL: businessTypeList
                     deactivate BusinessTypeRepository
 
-                    CTRL_SP ->  UI_SP: businessTypeList
-                    deactivate CTRL_SP
+                    CTRL ->  UI: businessTypeList
+                    deactivate CTRL
 
-            UI_SP --> User : shows businessTypeList\n and asks to select one
-                deactivate UI_SP
+            UI --> User : shows businessTypeList\n and asks to select one
+                deactivate UI
 
-        User -> UI_SP : selects a Business Type
-                activate UI_SP
+        User -> UI : selects a Business Type
+                activate UI
 
     alt businessType = Sale
 
-            UI_SP -> User : ask data (Sale Price)
-            deactivate UI_SP
+            UI -> User : ask data (Sale Price)
+            deactivate UI
 
-        User -> UI_SP : types asked data (Sale Price)
-            activate UI_SP
+        User -> UI : types asked data (Sale Price)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (Sale Price)
 
     else businessType = Rent
 
-            UI_SP -> User : ask data (Rental Price, Duraction of Contract)
-            deactivate UI_SP
+            UI -> User : ask data (Rental Price, Duraction of Contract)
+            deactivate UI
 
-        User -> UI_SP : types asked data (Rental Price, Duraction of Contract)
-            activate UI_SP
+        User -> UI : types asked data (Rental Price, Duraction of Contract)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
 
     end
 
-            UI_SP -> User: request data (property Photo)
-            deactivate UI_SP
+            UI -> User: request data (property Photo)
+            deactivate UI
 
-            User -> UI_SP : input asked data (property Photo)
-                    activate UI_SP
+            User -> UI : input asked data (property Photo)
+                    activate UI
 
-            UI_SP  ->  UI_SP: keep photo
+            UI  ->  UI: keep data (property Photo)
 
     opt
 
         loop
 
-            UI_SP -> User: request data (property Photo)
-            deactivate UI_SP
+            UI -> User: request data (property Photo)
+            deactivate UI
 
-        User -> UI_SP : input asked data (property Photo)
-                    activate UI_SP
+        User -> UI : input asked data (property Photo)
+                    activate UI
 
-            UI_SP  ->  UI_SP: keep photo
+            UI  ->  UI: keep data (property Photo)
 
         end
 
     end
 
-            UI_SP -> CTRL_SP : getPropertyHouseRepository()
-                activate CTRL_SP
+            UI -> CTRL : getPropertyRepository()
+                activate CTRL
 
-            CTRL_SP -> RepositorySingleton : getPropertyHouseRepository()
+            CTRL -> RepositorySingleton : getPropertyRepository()
                     activate RepositorySingleton
 
-                    RepositorySingleton --> CTRL_SP: repositories
+                    RepositorySingleton --> CTRL: repositories
                     deactivate RepositorySingleton
 
-                CTRL_SP -> PLAT : getPropertyHouseRepository()
+                CTRL -> PLAT : getPropertyRepository()
                 activate PLAT
 
-                    PLAT --> CTRL_SP: PropertyHouseRepository
+                    PLAT --> CTRL: PropertyRepository
                     deactivate PLAT
 
-                CTRL_SP -> propertyHouseRepository: newHouseProperty()
-                activate propertyHouseRepository
+                CTRL -> propertyRepository: newHouseProperty()
+                activate propertyRepository
 
-                    propertyHouseRepository -> CTRL_SP : newHouseProperty()
-                    deactivate propertyHouseRepository
+                    propertyRepository -> CTRL : newHouseProperty()
+                    deactivate propertyRepository
 
-                CTRL_SP -> UI_SP: propertyHouseRepository
-                deactivate CTRL_SP
+                CTRL -> UI: propertyRepository
+                deactivate CTRL
 
 else propertyType = Apartment
 
-            UI_SP -> User : ask data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
-            deactivate UI_SP
+            UI -> User : ask data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
+            deactivate UI
 
-    User -> UI_SP : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
-            activate UI_SP
+    User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
 
 group opt
-            UI_SP -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
-            deactivate UI_SP
+            UI -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
+            deactivate UI
 
-    User -> UI_SP : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
-            activate UI_SP
+    User -> UI : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment, sunExposure)
 
 end
 
-            UI_SP -> CTRL_SP : getBusinessTypeRepository()
-                activate CTRL_SP
+            UI -> CTRL : getBusinessTypeRepository()
+                activate CTRL
 
-                    CTRL_SP -> RepositorySingleton : getBusinessTypeRepository()
+                    CTRL -> RepositorySingleton : getBusinessTypeRepository()
                     activate RepositorySingleton
 
-                        RepositorySingleton --> CTRL_SP: repositories
+                        RepositorySingleton --> CTRL: repositories
                         deactivate RepositorySingleton
 
-                    CTRL_SP -> PLAT : getBusinessTypeRepository()
+                    CTRL -> PLAT : getBusinessTypeRepository()
                     activate PLAT
 
-                        PLAT --> CTRL_SP: BusinessTypeRepository
+                        PLAT --> CTRL: BusinessTypeRepository
                         deactivate PLAT
 
-                    CTRL_SP -> BusinessTypeRepository: getBusinessTypeList()
+                    CTRL -> BusinessTypeRepository: getBusinessTypeList()
                     activate BusinessTypeRepository
 
-                    BusinessTypeRepository -> CTRL_SP: businessTypeList
+                    BusinessTypeRepository -> CTRL: businessTypeList
                     deactivate BusinessTypeRepository
 
-                    CTRL_SP ->  UI_SP: businessTypeList
-                    deactivate CTRL_SP
+                    CTRL ->  UI: businessTypeList
+                    deactivate CTRL
 
-            UI_SP --> User : shows businessTypeList\n and asks to select one
-                deactivate UI_SP
+            UI --> User : shows businessTypeList\n and asks to select one
+                deactivate UI
 
-        User -> UI_SP : selects a Business Type
-                activate UI_SP
+        User -> UI : selects a Business Type
+                activate UI
 
     alt businessType = Sale
 
-            UI_SP -> User : ask data (Sale Price)
-            deactivate UI_SP
+            UI -> User : ask data (Sale Price)
+            deactivate UI
 
-        User -> UI_SP : types asked data (Sale Price)
-            activate UI_SP
+        User -> UI : types asked data (Sale Price)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (Sale Price)
 
     else businessType = Rent
 
-            UI_SP -> User : ask data (Rental Price, Duraction of Contract)
-            deactivate UI_SP
+            UI -> User : ask data (Rental Price, Duraction of Contract)
+            deactivate UI
 
-        User -> UI_SP : types asked data (Rental Price, Duraction of Contract)
-            activate UI_SP
+        User -> UI : types asked data (Rental Price, Duraction of Contract)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
 
     end
 
-            UI_SP -> User: request data (property Photo)
-            deactivate UI_SP
+            UI -> User: request data (property Photo)
+            deactivate UI
 
-            User -> UI_SP : input asked data (property Photo)
-                    activate UI_SP
+            User -> UI : input asked data (property Photo)
+                    activate UI
 
-            UI_SP  ->  UI_SP: keep photo
+            UI  ->  UI: keep data (property Photo)
 
     opt
 
         loop
 
-            UI_SP -> User: request data (property Photo)
-            deactivate UI_SP
+            UI -> User: request data (property Photo)
+            deactivate UI
 
-        User -> UI_SP : input asked data (property Photo)
-                    activate UI_SP
+        User -> UI : input asked data (property Photo)
+                    activate UI
 
-            UI_SP  ->  UI_SP: keep photo
+            UI  ->  UI: keep data (property Photo)
 
         end
 
     end
 
-            UI_SP -> CTRL_SP : getPropertyApartmentRepository()
-                activate CTRL_SP
+            UI -> CTRL : getPropertyRepository()
+                activate CTRL
 
-                CTRL_SP -> RepositorySingleton : getPropertyApartmentRepository()
+                CTRL -> RepositorySingleton : getPropertyRepository()
                 activate RepositorySingleton
 
-                    RepositorySingleton --> CTRL_SP: repositories
+                    RepositorySingleton --> CTRL: repositories
                     deactivate RepositorySingleton
 
-                CTRL_SP -> PLAT : getPropertyApartmentRepository()
+                CTRL -> PLAT : getPropertyRepository()
                 activate PLAT
 
-                    PLAT --> CTRL_SP: PropertyApartmentRepository
+                    PLAT --> CTRL: PropertyApartmentRepository
                     deactivate PLAT
 
-                CTRL_SP -> propertyApartmentRepository: newApartmentProperty()
-                activate propertyApartmentRepository
+                CTRL -> propertyRepository: newApartmentProperty()
+                activate propertyRepository
 
-                    propertyApartmentRepository -> CTRL_SP : newApartmentProperty()
-                    deactivate propertyApartmentRepository
+                    propertyRepository -> CTRL : newApartmentProperty()
+                    deactivate propertyRepository
 
-                CTRL_SP -> UI_SP: propertyApartmentRepository
-                deactivate CTRL_SP
+                CTRL -> UI: propertyRepository
+                deactivate CTRL
 
 else propertyType = Land
 
-            UI_SP -> User : ask data (year, month, day, \narea cms. Distance Kms, Description)
-            deactivate UI_SP
+            UI -> User : ask data (year, month, day, \narea cms. Distance Kms, Description)
+            deactivate UI
 
-    User -> UI_SP : types asked data (year, month, day, \narea cms. Distance Kms, Description)
-            activate UI_SP
+    User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, Description)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms, Description)
 
-            UI_SP -> CTRL_SP : getBusinessTypeRepository()
-                activate CTRL_SP
+            UI -> CTRL : getBusinessTypeRepository()
+                activate CTRL
 
-                    CTRL_SP -> RepositorySingleton : getBusinessTypeRepository()
+                    CTRL -> RepositorySingleton : getBusinessTypeRepository()
                     activate RepositorySingleton
 
-                        RepositorySingleton --> CTRL_SP: repositories
+                        RepositorySingleton --> CTRL: repositories
                         deactivate RepositorySingleton
 
-                    CTRL_SP -> PLAT : getBusinessTypeRepository()
+                    CTRL -> PLAT : getBusinessTypeRepository()
                     activate PLAT
 
-                        PLAT --> CTRL_SP: BusinessTypeRepository
+                        PLAT --> CTRL: BusinessTypeRepository
                         deactivate PLAT
 
-                    CTRL_SP -> BusinessTypeRepository: getBusinessTypeList()
+                    CTRL -> BusinessTypeRepository: getBusinessTypeList()
                     activate BusinessTypeRepository
 
-                    BusinessTypeRepository -> CTRL_SP: businessTypeList
+                    BusinessTypeRepository -> CTRL: businessTypeList
                     deactivate BusinessTypeRepository
 
-                    CTRL_SP ->  UI_SP: businessTypeList
-                    deactivate CTRL_SP
+                    CTRL ->  UI: businessTypeList
+                    deactivate CTRL
 
-            UI_SP --> User : shows businessTypeList\n and asks to select one
-                deactivate UI_SP
+            UI --> User : shows businessTypeList\n and asks to select one
+                deactivate UI
 
-        User -> UI_SP : selects a Business Type
-                activate UI_SP
+        User -> UI : selects a Business Type
+                activate UI
 
     alt businessType = Sale
 
-            UI_SP -> User : ask data (Sale Price)
-            deactivate UI_SP
+            UI -> User : ask data (Sale Price)
+            deactivate UI
 
-        User -> UI_SP : types asked data (Sale Price)
-            activate UI_SP
+        User -> UI : types asked data (Sale Price)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (Sale Price)
 
     else businessType = Rent
 
-            UI_SP -> User : ask data (Rental Price, Duraction of Contract)
-            deactivate UI_SP
+            UI -> User : ask data (Rental Price, Duraction of Contract)
+            deactivate UI
 
-        User -> UI_SP : types asked data (Rental Price, Duraction of Contract)
-            activate UI_SP
+        User -> UI : types asked data (Rental Price, Duraction of Contract)
+            activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
 
     end
 
-            UI_SP -> User: request data (property Photo)
-            deactivate UI_SP
+            UI -> User: request data (property Photo)
+            deactivate UI
 
-            User -> UI_SP : input asked data (property Photo)
-                    activate UI_SP
+            User -> UI : input asked data (property Photo)
+                    activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (property Photo)
 
     opt
 
         loop
 
-            UI_SP -> User: request data (property Photo)
-            deactivate UI_SP
+            UI -> User: request data (property Photo)
+            deactivate UI
 
-        User -> UI_SP : input asked data (property Photo)
-                    activate UI_SP
+        User -> UI : input asked data (property Photo)
+                    activate UI
 
-            UI_SP  ->  UI_SP: keep data
+            UI  ->  UI: keep data (property Photo)
 
         end
 
     end
 
-            UI_SP -> CTRL_SP : getPropertyRepository()
-                activate CTRL_SP
+            UI -> CTRL : getPropertyRepository()
+                activate CTRL
 
-                CTRL_SP -> RepositorySingleton : getPropertyRepository()
+                CTRL -> RepositorySingleton : getPropertyRepository()
                 activate RepositorySingleton
 
-                    RepositorySingleton --> CTRL_SP: repositories
+                    RepositorySingleton --> CTRL: repositories
                     deactivate RepositorySingleton
 
-                CTRL_SP -> PLAT : getPropertyRepository()
+                CTRL -> PLAT : getPropertyRepository()
                 activate PLAT
 
-                    PLAT --> CTRL_SP: PropertyRepository
+                    PLAT --> CTRL: PropertyRepository
                     deactivate PLAT
 
-                CTRL_SP -> propertyRepository: newProperty()
+                CTRL -> propertyRepository: newProperty()
                 activate propertyRepository
 
-                    propertyRepository -> CTRL_SP : newProperty()
+                    propertyRepository -> CTRL : newProperty()
                     deactivate propertyRepository
 
-                CTRL_SP -> UI_SP: propertyRepository
-                deactivate CTRL_SP
+                CTRL -> UI: propertyRepository
+                deactivate CTRL
 end
+' CREATE PROPERTY
 
-        UI_SP -> User: Display property conditions and ask for validation (YES/NO)
-        deactivate UI_SP
 
-    User -> UI_SP: input: validation (YES/NO)
-        activate UI_SP
 
-alt validation = YES
-        UI_SP -> User : displays operation success, sends document operation details and conclusion
-        deactivate UI_SP
-end
 
 ' CHOOSE A AGENT
 
-    User -> UI_CA : asks to submit new property
-        activate UI_CA
+    User -> UI : asks to choose Agent
+        activate UI
 
-        UI_CA -> CTRL_CA** : create
+        UI  ->  CTRL : getStoreList()
+            activate CTRL
 
-        UI_CA  ->  CTRL_CA : getStoreList()
-            activate CTRL_CA
-
-            CTRL_CA  ->  RepositorySingleton : getStoreList()
+            CTRL  ->  RepositorySingleton : getStoreList()
                 activate RepositorySingleton
 
-                RepositorySingleton --> CTRL_CA: getStoreList()
+                RepositorySingleton --> CTRL: getStoreList()
                 deactivate RepositorySingleton
 
-            CTRL_CA -> stores : getStoreList()
+            CTRL -> stores : getStoreList()
                 activate stores
 
-                stores --> CTRL_CA : storeList
+                stores --> CTRL : storeList
                 deactivate stores
 
-            CTRL_CA --> UI_CA : storeList
-            deactivate CTRL_CA
+            CTRL --> UI : storeList
+            deactivate CTRL
 
-        UI_CA --> User : shows Store List list\n and asks to select one
-        deactivate UI_CA
+        UI --> User : shows Store List list\n and asks to select one
+        deactivate UI
 
-    User -> UI_CA : selects a Store
-        activate UI_CA
+    User -> UI : selects a Store
+        activate UI
 
-        UI_CA  ->  UI_CA: keep store
+        UI  ->  UI: keep store
 
-        UI_CA  ->  CTRL_CA : getAgentList()
-            activate CTRL_CA
+        UI  ->  CTRL : getAgentList()
+            activate CTRL
 
-            CTRL_CA  ->  RepositorySingleton : getAgentList()
+            CTRL  ->  RepositorySingleton : getAgentList()
                 activate RepositorySingleton
 
-                RepositorySingleton --> CTRL_CA: getAgentList()
+                RepositorySingleton --> CTRL: getAgentList()
                 deactivate RepositorySingleton
 
-            CTRL_CA -> personRepository : getAgentList()
+            CTRL -> personRepository : getAgentList()
                 activate personRepository
 
-                personRepository --> CTRL_CA : agentList
+                personRepository --> CTRL : agentList
                 deactivate personRepository
 
-            CTRL_CA --> UI_CA : agentList
-                deactivate CTRL_CA
+            CTRL --> UI : agentList
+                deactivate CTRL
 
-        UI_CA --> User : shows Agent List list\n and asks to select one
-            deactivate UI_CA
+        UI --> User : shows Agent List list\n and asks to select one
+            deactivate UI
 
-    User -> UI_CA : selects a Agent
-        activate UI_CA
+    User -> UI : selects a Agent
+        activate UI
 
-        UI_CA  ->  UI_CA: keep Agent
+        UI  ->  UI: keep Agent
+
+        UI -> User: Display property conditions and ask for validation (YES/NO)
+        deactivate UI
+
+    User -> UI: input: validation (YES/NO)
+        activate UI
+
+alt validation = YES
+        UI -> User : displays operation success, sends document operation details and conclusion
+        deactivate UI
+end
+
 
 @enduml
