@@ -77,11 +77,7 @@ activate User
     User -> UI : selects a Property Type
             activate UI
 
-            UI  ->  CTRL: keep Property Type choice
-            activate CTRL
-
-            CTRL  ->  CTRL: keep Property Type choice
-            deactivate CTRL
+            UI  ->  UI: keep Property Type choice
 
 alt propertyType = House
 
@@ -91,11 +87,8 @@ alt propertyType = House
     User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
             activate UI
 
-            UI  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
-            activate CTRL
+            UI  ->  UI : keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
 
-            CTRL  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
-            deactivate CTRL
 
     group opt
             UI -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
@@ -104,12 +97,7 @@ alt propertyType = House
         User -> UI : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
                 activate UI
 
-            UI  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
-            activate CTRL
-
-            CTRL  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
-            deactivate CTRL
-
+            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment, sunExposure)
 
     end
 
@@ -151,11 +139,8 @@ alt propertyType = House
         User -> UI : types asked data (Sale Price)
             activate UI
 
-            UI  ->  CTRL: keep data (Sale Price)
-            activate CTRL
+            UI  ->  UI: keep data (Sale Price)
 
-                CTRL -> CTRL: keep data (Sale Price)
-                deactivate CTRL
     else businessType = Rent
 
             UI -> User : ask data (Rental Price, Duraction of Contract)
@@ -164,11 +149,7 @@ alt propertyType = House
         User -> UI : types asked data (Rental Price, Duraction of Contract)
             activate UI
 
-            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-            activate CTRL
-
-                CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-                deactivate CTRL
+            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
 
     end
 
@@ -178,11 +159,7 @@ alt propertyType = House
             User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  CTRL: keep data (property Photo)
-            activate CTRL
-
-                CTRL  ->  CTRL: keep data (property Photo)
-                deactivate CTRL
+            UI  ->  UI: keep data (property Photo)
 
     opt
 
@@ -194,11 +171,8 @@ alt propertyType = House
         User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  CTRL: keep data (property Photo)
-            activate CTRL
+            UI  ->  UI: keep data (property Photo)
 
-                CTRL  ->  CTRL: keep data (property Photo)
-                deactivate CTRL
         end
 
     end
@@ -226,19 +200,28 @@ alt propertyType = House
                     propertyRepository -> CTRL : newHouseProperty()
                     deactivate propertyRepository
 
-                CTRL -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
+                UI -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking, \nbasement, loft)
 
                 CTRL  ->  CTRL: add data to new property (numberBathrooms, \navailableEquipment, sunExposure)
 
     alt businessType = Sale
+
+                UI  ->  CTRL: add data to new property (Sale Price)
+
                 CTRL  ->  CTRL: add data to new property (Sale Price)
     else businessType = Rent
+
+                UI  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
+
                 CTRL  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
     end
+                UI -> CTRL : add data to new property (property Photo)
 
                 CTRL -> CTRL : add data to new property (property Photo)
     opt
         loop
+                UI -> CTRL : add data to new property (property Photo)
+
                 CTRL -> CTRL : add data to new property (property Photo)
         end
 
@@ -268,11 +251,7 @@ else propertyType = Apartment
     User -> UI : types asked data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
             activate UI
 
-            UI  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
-            activate CTRL
-
-                CTRL  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
-                deactivate CTRL
+            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms, numberParking)
 
 group opt
             UI -> User : ask data (numberBathrooms, \navailableEquipment, sunExposure)
@@ -281,11 +260,7 @@ group opt
     User -> UI : types asked data (numberBathrooms, \navailableEquipment, sunExposure)
             activate UI
 
-            UI  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
-            activate CTRL
-
-                CTRL  ->  CTRL: keep data (numberBathrooms, \navailableEquipment, sunExposure)
-                deactivate CTRL
+            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment, sunExposure)
 
 end
 
@@ -327,11 +302,7 @@ end
         User -> UI : types asked data (Sale Price)
             activate UI
 
-            UI  ->  CTRL: keep data (Sale Price)
-            activate CTRL
-
-                CTRL  ->  CTRL: keep data (Sale Price)
-                deactivate CTRL
+            UI  ->  UI: keep data (Sale Price)
 
     else businessType = Rent
 
@@ -341,13 +312,7 @@ end
         User -> UI : types asked data (Rental Price, Duraction of Contract)
             activate UI
 
-            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-                activate CTRL
-
-
-                CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-                deactivate CTRL
-
+            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
 
     end
 
@@ -357,12 +322,7 @@ end
             User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-                activate CTRL
-
-
-                CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-                deactivate CTRL
+            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
 
     opt
 
@@ -374,12 +334,8 @@ end
         User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  CTRL: keep data (property Photo)
-                activate CTRL
+            UI  ->  UI: keep data (property Photo)
 
-
-                CTRL  ->  CTRL: keep data (property Photo)
-                deactivate CTRL
         end
 
     end
@@ -406,20 +362,32 @@ end
                     propertyRepository -> CTRL : newApartmentProperty()
                     deactivate propertyRepository
 
-                CTRL -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms)
+                UI -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms)
 
                 CTRL  ->  CTRL: add data to new property (numberBathrooms, \navailableEquipment)
 
     alt businessType = Sale
+
+            UI  ->  CTRL: add data to new property (Sale Price)
+
                 CTRL  ->  CTRL: add data to new property (Sale Price)
+
     else businessType = Rent
+
+            UI  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
+
                 CTRL  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
     end
+                UI -> CTRL : add data to new property (property Photo)
 
                 CTRL -> CTRL : add data to new property (property Photo)
     opt
         loop
+
+            UI -> CTRL : add data to new property (property Photo)
+
                 CTRL -> CTRL : add data to new property (property Photo)
+
         end
 
     end
@@ -450,11 +418,7 @@ else propertyType = Land
     User -> UI : types asked data (year, month, day, \narea cms. Distance Kms)
             activate UI
 
-            UI  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms)
-            activate CTRL
-
-            CTRL  ->  CTRL: keep data (year, month, day, \narea cms. Distance Kms)
-            deactivate CTRL
+            UI  ->  UI: keep data (year, month, day, \narea cms. Distance Kms)
 
             UI -> CTRL : getBusinessTypeRepository()
                 activate CTRL
@@ -494,11 +458,7 @@ else propertyType = Land
         User -> UI : types asked data (Sale Price)
             activate UI
 
-            UI  ->  CTRL: keep data (Sale Price)
-            activate CTRL
-
-            CTRL  ->  CTRL: keep data (Sale Price)
-            deactivate CTRL
+            UI  ->  UI: keep data (Sale Price)
 
     else businessType = Rent
 
@@ -508,11 +468,7 @@ else propertyType = Land
         User -> UI : types asked data (Rental Price, Duraction of Contract)
             activate UI
 
-            UI  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-            activate CTRL
-
-            CTRL  ->  CTRL: keep data (Rental Price, Duraction of Contract)
-            deactivate CTRL
+            UI  ->  UI: keep data (Rental Price, Duraction of Contract)
 
     end
 
@@ -522,11 +478,7 @@ else propertyType = Land
             User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  CTRL: keep data (property Photo)
-            activate CTRL
-
-                CTRL  ->  CTRL: keep data (property Photo)
-                deactivate CTRL
+            UI  ->  UI: keep data (property Photo)
 
     opt
 
@@ -538,11 +490,7 @@ else propertyType = Land
             User -> UI : input asked data (property Photo)
                     activate UI
 
-            UI  ->  CTRL: keep data (property Photo)
-            activate CTRL
-
-                CTRL  ->  CTRL: keep data (property Photo)
-                deactivate CTRL
+            UI  ->  UI: keep data (property Photo)
 
         end
 
@@ -571,19 +519,31 @@ else propertyType = Land
                     propertyRepository -> CTRL : newProperty()
                     deactivate propertyRepository
 
-                CTRL -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms)
+                UI -> CTRL: add data to new property (year, month, day, \narea cms. Distance Kms, \nnumberBedrooms)
 
                 CTRL  ->  CTRL: add data to new property (numberBathrooms, \navailableEquipment)
 
     alt businessType = Sale
+
+                UI  ->  CTRL: add data to new property (Sale Price)
+
                 CTRL  ->  CTRL: add data to new property (Sale Price)
+
     else businessType = Rent
+
+                UI  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
+
                 CTRL  ->  CTRL: add data to new property (Rental Price, Duraction of Contract)
+
     end
+                UI -> CTRL : add data to new property (property Photo)
 
                 CTRL -> CTRL : add data to new property (property Photo)
     opt
+
         loop
+                UI -> CTRL : add data to new property (property Photo)
+
                 CTRL -> CTRL : add data to new property (property Photo)
         end
 
@@ -598,6 +558,7 @@ else propertyType = Land
          deactivate UI
 
      User -> UI: input: validation (YES/NO)
+
          activate UI
 
  alt validation = YES
@@ -659,11 +620,7 @@ end
     User -> UI : selects a Agent Choice
         activate UI
 
-        UI  ->  CTRL: keep Agent Choice
-        activate CTRL
-
-            CTRL  ->  CTRL: keep Agent Choice
-        deactivate CTRL
+        UI  ->  UI: keep Agent Choice
 
 ' CHOOSE A AGENT FROM LIST
 
@@ -700,12 +657,7 @@ end
     User -> UI : selects a Agent Choice
         activate UI
 
-        UI  ->  CTRL: keep Agent Choice
-        activate CTRL
-
-            CTRL  ->  CTRL: keep Agent Choice
-            deactivate CTRL
-
+        UI  ->  UI: keep Agent Choice
 
 
 
@@ -729,7 +681,14 @@ end
                     requestRepository -> CTRL : newRequest
                     deactivate requestRepository
 
+                UI -> CTRL: add data (year, month, day) to new Request
+                CTRL -> CTRL: add data (year, month, day) to new Request
+
+
+                UI -> CTRL: add New Property to new Request
                 CTRL -> CTRL: add New Property to new Request
+
+                UI -> CTRL: add Agent Choice to new Request
                 CTRL -> CTRL: add Agent Choice to new Request
 
         deactivate CTRL
